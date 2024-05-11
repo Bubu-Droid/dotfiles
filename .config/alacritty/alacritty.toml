@@ -1,0 +1,10 @@
+import = [
+  "~/.config/alacritty/themes/themes/coolnight.toml"
+]
+[window]
+padding.x = 10
+padding.y = 10
+
+[font]
+normal.family = "MesloLGS NF"
+size = 12
