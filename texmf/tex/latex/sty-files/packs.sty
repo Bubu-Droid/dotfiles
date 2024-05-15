@@ -1,0 +1,51 @@
+%================================
+% AVIGYAN IMPORTS
+%================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[left=0.9in,right=0.9in,top=1.1in,bottom=1.2in]{geometry}
+\usepackage{url}
+\usepackage{amsfonts}
+\usepackage{verbatim}
+\usepackage{theoremref}
+% \usepackage{mathpazo}
+% \usepackage{csquotes}
+
+% \usepackage{tgpagella}
+% removed because this creates issues with the section's font
+
+\usepackage{ulem}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage[makeroom]{cancel}
+\usepackage{pdfpages}
+\usepackage{perpage}
+\usepackage{graphicx}
+
+\hypersetup{
+    urlcolor=RoyalBlue
+}
+% \urlstyle{same}
+% I like the monospace font for the URLs, so I'm commenting this out
+
+% \graphicspath{{./images/}}
+% This is commented out because otherwise VS Code doesn't show recommendations on using just the image name without the name of the parent folder.
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\renewcommand{\baselinestretch}{1.1}
+
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+\MakePerPage{footnote}
+
+\let\oldfootnote\footnote
+\renewcommand\footnote[1]{%
+\oldfootnote{\hspace{1mm}#1}}
+
+\newcommand{\bubuS}{{\fontfamily{lmr}\selectfont\S}} %<put> is another good option
+% \newcommand{\bubuS}{{\fontfamily{lmr}\selectfont\maltese}} %<put> is another good option
+
+\def\asydir{asytmp}
+
+\newcommand\bluebf[1]{\textcolor{mytheoremfr}{\bfseries\sffamily{#1}}}
