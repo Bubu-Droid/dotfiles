@@ -1,0 +1,5 @@
+brave-bin
+whatsapp-for-linux
+yay
+yay-debug
+zsh-theme-powerlevel10k-git

@@ -1,0 +1,224 @@
+name of the file : <file_name>.sh
+starting line : #!/bin/bash
+
+echo "text" : prints out the text in the terminal
+
+name="bubu"
+age=17 // no spaces to be given after the variable name!!!!
+
+echo "name: " $name "age: " $age : print the variables
+
+// you can also use escape sequence characters just like in other languages
+
+read name // this inputs the name
+echo "Your name is:" $name
+
+read -p "Enter your age: " age
+
+echo "Your age is:" $age
+
+read -sp "Enter your password: " passwd // used to enter credential info which while entering does not show on the screen
+
+echo "Your password is:" $passwd
+
+current_dir=`pwd` // gives the pwd
+
+// current_dir=$(pwd) // this also works in a similar way
+
+echo "Your current dir is:" $current_dir
+
+newfile=`cat > hello.txt` // the strings are basically commands which are executed when they are echoed //it is always a good choice to use $(command) instead
+
+echo $newfile
+
+echo $0 // prints the name of the script file
+
+echo $1 // prints the first parameter
+
+// for example if I run ./1.sh bubu 1234, then bubu will be assigned to $1 and 1234 will be assigned to $2
+
+// if we need to assign some value to some argument that has spaces, then we can enclose the argument inside quotes
+// for example ./1.sh "bubu user" 1234 will take the bubu user as the $1 and 1234 as $2
+
+echo $@ // prints all the parameters that are passed in one line
+echo $# // prints the number of parameters that are passed
+
+name=$1 // stores the first parameter inside variable name
+
+// these arithmetic operators tend to work only for integers
+
+read -p "Enter no 1:" n1
+read -p "Enter no 2:" n2
+
+echo "Add:" $((n1 + n2))
+echo "Sub:" $((n1 - n2))
+echo "Mul:" $((n1*n2))
+echo "Div:" $((n1/n2)) // returns the quotient
+echo "Mod:" $((n1%n2))
+echo "Inc1:" $((n1++)) // this increments after the command is run
+echo "Inc2:" $((++n1)) // this increments before the command is being run
+echo "Dec1:" $((n1--)) // this decreases after the command is run
+echo "Dec2:" $((--n1)) // this decreases before the command is being run
+
+if [ $n1 -eq $n2 ] // the starting and ending spaces are important
+then
+
+echo "n1 = n2"
+
+fi // used for closing the if block
+
+-lt
+-le
+-gt
+-ge
+-eq
+
+if [ $n1 -gt $n2 -a $n2 -gt $n3 ] // the -a used is the and operator
+then
+
+echo "good"
+
+fi
+
+if [ $n1 -gt $n2 -o $n2 -gt $n3 ] // the -o is the or operator
+then
+
+echo "bad"
+
+fi
+
+if [ $n1 -lt 18 ]
+then
+
+echo "Can't vote"
+
+elif [ $n1 -eq 18 ]
+then
+
+echo "Apply for voter ID card"
+
+else
+echo "Can vote"
+
+fi
+
+case $n1 in
+    A) // these are the cases
+        echo "91-100"
+        ;; // this semi-colon after every case if very imp
+    B)
+        echo "81-90"
+        ;;
+    C)
+        echo "71-80"
+        ;;
+    *) // this is for all of the rest of the cases
+        echo "Below 70"
+esac // closing the case block
+
+namearr=("horipodo krishno" bubu avi anshu) // only spaces to separate the elements
+
+echo ${namearr[0]} // curly brackets to give the value
+
+echo ${namearr[*]}
+echo ${namearr[@]} // both are used to access all the elements
+
+for((i=0;i<=5;i++)){
+    echo ${namearr[$i]}
+}
+
+for i in 1 2 3 4 5 6 7 8 9 10
+do
+    echo "Iteration:" $i
+done
+
+for i in bubu avi anshu
+do
+    if [ $i == avi ] // for checking equality in string, we use == instead of -eq
+    then
+        echo "Avigyan"
+    fi
+done
+
+i=0
+while [ $i -le 3 ]
+do
+    echo ${namearr[$i]}
+    let i++
+done
+
+until [ $i -ge 3 ] // runs till the condition is false, that is until the condition is true
+do
+    echo "Bubu"
+    let i++
+done
+
+until [ $i -ge 11 ]
+do
+    echo $((5*$i))
+    let i++
+done
+
+for((i=0;i<=10;i++)){
+    if [ $i -eq 5 ]
+    then
+        continue
+    elif [ $i -eq 8 ]
+    then
+        break
+    else
+        echo $i
+    fi
+}
+
+for((i=0;i<=2;i++)){
+    echo $(mkdir -v $n1$i) // used for automating the process of making directories
+}
+
+for((i=0;i<=2;i++)){
+    echo $(rm -rf -v $n1$i)
+}
+
+greetings(){
+    echo "good morning"
+}
+
+greetings
+
+sum(){
+    a=$1
+    b=$2
+    c=$(($1+$2))
+    echo "The value of the sum of" $a "and" $b "is =" $c
+    echo $0 // this just prints the name of the bash file
+}
+
+sum 12 23
+
+sub(){
+    a=$1
+    b=$2
+    c=$(($1-$2))
+    return $c
+}
+
+sub 13 12
+sub 15 12
+ret=$? // this will store the return value of the function which was called just before it
+
+echo $ret
+
+// when a variable is defined inside a function, it is treated as a local variable and when it is defined in the global scope, it is a global variable
+
+read -p "Enter repo link: " repolink
+
+gitrepo(){
+    echo "getting repository..."
+    git clone $repolink // you can run any code inside the bash file just like you do in the terminal
+    // this is basically the same thing as running code in the terminal, so we need not use $((.)) everytime we run some script
+    // just when we are running commands through echo, the we need to use $(.) and $((.)) is used when we are calculating some stuff
+}
+
+gitrepo
+
+
