@@ -159,6 +159,22 @@ sudo modprobe v4l2loopback
 sudo rmmod v4l2loopback
 ```
 
+Run
+
+```
+systemctl enable --now cups
+```
+
+```
+sudo usermod -aG lp <user_name>
+```
+
+then check if the user has been added using
+
+```
+groups <user_name>
+```
+
 Install the processor drivers if needed (as in my case, the drivers that come
 with the kernel for AMD are said to be pretty bad, so yeah).
 
@@ -166,7 +182,7 @@ with the kernel for AMD are said to be pretty bad, so yeah).
 > not installed already.
 
 Yoo, I totally forgot about fonts, here is a list of them (if I am not missing
-some).
+some). Make a directory named `.fonts` inside `~` and install the following fonts.
 
 ```
 meslo-lgs-nerd-font
@@ -174,6 +190,32 @@ jetbrains-mono-nerd-font
 noto-fonts-emoji
 noto-fonts
 iosevka-nerd-font
+```
+
+Run
+
+```
+systemctl start bluetooth.service
+```
+
+then
+
+```
+systemctl enable bluetooth.service
+```
+
+Do `nvim /etc/bluetooth/main.conf` and then uncomment the `AutoEnable=true` line.
+
+Using `sudo vim /etc/pacman.conf` uncommnet the following lines
+
+```
+#Color
+```
+
+and add in the following line at the end of the paragraph
+
+```
+ILoveCandy
 ```
 
 # WE ARE DONE!
