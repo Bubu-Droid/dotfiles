@@ -28,6 +28,7 @@ return {
       -- list of servers for mason to install
       ensure_installed = {
         "tsserver",
+        "texlab",
         "html",
         "cssls",
         "tailwindcss",

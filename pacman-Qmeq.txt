@@ -1,5 +1,9 @@
 brave-bin
+debtap
+iriunwebcam-bin
+otf-openmoji
 whatsapp-for-linux
 yay
 yay-debug
+zoom
 zsh-theme-powerlevel10k-git

@@ -1,0 +1,43 @@
+1) git add -A
+
+	To add all the files to the Git stage.
+
+2) git checkout -f
+
+	To checkout all the files to the previous commit.
+
+3) git log -p -5
+
+	This gives the last 5 commit logs. Press 'q' to exit from the Vim interface.
+
+4) touch <file_name.ext>
+
+	This creates the file.
+
+5) git rm --cached <file>
+
+	This removed the file from the stage. Note: The 'git rm <file>' simply deletes the file, but this --cached arguement just removes the file from the stage.
+
+6) touch .gitignore
+
+	This makes the gitignore file. Put the names as the followings to ignore them.
+
+	(a) <file_name.ext> - This adds the file to the ignore list. All the files of the following name will be ignored be it in the current directory, or in any of the sub-directories, or anywhere in the child directory.
+
+	(b) /<file_name.ext> - This adds the file only in the cwd to the ignore list.
+
+	(c) *.<ext> - This ignores all the files with the following extension.
+
+	(d) <folder_name>/ - This ignores the folder of this name. Note that a '/' is put at the end to represent it as a folder and not as any other file name.
+
+7) git remote -v
+
+	This prints the fetch and push URLs.
+
+8) git remote set-url origin <new_link>
+
+	This updates the push/pull link to the new link.
+
+9) git push -u origin master
+
+	This sets the default push link. You can make the future pushes by just typing 'git push'.
