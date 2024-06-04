@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Creating LaTeX template..."
 
 mkdir -p ./images

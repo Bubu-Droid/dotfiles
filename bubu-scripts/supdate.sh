@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo pacman -Syu
 yay -Sua
 sudo pacman -Qneq > ~/pacman-Qneq.txt

@@ -7,10 +7,12 @@ blueman
 bluez-tools
 bluez-utils
 corectrl
+cups
 dmenu
 efibootmgr
 eza
 feh
+ffnvcodec-headers
 firefox
 flameshot
 geogebra
@@ -18,6 +20,7 @@ git
 grub
 gst-plugins-good
 gstreamer
+hplip
 hwinfo
 i3-wm
 libva-mesa-driver
@@ -45,9 +48,13 @@ pipewire-pulse
 plocate
 polybar
 python-pip
+python-poetry
 python-pyperclip
+reflector
 ripgrep
 rofi
+rpmextract
+system-config-printer
 texlive-basic
 texlive-bibtexextra
 texlive-binextra
@@ -74,7 +81,9 @@ thunar
 tree
 unzip
 v4l2loopback-dkms
+v4l2loopback-utils
 vim
+vlc
 vulkan-radeon
 xclip
 xf86-video-amdgpu
