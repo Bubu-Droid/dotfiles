@@ -69,7 +69,7 @@ dots config --local status.showUntrackedFiles no
 
 Now you should be able to notice a lot of stuff in your `~` by using the `ls`.
 
-We should also change the remove URLs from HTTPS to SSH. Follow
+We should also change the remote URLs from HTTPS to SSH. Follow
 [this](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-https-to-ssh)
 tutorial for doing so.
 
