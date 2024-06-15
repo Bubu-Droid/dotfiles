@@ -8,7 +8,9 @@ bluez-tools
 bluez-utils
 corectrl
 cups
+distrobox
 dmenu
+docker
 efibootmgr
 eza
 feh
@@ -42,13 +44,16 @@ obs-studio
 openssh
 papirus-icon-theme
 pavucontrol
+pax-utils
 picom
 pipewire
 pipewire-pulse
 plocate
+podman
 polybar
 python-pip
 python-poetry
+python-pynvim
 python-pyperclip
 reflector
 ripgrep
