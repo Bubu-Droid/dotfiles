@@ -69,6 +69,10 @@ dots config --local status.showUntrackedFiles no
 
 Now you should be able to notice a lot of stuff in your `~` by using the `ls`.
 
+We should also change the remove URLs from HTTPS to SSH. Follow
+[this](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-https-to-ssh)
+tutorial for doing so.
+
 ## Installing the packages
 
 Run
@@ -216,6 +220,21 @@ and add in the following line at the end of the paragraph
 
 ```
 ILoveCandy
+```
+
+Now we need to make sure that numlock is turned on every time we boot in. We
+can do this by running `sudo vim /etc/lightdm/lightdm.conf`
+and then change the line
+
+```
+# [Seat:*] <bla bla bla>
+```
+
+to
+
+```
+[Seat:*]
+greeter-setup-script=/usr/bin/numlockx on
 ```
 
 # WE ARE DONE!
