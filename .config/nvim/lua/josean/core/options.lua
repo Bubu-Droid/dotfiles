@@ -1,4 +1,6 @@
 vim.cmd("let g:netrw_liststyle = 3")
+vim.cmd([[filetype plugin indent on]])
+vim.cmd([[syntax enable]])
 
 local opt = vim.opt
 
@@ -37,3 +39,10 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+-- turn on the spell checker
+opt.spelllang = "en_us"
+opt.spell = true
+
+-- turn on conceal
+opt.conceallevel = 1
