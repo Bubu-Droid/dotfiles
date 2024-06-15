@@ -21,3 +21,15 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+
+-- latex hotkeys
+-- keymap.set("n", "<leader>ll", "<cmd>!latexmk -pdf -pvc main.tex<CR>", { desc = "Compile the latex file" }) -- shit doesn't work idk why. zathura doesn't refresh.
+keymap.set("n", "<leader>le", "<plug>(vimtex-errors)", { desc = "Open the error console" })
+keymap.set("n", "cse", "<plug>(vimtex-env-change)", { desc = "Change the surrounding enviroment" })
+keymap.set("n", "dse", "<plug>(vimtex-env-delete)", { desc = "Delete the surrounding enviroment" })
+keymap.set("n", "csc", "<plug>(vimtex-cmd-change)", { desc = "Change the surrounding command" })
+keymap.set("n", "dsc", "<plug>(vimtex-cmd-delete)", { desc = "Delete the surrounding command" })
+keymap.set("n", "ds$", "<plug>(vimtex-env-delete-math)", { desc = "Delete the surrounding command" })
+keymap.set("n", "cs$", "<plug>(vimtex-env-change-math)", { desc = "Delete the surrounding command" })
+keymap.set("n", "tsd", "<plug>(vimtex-delim-toggle-modifier)", { desc = "Change the delimiter size" })
+keymap.set("n", "tsf", "<plug>(vimtex-cmd-toggle-frac)", { desc = "Change the delimiter size" })
