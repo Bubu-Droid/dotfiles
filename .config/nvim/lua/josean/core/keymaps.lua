@@ -30,6 +30,11 @@ keymap.set("n", "dse", "<plug>(vimtex-env-delete)", { desc = "Delete the surroun
 keymap.set("n", "csc", "<plug>(vimtex-cmd-change)", { desc = "Change the surrounding command" })
 keymap.set("n", "dsc", "<plug>(vimtex-cmd-delete)", { desc = "Delete the surrounding command" })
 keymap.set("n", "ds$", "<plug>(vimtex-env-delete-math)", { desc = "Delete the surrounding command" })
-keymap.set("n", "cs$", "<plug>(vimtex-env-change-math)", { desc = "Delete the surrounding command" })
+keymap.set("n", "cs$", "<plug>(vimtex-env-change-math)", { desc = "Change the surrounding command" })
 keymap.set("n", "tsd", "<plug>(vimtex-delim-toggle-modifier)", { desc = "Change the delimiter size" })
 keymap.set("n", "tsf", "<plug>(vimtex-cmd-toggle-frac)", { desc = "Change the delimiter size" })
+keymap.set("i", "ji", "<ESC>A\\\\<ESC>o&= ", { desc = "Add align item" })
+keymap.set("i", "jc", "<ESC>A\\\\<ESC>ocasi", { desc = "Add case item" })
+
+-- auto-spell correction
+keymap.set("i", "<C-l>", "<C-x><C-s><ESC>A", { desc = "Correct spelling on the fly" })

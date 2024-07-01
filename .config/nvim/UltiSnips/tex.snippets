@@ -26,10 +26,10 @@ endsnippet
 
 # snippet table "Table environment" b
 # \begin{table}[${1:htpb}]
-#	\centering
-#	\caption{${2:caption}}
-#	\label{tab:${3:label}}
-#	\begin{tabular}{${5:c}}
+# \centering
+# \caption{${2:caption}}
+# \label{tab:${3:label}}
+# \begin{tabular}{${5:c}}
 # $0${5/((?<=.)c|l|r)|./(?1: & )/g}
 # \end{tabular}
 # \end{table}
@@ -205,7 +205,7 @@ snippet ooo "\infty" iA
 endsnippet
 
 snippet rij "mrij" i
-(${1:x}_${2:n})_{${3:$2}\\in${4:\\N}}$0
+(${1:x}_${2:n})_{${3:$2}\\in${4:\\mathbb{N}}$0
 endsnippet
 
 snippet <= "leq" iA
@@ -267,7 +267,7 @@ x_{m}
 endsnippet
 
 snippet R0+ "R0+" iA
-\\R_0^+
+\\mathbb{R}_0^+
 endsnippet
 
 context "math()"
@@ -396,7 +396,7 @@ snippet nnn "bigcap" iA
 endsnippet
 
 snippet OO "emptyset" iA
-\O
+\emptyset
 endsnippet
 
 snippet NN "n" iA
@@ -404,15 +404,15 @@ snippet NN "n" iA
 endsnippet
 
 snippet RR "real" iA
-\R
+\mathbb{R}
 endsnippet
 
 snippet QQ "Q" iA
-\Q
+\mathbb{Q}
 endsnippet
 
 snippet ZZ "Z" iA
-\Z
+\mathbb{Z}
 endsnippet
 
 # snippet <! "normal" iA
@@ -431,13 +431,6 @@ endsnippet
 context "math()"
 snippet tt "text" iA
 \text{$1}$0
-endsnippet
-
-context "math()"
-snippet case "cases" wA
-\begin{cases}
-  $1
-\end{cases}
 endsnippet
 
 # snippet SI "SI" iA
@@ -480,7 +473,7 @@ snippet "([a-zA-Z])hat" "hat" riA
 endsnippet
 
 # snippet letw "let omega" iA
-# Let $\Omega \subset \C$ be open.
+# Let $\Omega \subset \mathbb{C}$ be open.
 # endsnippet
 
 snippet HH "H" iA
@@ -557,7 +550,7 @@ $0
 endsnippet
 
 context "math()"
-snippet vp "p-acid" iA
+snippet vp "p-adic" iA
 \nu_{${1:p}}{$2}$0
 endsnippet
 
@@ -617,12 +610,12 @@ endsnippet
 
 snippet fig "figure template" b
 \begin{figure}[${1:htpb}]
-	\centering
-	\includegraphics[width=\textwidth,keepaspectratio]{images/$2}
-	\caption{$3}
-	\label{fig:$4}
+  \centering
+  \includegraphics[width=\textwidth,keepaspectratio]{images/$2}
+  \caption{$3}
+  \label{fig:$4}
 \end{figure}$0
-endsnippet	
+endsnippet
 
 context "math()"
 snippet derv "derivative" iA
@@ -631,22 +624,34 @@ endsnippet
 
 context "math()"
 snippet ddx "derivative" iA
-\mathrm{d}x $0
+\mathrm{d}x 
 endsnippet
 
 context "math()"
 snippet ddy "derivative" iA
-\mathrm{d}y $0
+\mathrm{d}y 
 endsnippet
 
 context "math()"
 snippet ddt "derivative" iA
-\mathrm{d}t $0
+\mathrm{d}t 
 endsnippet
 
 context "math()"
 snippet ddr "derivative" iA
-\mathrm{d}${1:r} $0
+\mathrm{d}${1:r} 
+endsnippet
+
+context "math()"
+snippet casi "case item" iA
+${1:value}, & \text{if } ${2:condition}
+endsnippet
+
+context "math()"
+snippet case "cases" wA
+${1:${VISUAL}} = \left\\{\begin{array}{ll}
+  ${2:value}, & \text{if } ${3:condition}
+  \end{array}\right.
 endsnippet
 
 # vim:ft=snippets:
