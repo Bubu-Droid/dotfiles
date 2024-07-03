@@ -16,6 +16,7 @@ https://github.com/vEnhance/dotfiles/blob/main/py-scripts/export-ggb-clean-asy.p
 /*
 A few re-additions are done using bubu-asy.py.
 This adds the dps, xmin, linewidth, fontsize and directions.
+https://github.com/Bubu-Droid/dotfiles/blob/master/bubu-scripts/bubu-asy.py
 */"""
 
 pen_xmin = r"""size(15cm);
