@@ -189,11 +189,11 @@ Yoo, I totally forgot about fonts, here is a list of them (if I am not missing
 some). Make a directory named `.fonts` inside `~` and install the following fonts.
 
 ```
-meslo-lgs-nerd-font
-jetbrains-mono-nerd-font
-noto-fonts-emoji
-noto-fonts
-iosevka-nerd-font
+[meslo-lgs-nerd-font](https://www.nerdfonts.com/font-downloads)
+[jetbrains-mono-nerd-font](https://www.nerdfonts.com/font-downloads)
+[noto-fonts-emoji](https://github.com/googlefonts/noto-emoji/releases)
+[noto-fonts](https://github.com/notofonts/notofonts.github.io/releases)
+[iosevka-nerd-font](https://www.nerdfonts.com/font-downloads)
 ```
 
 Run
