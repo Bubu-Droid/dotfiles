@@ -16,7 +16,7 @@ install without whom I wouldn't have been able to install ARCH. Not all ARCH
 users are maniacs :3 . But while installing ARCH following the ARCH wiki, I got
 stuck a few times and some of them turned out to be facts that were missing in
 the ARCH wiki. This is why I add this tutorial that anyone with UEFI mode and
-with GPT partitions for disks.
+with GPT partitions for disks can follow.
 
 [Here](https://github.com/Bubu-Droid/dotfiles/blob/master/.archINSTALL.md) we go!
 

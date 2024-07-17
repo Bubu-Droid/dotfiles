@@ -25,6 +25,7 @@ gstreamer
 hplip
 hwinfo
 i3-wm
+libreoffice-fresh
 libva-mesa-driver
 libva-utils
 lightdm

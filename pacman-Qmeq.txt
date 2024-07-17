@@ -1,6 +1,5 @@
 brave-bin
 debtap
-droidcam
 hp-printer-app
 iriunwebcam-bin
 otf-openmoji
