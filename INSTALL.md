@@ -189,12 +189,17 @@ Yoo, I totally forgot about fonts, here is a list of them (if I am not missing
 some). Make a directory named `.fonts` inside `~` and install the following fonts.
 
 ```
-[meslo-lgs-nerd-font](https://www.nerdfonts.com/font-downloads)
+[meslo-lgs-nerd-font](https://github.com/romkatv/powerlevel10k/blob/master/font.md)
 [jetbrains-mono-nerd-font](https://www.nerdfonts.com/font-downloads)
 [noto-fonts-emoji](https://github.com/googlefonts/noto-emoji/releases)
-[noto-fonts](https://github.com/notofonts/notofonts.github.io/releases)
 [iosevka-nerd-font](https://www.nerdfonts.com/font-downloads)
 ```
+
+To download specific language fonts, search for `noto-sans-<language>`
+font online and download them. Do not download the entire `noto-fonts`
+package as it is very bloated otherwise. Also, try to use the `sans`
+font instead of the `serif` one which decreases the readability of
+the font.
 
 Run
 
