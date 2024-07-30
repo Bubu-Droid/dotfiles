@@ -31,7 +31,7 @@ if ADVERTISEMENT_NEW in data:
 else:
     data = data.replace(ADVERTISEMENT_OLD, ADVERTISEMENT_NEW)
 
-data = data.replace("size(0cm);", pen_xmin)
+data = data.replace(re.findall("size\\(.*\\);", data)[0], pen_xmin)
 data = data.replace("linewidth(0.7)", "linewidth(0.5)")
 data = data.replace("linewidth(0.8)", "linewidth(0.5)")
 data = data.replace("linewidth(1.2)", "linewidth(0.75)")
