@@ -201,6 +201,8 @@ package as it is very bloated otherwise. Also, try to use the `sans`
 font instead of the `serif` one which decreases the readability of
 the font.
 
+I have the following downloaded, `japanese`, `korean`.
+
 Run
 
 ```
