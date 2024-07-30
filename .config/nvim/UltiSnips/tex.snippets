@@ -58,11 +58,11 @@ endsnippet
 # endsnippet
 
 snippet => "implies" Ai
-\implies
+\implies 
 endsnippet
 
 snippet =< "implied by" Ai
-\impliedby
+\impliedby 
 endsnippet
 
 context "math()"
@@ -82,7 +82,8 @@ endsnippet
 snippet dm "Math" wA
 \[
 ${1:${VISUAL}}
-.\] $0
+.\]
+$0
 endsnippet
 
 context "math()"
@@ -519,11 +520,6 @@ snippet ali "Align" bA
 .\end{align*}
 endsnippet
 
-priority 100
-snippet *.. "cdots" iA
-\cdots
-endsnippet
-
 # My own snippets
 
 snippet template "Create template" b
@@ -557,13 +553,13 @@ endsnippet
 context "math()"
 priority 10
 snippet ang "angle" iA
-\angle
+\angle 
 endsnippet
 
 context "math()"
 priority 100
 snippet dang "directed angle" iA
-\measuredangle
+\measuredangle 
 endsnippet
 
 context "math()"
@@ -652,6 +648,26 @@ snippet case "cases" wA
 ${1:${VISUAL}} = \left\\{\begin{array}{ll}
   ${2:value}, & \text{if } ${3:condition}
   \end{array}\right.
+endsnippet
+
+context "math()"
+snippet para "parallel" iA
+\parallel 
+endsnippet
+
+context "math()"
+snippet tri "triangle" iA
+\triangle 
+endsnippet
+
+priority 100
+snippet *.. "cdots" iA
+\cdots
+endsnippet
+
+context "math()"
+snippet opname "operatorname" iA
+\operatorname{$1}
 endsnippet
 
 # vim:ft=snippets:
