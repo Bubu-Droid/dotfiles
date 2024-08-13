@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo pacman -Syu
-yay -Sua
+yay
 sudo pacman -Qneq > ~/pacman-Qneq.txt
 sudo pacman -Qmeq > ~/pacman-Qmeq.txt
 sudo updatedb
