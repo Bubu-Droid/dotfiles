@@ -244,4 +244,9 @@ to
 greeter-setup-script=/usr/bin/numlockx on
 ```
 
+Now we are going to set a cool theme for our login screen. To do this
+follow [this](https://github.com/iamsubhranil/Rice/blob/master/lightdm-webkit2-greeter_executive.md)
+link till the rebooting part and you should have a cool theme for
+your login screen.
+
 # WE ARE DONE!
