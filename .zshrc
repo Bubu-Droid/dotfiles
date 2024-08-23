@@ -36,5 +36,6 @@ alias supdate="~/bubu-scripts/supdate.sh"
 alias dots='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 alias mirdate="~/bubu-scripts/mirdate.sh"
 alias textoaops="~/bubu-scripts/textoaops.py"
+alias spotdl="~/bubu-scripts/spotdl-4.2.5-linux --ffmpeg ~/bubu-scripts/spotdl-ffmpeg"
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
