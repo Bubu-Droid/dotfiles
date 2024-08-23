@@ -1,7 +1,8 @@
-brave-bin
 debtap
 hp-printer-app
+i3lock-fancy-git
 iriunwebcam-bin
+lightdm-webkit-theme-aether
 otf-openmoji
 spotify
 whatsapp-for-linux
