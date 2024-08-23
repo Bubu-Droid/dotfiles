@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod1
+set $modalt Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -204,4 +205,5 @@ exec_always feh --bg-fill ~/wallpapers/wall-1.jpeg
 # Screenshots(flameshot)
 bindsym Ctrl+Print exec flameshot full --path /home/bubu/Pictures/screenshots
 bindsym Ctrl+Shift+Print exec flameshot gui
-
+bindsym $modalt+e exec rofi -show emoji
+bindsym $modalt+l exec i3lock-fancy

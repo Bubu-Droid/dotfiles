@@ -35,5 +35,6 @@ alias mktextemp="~/bubu-scripts/mktextemp.sh"
 alias supdate="~/bubu-scripts/supdate.sh"
 alias dots='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 alias mirdate="~/bubu-scripts/mirdate.sh"
+alias textoaops="~/bubu-scripts/textoaops.py"
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
