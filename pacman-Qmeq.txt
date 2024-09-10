@@ -1,3 +1,4 @@
+audio-recorder
 debtap
 hp-printer-app
 i3lock-fancy-git
