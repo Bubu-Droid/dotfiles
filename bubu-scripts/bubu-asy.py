@@ -1,8 +1,12 @@
 #!/bin/python3
 
-import os
+# import os
 import re
-import sys
+
+import pyperclip as pc
+
+# import sys
+
 
 ADVERTISEMENT_OLD = r"""/*
 Converted from GeoGebra by User:Azjps using Evan's magic cleaner
@@ -24,7 +28,8 @@ pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps);
 real xmin = -5, xmax = 5, ymin = -5, ymax = 5;
 """
 
-data = "".join(sys.stdin.readlines())
+data = pc.paste()
+# data = "".join(sys.stdin.readlines())
 
 if ADVERTISEMENT_NEW in data:
     pass
@@ -48,5 +53,4 @@ for i in dotlabs:
 for i in range(len(dotlabs)):
     data = data.replace(dotlabs[i], newlabs[i])
 
-with open(f"{os.getcwd()}/images/diag.txt", "w") as fp:
-    fp.write(data)
+pc.copy(data)

@@ -10,3 +10,4 @@ cat /home/bubu/Desktop/.gitignore
 echo "DOWNLOADS"
 echo "DESKTOP"
 echo "Update all the git stuff here"
+echo "Update the ublock saves"

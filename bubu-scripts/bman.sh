@@ -1,18 +1,18 @@
 #!/bin/bash
 
-if [ $1 == 'linux' ]
+if [[ $1 == 'linux' ]]
 then
   cat ~/bubu-scripts/bman-docs/linux-comms.txt | less
 
-elif [ $1 == 'bash' ]
+elif [[ $1 == 'bash' ]]
 then
   cat ~/bubu-scripts/bman-docs/bash-comms.txt | less
 
-elif [ $1 == 'git' ]
+elif [[ $1 == 'git' ]]
 then
   cat ~/bubu-scripts/bman-docs/git-comms.txt | less
 
-elif [ $1 == 'gitpdf' ]
+elif [[ $1 == 'gitpdf' ]]
 then
   zathura ~/bubu-scripts/bman-docs/git-comms-pdf.pdf
 
