@@ -37,4 +37,4 @@ keymap.set("i", "ji", "<ESC>A\\\\<ESC>o&= ", { desc = "Add align item" })
 keymap.set("i", "jc", "<ESC>A\\\\<ESC>ocasi", { desc = "Add case item" })
 
 -- auto-spell correction
-keymap.set("i", "<C-l>", "<C-x><C-s><ESC>A", { desc = "Correct spelling on the fly" })
+keymap.set("i", "<C-l>", "<ESC>mki<C-x><C-s><ESC>`k", { desc = "Correct spelling on the fly" })
