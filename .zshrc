@@ -1,6 +1,11 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+
+if [[ "$(tty)" = "/dev/tty1" ]]; then
+	pgrep i3 || startx
+fi
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -29,13 +34,17 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # ---- Eza (better ls) -----
 
 alias ls="eza --icons=always"
-alias bman="~/bubu-scripts/bman.sh"
-alias cleanasy="~/bubu-scripts/cleanasy.sh"
-alias mktextemp="~/bubu-scripts/mktextemp.sh"
-alias supdate="~/bubu-scripts/supdate.sh"
+alias grep='grep --color=auto'
+alias bman="bman.sh"
+alias cleanasy="cleanasy.sh"
+alias mktextemp="mktextemp.sh"
+alias supdate="supdate.sh"
 alias dots='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
-alias mirdate="~/bubu-scripts/mirdate.sh"
-alias textoaops="~/bubu-scripts/textoaops.py"
-alias spotdl="~/bubu-scripts/spotdl-4.2.5-linux --ffmpeg ~/bubu-scripts/spotdl-ffmpeg"
+alias mirdate="mirdate.sh"
+alias textoaops="textoaops.py"
+alias spotdl="spotdl-4.2.5-linux --ffmpeg spotdl-ffmpeg"
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:~/bubu-scripts
+export EDITOR="nvim"
+export TERMINAL="alacritty"
+export BROWSER="firefox"
