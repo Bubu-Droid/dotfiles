@@ -15,8 +15,9 @@ endglobal
 
 snippet beg "begin{} / end{}" bA
 \\begin{$1}
-  $0
+  $2
 \\end{$1}
+$0
 endsnippet
 
 priority 100
@@ -174,7 +175,7 @@ endsnippet
 
 context "math()"
 snippet sq "\sqrt{}" iA
-\sqrt{${1:${VISUAL}}} $0
+\sqrt{${1:${VISUAL}}}$0
 endsnippet
 
 context "math()"
@@ -507,7 +508,7 @@ endsnippet
 
 context "math()"
 snippet cur "left{ right}" iA
-\left\\{ ${1:${VISUAL}} \right\\} $0
+\left\\{ ${1:${VISUAL}} \right\\}$0
 endsnippet
 
 snippet sbra[ "left[ right]" iA
@@ -516,7 +517,8 @@ endsnippet
 
 snippet ali "Align" bA
 \begin{align*}
-  ${1:${VISUAL}} &= ${2:value}
+  ${1:${VISUAL}}
+	&= ${2:value}
 .\end{align*}
 endsnippet
 
@@ -537,6 +539,8 @@ snippet template "Create template" b
 \begin{document}
 
 \maketitle
+%\tableofcontents
+%\pagebreak
 
 \section{${3:Section Header}}
 
