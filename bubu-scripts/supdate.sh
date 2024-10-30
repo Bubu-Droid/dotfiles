@@ -2,9 +2,12 @@
 
 sudo pacman -Syu
 yay
-sudo pacman -Qneq > ~/pacman-Qneq.txt
-sudo pacman -Qmeq > ~/pacman-Qmeq.txt
+sudo pacman -Qneq >~/pacman-Qneq.txt
+sudo pacman -Qmeq >~/pacman-Qmeq.txt
 sudo updatedb
+nvim --headless -c ":TSUpdate all" -c qall
+nvim --headless -c ":MasonToolsClean" -c qall
+nvim --headless -c ":MasonToolsUpdateSync" -c qall
 
 cat /home/bubu/Desktop/.gitignore
 echo "DOWNLOADS"
