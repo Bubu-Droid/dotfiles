@@ -14,6 +14,7 @@ dmenu
 docker
 efibootmgr
 eza
+fd
 feh
 ffnvcodec-headers
 firefox
@@ -39,6 +40,7 @@ linux
 linux-firmware
 linux-headers
 man-db
+mpv
 neofetch
 neovim
 networkmanager
