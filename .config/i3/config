@@ -200,7 +200,7 @@ bindsym $mod+r mode "resize"
 
 exec_always ~/.config/polybar/launch.sh &
 exec_always picom &
-exec_always feh --bg-fill ~/wallpapers/wall-1.jpeg
+exec_always feh --bg-fill ~/wallpapers/wall-2.jpg &
 
 # Screenshots(flameshot)
 bindsym Ctrl+Print exec flameshot full --path /home/bubu/Pictures/screenshots
