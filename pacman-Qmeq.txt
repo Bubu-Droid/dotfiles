@@ -7,6 +7,7 @@ iriunwebcam-bin
 lightdm-webkit-theme-aether
 otf-openmoji
 spotify
+vscodium
 whatsdesk-bin
 yay
 yay-debug
