@@ -249,4 +249,10 @@ follow [this](https://github.com/iamsubhranil/Rice/blob/master/lightdm-webkit2-g
 link till the rebooting part and you should have a cool theme for
 your login screen.
 
+## INSTALLING REQUIRED NODE PLUGINS
+
+```
+sudo npm install -g tree-sitter-cli
+```
+
 # WE ARE DONE!

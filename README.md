@@ -25,7 +25,10 @@ with GPT partitions for disks can follow.
 [This](https://github.com/Bubu-Droid/dotfiles/blob/master/INSTALL.md) file
 contains instructions how to rice your setup like mine.
 
+<!--TODO:-->
+
 TODOs:
 
-- [] Create a separate branch for laptop for its features.
-- [] Organize dotfiles and mention the fix about firefox b/w print bug.
+- [ ] Create a separate branch for laptop for its features.
+- [ ] Organize dotfiles and mention the fix about firefox b/w print bug.
+- [ ] Add light mode and dark mode.
