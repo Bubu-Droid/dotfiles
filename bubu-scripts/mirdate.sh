@@ -4,7 +4,7 @@
 # for further references
 
 # change the -l (latest) argument to some lesser value >= 20 to fasten up the
-# process, but the ideology is to run the command with -l 200 (which might 
+# process, but the ideology is to run the command with -l 200 (which might
 # take quite a bit of time) for one single time and never run it again
 
-reflector --verbose -l 20 -n 20 -p http,https --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose -l 20 -n 20 -p http,https --sort rate --save /etc/pacman.d/mirrorlist
