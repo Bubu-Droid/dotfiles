@@ -4,9 +4,11 @@ aspell
 asymptote
 base
 base-devel
+biber
 blueman
 bluez-tools
 bluez-utils
+cmus
 corectrl
 cups
 distrobox
@@ -30,7 +32,6 @@ hwinfo
 i3-wm
 i3lock
 libreoffice-fresh
-libva-mesa-driver
 libva-utils
 libvoikko
 lightdm
@@ -40,7 +41,10 @@ linux
 linux-firmware
 linux-headers
 man-db
-mpv
+mpc
+mpd
+mplayer
+ncmpcpp
 neofetch
 neovim
 networkmanager
@@ -72,6 +76,7 @@ ripgrep
 rofi
 rofi-emoji
 rpmextract
+sox
 system-config-printer
 texlive-basic
 texlive-bibtexextra
