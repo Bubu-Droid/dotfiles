@@ -16,7 +16,7 @@ return {
       markdown = { "markdownlint" },
       -- toml = { "toml-lint" },
       yaml = { "yamllint" },
-      text = { "textlint" },
+      -- text = { "textlint" },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

@@ -15,7 +15,7 @@ return {
       toml = { "prettier" },
       markdown = { "prettier" },
       sh = { "shfmt" },
-      text = { "prettier" },
+      -- text = { "prettier" },
     },
     format_on_save = {
       lsp_fallback = true,
