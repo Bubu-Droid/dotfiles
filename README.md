@@ -32,3 +32,7 @@ TODOs:
 - [ ] Create a separate branch for laptop for its features.
 - [ ] Organize dotfiles and mention the fix about firefox b/w print bug.
 - [ ] Add light mode and dark mode.
+
+## Additional resources
+
+[Archived packages for ARCH](https://archive.archlinux.org/packages/)
