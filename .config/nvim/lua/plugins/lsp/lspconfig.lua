@@ -53,107 +53,120 @@ return {
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
-    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+    local signs = {
+      Error = " ",
+      Warn = " ",
+      Hint = "󰠠 ",
+      Info = " ",
+    }
+    -- Convert severity names to diagnostic severities
+    local sign_text = {}
     for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      local severity = vim.diagnostic.severity[string.upper(type)]
+      sign_text[severity] = icon
     end
 
-    mason_lspconfig.setup_handlers({
-      -- default handler for installed servers
-      function(server_name)
-        lspconfig[server_name].setup({
-          capabilities = capabilities,
-        })
-      end,
-      ["emmet_ls"] = function()
-        -- configure emmet language server
-        lspconfig["emmet_ls"].setup({
-          capabilities = capabilities,
-          filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-        })
-      end,
-      ["lua_ls"] = function()
-        -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup({
-          capabilities = capabilities,
-          settings = {
-            Lua = {
-              -- make the language server recognize "vim" global
-              diagnostics = {
-                globals = { "vim" },
-              },
-              completion = {
-                callSnippet = "Replace",
+    vim.diagnostic.config({
+      signs = { text = sign_text },
+    })
+
+    mason_lspconfig.setup({
+      handlers = {
+        -- default handler for installed servers
+        function(server_name)
+          lspconfig[server_name].setup({
+            capabilities = capabilities,
+          })
+        end,
+        ["emmet_ls"] = function()
+          -- configure emmet language server
+          lspconfig["emmet_ls"].setup({
+            capabilities = capabilities,
+            filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+          })
+        end,
+        ["lua_ls"] = function()
+          -- configure lua server (with special settings)
+          lspconfig["lua_ls"].setup({
+            capabilities = capabilities,
+            settings = {
+              Lua = {
+                -- make the language server recognize "vim" global
+                diagnostics = {
+                  globals = { "vim" },
+                },
+                completion = {
+                  callSnippet = "Replace",
+                },
               },
             },
-          },
-        })
-      end,
-      ["texlab"] = function()
-        lspconfig["texlab"].setup({
-          capabilities = capabilities,
-          filetypes = { "tex", "latex" },
-        })
-      end,
-      ["pyright"] = function()
-        lspconfig["pyright"].setup({
-          capabilities = capabilities,
-          filetypes = { "python" },
-        })
-      end,
-      ["html"] = function()
-        lspconfig["html"].setup({
-          capabilities = capabilities,
-          filetypes = { "html" },
-        })
-      end,
-      ["cssls"] = function()
-        lspconfig["cssls"].setup({
-          capabilities = capabilities,
-          filetypes = { "css" },
-        })
-      end,
-      ["tailwindcss"] = function()
-        lspconfig["tailwindcss"].setup({
-          capabilities = capabilities,
-          filetypes = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-        })
-      end,
-      ["marksman"] = function()
-        lspconfig["marksman"].setup({
-          capabilities = capabilities,
-          filetypes = { "markdown" },
-        })
-      end,
-      ["taplo"] = function()
-        lspconfig["taplo"].setup({
-          capabilities = capabilities,
-          filetypes = { "toml" },
-        })
-      end,
-      ["yamlls"] = function()
-        lspconfig["yamlls"].setup({
-          capabilities = capabilities,
-          filetypes = { "yaml" },
-          settings = {
-            yaml = {
-              schemas = {
-                kubernetes = "/*.yaml", -- Example schema for Kubernetes files
+          })
+        end,
+        ["texlab"] = function()
+          lspconfig["texlab"].setup({
+            capabilities = capabilities,
+            filetypes = { "tex", "latex" },
+          })
+        end,
+        ["pyright"] = function()
+          lspconfig["pyright"].setup({
+            capabilities = capabilities,
+            filetypes = { "python" },
+          })
+        end,
+        ["html"] = function()
+          lspconfig["html"].setup({
+            capabilities = capabilities,
+            filetypes = { "html" },
+          })
+        end,
+        ["cssls"] = function()
+          lspconfig["cssls"].setup({
+            capabilities = capabilities,
+            filetypes = { "css" },
+          })
+        end,
+        ["tailwindcss"] = function()
+          lspconfig["tailwindcss"].setup({
+            capabilities = capabilities,
+            filetypes = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+          })
+        end,
+        ["marksman"] = function()
+          lspconfig["marksman"].setup({
+            capabilities = capabilities,
+            filetypes = { "markdown" },
+          })
+        end,
+        ["taplo"] = function()
+          lspconfig["taplo"].setup({
+            capabilities = capabilities,
+            filetypes = { "toml" },
+          })
+        end,
+        ["yamlls"] = function()
+          lspconfig["yamlls"].setup({
+            capabilities = capabilities,
+            filetypes = { "yaml" },
+            settings = {
+              yaml = {
+                schemas = {
+                  kubernetes = "/*.yaml", -- Example schema for Kubernetes files
+                },
+                validate = true,
+                completion = true,
+                hover = true,
               },
-              validate = true,
-              completion = true,
-              hover = true,
             },
-          },
-        })
-      end,
-      ["bashls"] = function()
-        lspconfig["bashls"].setup({
-          capabilities = capabilities,
-          filetypes = { "sh" },
-        })
-      end,
+          })
+        end,
+        ["bashls"] = function()
+          lspconfig["bashls"].setup({
+            capabilities = capabilities,
+            filetypes = { "sh" },
+          })
+        end,
+      },
     })
   end,
 }

@@ -82,5 +82,14 @@ opt.fillchars = {
   foldclose = "▸",
 }
 
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = {
+    "*.snippets",
+  },
+  callback = function()
+    vim.opt_local.foldmethod = "marker"
+  end,
+})
+
 -- set recommended settings for auto-session
 opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
