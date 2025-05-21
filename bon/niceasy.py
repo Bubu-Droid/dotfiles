@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import io
+import math
 import re
 import string
 import traceback
@@ -12,9 +13,17 @@ ALLOWED_CHARS = string.ascii_letters + string.digits + "_"
 ADVERTISEMENT = r"""/*
 Converted from GeoGebra by User:Azjps using Evan's magic cleaner
 https://github.com/vEnhance/dotfiles/blob/main/py-scripts/export-ggb-clean-asy.py
+
+A few edits are made by Bubu.
+These edits retain the pen dps, coord-bounds and
+convert the explicit directions to cardinal
+directions.
+https://github.com/Bubu-Droid/dotfiles/tree/master/bon/niceasy.py
 */
 
 """
+
+# TODO: Check whether the link mentioned above is correct
 
 fat_decimal_regex = re.compile(r"(\d+\.\d{5})\d+")
 
@@ -33,10 +42,8 @@ try:
         "Geogebra to Asymptote conversion" in first_line
     ), f"First line is missing header\n{first_line}"
     point_coords_dict = {}
-    trash = [
-        "real labelscalefactor",
-        "pen dotstyle",
-    ]
+    trash = ["real labelscalefactor", "pen dotstyle"]
+    customparm = ["import graph", "pen dps", "real xmin"]
 
     # Preamble
     for line in input_buffer:
@@ -49,7 +56,7 @@ try:
             print("import graph; size(10cm);\n", file=output_buffer)
         elif "pen dps" in line:
             print(
-                "pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps);\n",
+                "pen dps = linewidth(0.5) + fontsize(11); defaultpen(dps);\n",
                 file=output_buffer,
             )
         elif "real xmin" in line:
@@ -63,9 +70,7 @@ try:
             for assn in assignments:
                 point_name, point_coords = assn.split(" = ")
                 point_coords_dict[point_name] = eval(point_coords)
-        elif not any(
-            keyword in line for keyword in ["import graph", "pen dps", "real xmin"]
-        ):
+        elif not any(keyword in line for keyword in customparm):
             for statement in line.split(";"):
                 if statement.strip():
                     print(statement.strip() + ";", file=output_buffer)
@@ -117,9 +122,8 @@ try:
             # determine the direction
             dx = 100 * (label_loc[0] - coords[0])
             dy = 100 * (label_loc[1] - coords[1])
-            figures_output_code += (
-                f'dot("{label}", {point_coords}, dir(({dx:.3f}, {dy:.3f})));\n'
-            )
+            vdir = round(math.degrees(math.atan2(dy, dx)))
+            figures_output_code += f'dot("{label}", {point_coords}, dir({vdir}));\n'
         label_to_coords[label] = point_coords
 
     # now clean up the code if possible by replacing explicit coordinates where we can

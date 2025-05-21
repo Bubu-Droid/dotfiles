@@ -48,7 +48,7 @@ alias spotdl="spotdl-4.2.5-linux --ffmpeg spotdl-ffmpeg"
 alias cd="z"
 eval "$(zoxide init zsh)"
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:~/bubu-scripts
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:~/bubu-scripts:~/bon
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
