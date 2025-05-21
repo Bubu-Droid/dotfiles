@@ -256,4 +256,14 @@ sudo npm install -g stylelint --save-dev
 sudo npm install -g stylelint-config-standard --save-dev
 ```
 
+## SET THE GLOBAL .GITIGNORE
+
+```git
+git config --global core.excludesfile ~/.gitignore_global
+dots config core.excludesfile ~/.gitignore-global
+```
+
+This can be verified with `git config --global --get core.excludesfile`
+and `dots config core.excludesfile`.
+
 ## WE ARE DONE

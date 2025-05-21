@@ -6,8 +6,8 @@ idle
 iriunwebcam-bin
 lightdm-webkit-theme-aether
 otf-openmoji
+python-pyautogui
 spotify
 yay
-yay-debug
 zoom
 zsh-theme-powerlevel10k-git
