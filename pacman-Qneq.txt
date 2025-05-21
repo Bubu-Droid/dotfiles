@@ -61,7 +61,6 @@ openssh
 papirus-icon-theme
 pavucontrol
 pax-utils
-pdftk
 picom
 pipewire
 pipewire-pulse
