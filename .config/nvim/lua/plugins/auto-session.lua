@@ -6,7 +6,7 @@ return {
   ---@module "auto-session"
   ---@type AutoSession.Config
   opts = {
-    auto_restore = false,
+    auto_restore = true,
     suppressed_dirs = { "~/", "~/Desktop", "~/Downloads", "/" },
   },
   keys = {
