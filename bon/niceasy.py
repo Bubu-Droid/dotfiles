@@ -17,7 +17,7 @@ https://github.com/vEnhance/dotfiles/blob/main/py-scripts/export-ggb-clean-asy.p
 A few edits are made by Bubu.
 These edits retain the pen dps and convert
 the explicit directions vectors to degrees.
-https://github.com/Bubu-Droid/dotfiles/blob/master/bon/niceasy.py
+https://github.com/Bubu-Droid/dotfiles/blob/main/bon/niceasy.py
 */
 
 """
