@@ -66,7 +66,7 @@ sudo pacman -S i3-wm rxvt-unicode dmenu
 and then run
 
 ```
-vim ~/.xinitrc
+vim $HOME/.xinitrc
 ```
 
 and add the line
