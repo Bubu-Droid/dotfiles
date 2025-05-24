@@ -4,6 +4,12 @@
 # by Bubu. This adds a few more macros and features
 # and returns the converted code into the clipboard.
 
+# Evan's script can be found at
+# https://github.com/vEnhance/dotfiles/blob/main/py-scripts/export-ggb-clean-asy.py
+
+# Bubu's script can be found at
+# https://github.com/Bubu-Droid/dotfiles/blob/main/bon/aops.py
+
 import re
 
 import pyperclip

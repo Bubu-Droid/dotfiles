@@ -188,7 +188,7 @@ with the kernel for AMD are said to be pretty bad, so yeah).
 Yoo, I totally forgot about fonts, here is a list of them (if I am not missing
 some). Make a directory named `.fonts` inside `~` and install the following fonts.
 
-- [meslo-lgs-nerd-font](https://github.com/romkatv/powerlevel10k/blob/master/font.md)
+- [meslo-lgs-nerd-font](https://github.com/romkatv/powerlevel10k/blob/main/font.md)
 - [jetbrains-mono-nerd-font](https://www.nerdfonts.com/font-downloads)
 - [noto-fonts-emoji](https://github.com/googlefonts/noto-emoji/releases)
 - [iosevka-nerd-font](https://www.nerdfonts.com/font-downloads)
@@ -243,7 +243,7 @@ greeter-setup-script=/usr/bin/numlockx on
 ```
 
 Now we are going to set a cool theme for our login screen. To do this
-follow [this](https://github.com/iamsubhranil/Rice/blob/master/lightdm-webkit2-greeter_executive.md)
+follow [this](https://github.com/iamsubhranil/Rice/blob/main/lightdm-webkit2-greeter_executive.md)
 link till the rebooting part and you should have a cool theme for
 your login screen.
 

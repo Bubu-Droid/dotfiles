@@ -18,11 +18,11 @@ stuck a few times and some of them turned out to be facts that were missing in
 the ARCH wiki. This is why I add this tutorial that anyone with UEFI mode and
 with GPT partitions for disks can follow.
 
-[Here](https://github.com/Bubu-Droid/dotfiles/blob/master/.archINSTALL.md) we go!
+[Here](https://github.com/Bubu-Droid/dotfiles/blob/main/archINSTALL.md) we go!
 
 ## Ricing the system using my dotfiles
 
-[This](https://github.com/Bubu-Droid/dotfiles/blob/master/INSTALL.md) file
+[This](https://github.com/Bubu-Droid/dotfiles/blob/main/INSTALL.md) file
 contains instructions how to rice your setup like mine.
 
 <!--TODO:-->

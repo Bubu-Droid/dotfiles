@@ -38,6 +38,6 @@
 
   This updates the push/pull link to the new link.
 
-9) git push -u origin master
+9) git push -u origin main
 
   This sets the default push link. You can make the future pushes by just typing 'git push'.
