@@ -1,5 +1,5 @@
 name of the file : <file_name>.sh
-starting line : #!/bin/bash
+starting line : #!/usr/bin/env bash
 
 echo "text" : prints out the text in the terminal
 
@@ -220,5 +220,3 @@ gitrepo(){
 }
 
 gitrepo
-
-

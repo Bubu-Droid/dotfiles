@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # check https://www.reddit.com/r/archlinux/comments/3e7lq6/do_you_use_reflector_to_manage_your_mirror_list/
 # for further references
