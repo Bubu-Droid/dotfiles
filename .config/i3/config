@@ -198,12 +198,12 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
-exec_always ~/.config/polybar/launch.sh &
+exec_always $HOME/.config/polybar/launch.sh &
 exec_always picom &
-exec_always feh --bg-fill ~/wallpapers/wall-2.jpg &
+exec_always feh --bg-fill $HOME/wallpapers/9019808.jpg &
 
 # Screenshots(flameshot)
-bindsym Ctrl+Print exec flameshot full --path /home/bubu/Pictures/screenshots
+bindsym Ctrl+Print exec flameshot full --path $HOME/Pictures/screenshots
 bindsym Ctrl+Shift+Print exec flameshot gui
 bindsym $modalt+e exec rofi -show emoji
 bindsym $modalt+l exec i3lock-fancy
