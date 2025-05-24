@@ -15,15 +15,12 @@ Converted from GeoGebra by User:Azjps using Evan's magic cleaner
 https://github.com/vEnhance/dotfiles/blob/main/py-scripts/export-ggb-clean-asy.py
 
 A few edits are made by Bubu.
-These edits retain the pen dps, coord-bounds and
-convert the explicit directions to cardinal
-directions.
-https://github.com/Bubu-Droid/dotfiles/tree/master/bon/niceasy.py
+These edits retain the pen dps and convert
+the explicit directions vectors to degrees.
+https://github.com/Bubu-Droid/dotfiles/blob/master/bon/niceasy.py
 */
 
 """
-
-# TODO: Check whether the link mentioned above is correct
 
 fat_decimal_regex = re.compile(r"(\d+\.\d{5})\d+")
 
@@ -42,8 +39,8 @@ try:
         "Geogebra to Asymptote conversion" in first_line
     ), f"First line is missing header\n{first_line}"
     point_coords_dict = {}
-    trash = ["real labelscalefactor", "pen dotstyle"]
-    customparm = ["import graph", "pen dps", "real xmin"]
+    trash = ["real labelscalefactor", "pen dotstyle", "real xmin"]
+    customparm = ["import graph", "pen dps"]
 
     # Preamble
     for line in input_buffer:
@@ -56,12 +53,8 @@ try:
             print("import graph; size(10cm);\n", file=output_buffer)
         elif "pen dps" in line:
             print(
-                "pen dps = linewidth(0.5) + fontsize(11); defaultpen(dps);\n",
+                "pen dps = linewidth(0.6) + fontsize(11); defaultpen(dps);\n",
                 file=output_buffer,
-            )
-        elif "real xmin" in line:
-            print(
-                "real xmin = -5, xmax = 5, ymin = -5, ymax = 5;\n", file=output_buffer
             )
         elif line.startswith("pair "):
             # collect the coordinates of all the points
@@ -123,6 +116,8 @@ try:
             dx = 100 * (label_loc[0] - coords[0])
             dy = 100 * (label_loc[1] - coords[1])
             vdir = round(math.degrees(math.atan2(dy, dx)))
+            if vdir < 0:
+                vdir += 360
             figures_output_code += f'dot("{label}", {point_coords}, dir({vdir}));\n'
         label_to_coords[label] = point_coords
 
