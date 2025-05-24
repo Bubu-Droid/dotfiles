@@ -1,5 +1,5 @@
 general.import = [
-  "~/.config/alacritty/themes/coolnight.toml"
+  "/home/bubu/.config/alacritty/themes/coolnight.toml"
 ]
 [window]
 padding.x = 10
