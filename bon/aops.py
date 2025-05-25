@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Script by Evan which has been further modified
-# by Bubu. This adds a few more macros and features
+# by Bubu. This adds a few more de-macro and features
 # and returns the converted code into the clipboard.
 
 # Evan's script can be found at
