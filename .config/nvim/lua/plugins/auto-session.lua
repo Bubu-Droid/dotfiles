@@ -2,9 +2,7 @@ return {
   "rmagatti/auto-session",
   lazy = false,
 
-  ---enables autocomplete for opts
-  ---@module "auto-session"
-  ---@type AutoSession.Config
+  -- enables autocomplete for opts
   opts = {
     auto_restore = true,
     suppressed_dirs = { "~/", "~/Desktop", "~/Downloads", "/" },

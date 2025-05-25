@@ -1,6 +1,8 @@
 # TeX snippets by Bubu
 # Most of the snippets are copied from Gilles Castel's snippet file
 # https://github.com/gillescastel/latex-snippets/blob/master/tex.snippets
+# My snippets can be found at
+# https://github.com/Bubu-Droid/dotfiles/blob/main/.config/nvim/UltiSnips/tex.snippets
 
 
 
@@ -351,17 +353,17 @@ endsnippet
 
 context "math()"
 snippet __ "subscript" iA
-_{$1} $0
+_{$1}
 endsnippet
 
 context "math()"
 snippet '(?<!i)sts' "text subscript" irA
-_\text{$1} $0
+_\text{$1}
 endsnippet
 
 context "math()"
 snippet tt "text" iA
-\text{$1} $0
+\text{$1} 
 endsnippet
 
 # }}}
@@ -404,19 +406,19 @@ endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)\b(gcd|lcm|sgn|argmin|argmax)\b' "math functions 2" rwA
+snippet '(?<!\\)\b(gcd|lcm|sgn|argmin|argmax|id)\b' "math functions 2" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)\b(floor|ceil|abs|norm|id|opname)\b' "math functions 4" rwA
-\\`!p snip.rv = match.group(1)`
+snippet '(?<!\\)\b(floor|ceil|abs|norm|opname)\b' "math functions 3" rwA
+\\`!p snip.rv = match.group(1)`{$1} 
 endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)\b(star|pi|eps|iff|bigcup|bigcap|inv)\b' "math symbols 1" rwA
+snippet '(?<!\\)\b(star|pi|eps|iff|bigcup|bigcap|inv|notin)\b' "math symbols 1" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
