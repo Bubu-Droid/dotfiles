@@ -1,5 +1,47 @@
 set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
-map R rotate
+set scroll-step 120
 set filemonitor "signal"
+
+map R rotate
+map i recolor
+map u set recolor-keephue
+
+set default-fg                rgba(192,202,245,1)
+set default-bg                rgba(31,35,53,1)
+
+set completion-bg             rgba(36,40,59,1)
+set completion-fg             rgba(192,202,245,1)
+set completion-highlight-bg   rgba(65,72,104,1)
+set completion-highlight-fg   rgba(192,202,245,1)
+set completion-group-bg       rgba(36,40,59,1)
+set completion-group-fg       rgba(122,162,247,1)
+
+set statusbar-fg              rgba(192,202,245,1)
+set statusbar-bg              rgba(36,40,59,1)
+
+set notification-bg           rgba(36,40,59,1)
+set notification-fg           rgba(192,202,245,1)
+set notification-error-bg     rgba(36,40,59,1)
+set notification-error-fg     rgba(247,117,127,1)
+set notification-warning-bg   rgba(36,40,59,1)
+set notification-warning-fg   rgba(255,199,119,1)
+
+set inputbar-fg               rgba(192,202,245,1)
+set inputbar-bg               rgba(36,40,59,1)
+
+set recolor-lightcolor        rgba(31,35,53,1)
+set recolor-darkcolor         rgba(192,202,245,1)
+
+set index-fg                  rgba(192,202,245,1)
+set index-bg                  rgba(31,35,53,1)
+set index-active-fg           rgba(192,202,245,1)
+set index-active-bg           rgba(36,40,59,1)
+
+set render-loading-bg         rgba(31,35,53,1)
+set render-loading-fg         rgba(192,202,245,1)
+
+set highlight-color           rgba(65,72,104,0.5)
+set highlight-fg              rgba(187,154,247,0.5)
+set highlight-active-color    rgba(187,154,247,0.5)
