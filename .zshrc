@@ -33,18 +33,21 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # ---- Eza (better ls) -----
 
+alias dots='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 alias ls="eza --icons=always"
 alias grep='grep --color=auto'
 alias bman="bman.sh"
 alias supdate="supdate.sh"
-alias dots='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 alias mirdate="mirdate.sh"
+alias niceasy="niceasy.py"
+alias aops="aops.py"
+alias bon="bon.py"
 
 # ---- Zoxide (better cd) -----
 alias cd="z"
 eval "$(zoxide init zsh)"
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:~/bubu-scripts:~/bon:~/.config/polybar/poly-scripts
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:~/bubu-scripts:~/bon/bon-scripts:~/.config/polybar/poly-scripts
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
