@@ -31,7 +31,6 @@ bindkey '^[[B' history-search-forward
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# ---- Eza (better ls) -----
 
 alias dots='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 alias ls="eza --icons=always"
@@ -42,8 +41,6 @@ alias mirdate="mirdate.sh"
 alias niceasy="niceasy.py"
 alias aops="aops.py"
 alias bon="bon.py"
-
-# ---- Zoxide (better cd) -----
 alias cd="z"
 eval "$(zoxide init zsh)"
 
