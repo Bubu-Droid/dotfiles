@@ -15,111 +15,7 @@
 % {{{ PROVIDES THE PACKAGE
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{bubu-col}[2025/05/19 Custom LaTeX style by Bubu]
-
-% }}}
-
-% ================================================== %
-% =============== REQUIRED PACKAGES ================ %
-% ================================================== %
-
-
-% {{{ REQUIRED PACKAGES
-
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
-\RequirePackage{lmodern}
-\RequirePackage[headsepline]{scrlayer-scrpage}
-\RequirePackage[svgnames,dvipsnames]{xcolor}
-\RequirePackage{tikz}
-\RequirePackage{amsmath}
-\RequirePackage{amssymb}
-\RequirePackage{amsthm}
-\RequirePackage{thmtools}
-\RequirePackage[framemethod=TikZ]{mdframed}
-\RequirePackage[colorlinks=true,pdfusetitle]{hyperref}
-% TODO: Update these fields
-% \hypersetup{pdfkeywords={bubu.sty},pdfsubject={website-link}}
-\hypersetup{%
-  urlcolor=RoyalBlue,%
-  linkcolor=RoyalBlue,%
-  citecolor=ForestGreen%
-}
-\RequirePackage[left=0.9in,right=0.9in,top=1.1in,bottom=1.2in]{geometry}
-\RequirePackage[nameinlink]{cleveref}
-\Crefname{answer}{\bfseries\sffamily Answer}{\bfseries\sffamily Answers}
-\Crefname{assume}{\bfseries\sffamily Assumption}{\bfseries\sffamily Assumptions}
-\Crefname{claim}{\bfseries\sffamily Claim}{\bfseries\sffamily Claims}
-\Crefname{conjecture}{\bfseries\sffamily Conjecture}{\bfseries\sffamily Conjectures}
-\Crefname{exercise}{\bfseries\sffamily Exercise}{\bfseries\sffamily Exercises}
-\Crefname{fact}{\bfseries\sffamily Fact}{\bfseries\sffamily Facts}
-\Crefname{problem}{\bfseries\sffamily Problem}{\bfseries\sffamily Problems}
-\Crefname{ques}{\bfseries\sffamily Question}{\bfseries\sffamily Questions}
-\RequirePackage[minimal]{yhmath}
-\RequirePackage{asymptote}
-\RequirePackage[shortlabels]{enumitem}
-\RequirePackage{mathtools}
-\RequirePackage{microtype}
-\RequirePackage{perpage}
-\RequirePackage[makeroom]{cancel}
-\RequirePackage{graphicx}
-\RequirePackage{caption}
-\RequirePackage{xparse}
-
-% }}}
-
-
-% ================================================== %
-% ================= PERSONAL STYLING ================ %
-% ================================================== %
-
-
-% {{{ PERSONAL STYLING
-
-\newcommand{\bubuS}{{\fontfamily{lmr}\selectfont\S}} %`put' font family is another good option
-% \newcommand{\bubuS}{{\fontfamily{lmr}\selectfont\maltese}} %`put' font family is another good option
-
-\allowdisplaybreaks
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{1em}
-
-\renewcommand{\baselinestretch}{1.1}
-
-\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
-\MakePerPage{footnote}
-
-\let\oldfootnote\footnote
-\renewcommand\footnote[1]{%
-\oldfootnote{\hspace{1mm}#1}%
-}
-
-\let\oldemptyset\emptyset
-\let\emptyset\varnothing
-
-\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
-
-% \def\asydir{asytmp} % IDK why, but this fails
-
-\renewcommand{\textbf}[1]{%
-  \textcolor{mytheoremfr}{\bfseries\sffamily{#1}}%
-}
-
-\definecolor{mytheorembg}{HTML}{F2F2F9}
-\definecolor{mytheoremfr}{HTML}{00007B}
-
-\definecolor{mylemmabg}{HTML}{f2fbfc}
-\definecolor{mylemmafr}{HTML}{191971}
-
-\definecolor{myquesbg}{HTML}{FFFAF8}
-\definecolor{myquesfr}{HTML}{983b0f}
-
-\definecolor{LightGray}{gray}{0.9}
-
-\captionsetup{%
-  labelfont={bf,sf},%
-  textfont={sf}%
-}
+\ProvidesPackage{bubu}[2025/05/19 Custom LaTeX style by Bubu]
 
 % }}}
 
@@ -141,6 +37,9 @@
 \newif\ifbubuepi\bubuepifalse
 \newif\ifbububib\bububibfalse
 \newif\ifbubuhints\bubuhintsfalse
+\newif\ifbubuasy\bubuasytrue
+\newif\ifbubumax\bubumaxtrue
+\newif\ifbububon\bububonfalse
 
 \DeclareOption{nohdr}{\bubuhdrfalse}
 \DeclareOption{noauthor}{\bubuauthorfalse}
@@ -152,8 +51,117 @@
 \DeclareOption{epi}{\bubuepitrue}
 \DeclareOption{bib}{\bububibtrue}
 \DeclareOption{hints}{\bubuhintstrue}
+\DeclareOption{noasy}{\bubuasyfalse}
+\DeclareOption{min}{\bubumaxfalse\bubuasyfalse}
+\DeclareOption{bon}{\bububontrue}
 
 \ProcessOptions\relax
+
+% }}}
+
+
+% ================================================== %
+% =============== REQUIRED PACKAGES ================ %
+% ================================================== %
+
+
+% {{{ REQUIRED PACKAGES
+
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage[minimal]{yhmath}
+\RequirePackage[shortlabels]{enumitem}
+\RequirePackage{mathtools}
+\RequirePackage{graphicx}
+\RequirePackage{xparse}
+
+\ifbubumax
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage{lmodern}
+  \RequirePackage[headsepline]{scrlayer-scrpage}
+  \RequirePackage[svgnames,dvipsnames]{xcolor}
+  \RequirePackage{tikz}
+  \RequirePackage{thmtools}
+  \RequirePackage[framemethod=TikZ]{mdframed}
+  \RequirePackage[colorlinks=true,pdfusetitle]{hyperref}
+  % TODO: Update these fields
+  % \hypersetup{pdfkeywords={bubu.sty},pdfsubject={website-link}}
+  \hypersetup{%
+    urlcolor=RoyalBlue,%
+    linkcolor=RoyalBlue,%
+    citecolor=ForestGreen%
+  }
+  \RequirePackage[left=0.9in,right=0.9in,top=1.1in,bottom=1.2in]{geometry}
+  \RequirePackage[nameinlink]{cleveref}
+  \Crefname{answer}{\bfseries\sffamily Answer}{\bfseries\sffamily Answers}
+  \Crefname{assume}{\bfseries\sffamily Assumption}{\bfseries\sffamily Assumptions}
+  \Crefname{claim}{\bfseries\sffamily Claim}{\bfseries\sffamily Claims}
+  \Crefname{conjecture}{\bfseries\sffamily Conjecture}{\bfseries\sffamily Conjectures}
+  \Crefname{exercise}{\bfseries\sffamily Exercise}{\bfseries\sffamily Exercises}
+  \Crefname{fact}{\bfseries\sffamily Fact}{\bfseries\sffamily Facts}
+  \Crefname{problem}{\bfseries\sffamily Problem}{\bfseries\sffamily Problems}
+  \Crefname{ques}{\bfseries\sffamily Question}{\bfseries\sffamily Questions}
+  \RequirePackage{microtype}
+  \RequirePackage{perpage}
+  \RequirePackage[makeroom]{cancel}
+  \RequirePackage{caption}
+\else
+  \RequirePackage[colorlinks=true,linkcolor=blue]{hyperref}
+\fi
+
+% }}}
+
+
+% ================================================== %
+% ================= PERSONAL STYLING ================ %
+% ================================================== %
+
+
+% {{{ PERSONAL STYLING
+
+\allowdisplaybreaks
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\renewcommand{\baselinestretch}{1.1}
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+
+\ifbubumax
+  \newcommand{\bubuS}{{\fontfamily{lmr}\selectfont\S}} %`put' font family is another good option
+  % \newcommand{\bubuS}{{\fontfamily{lmr}\selectfont\maltese}} %`put' font family is another good option
+
+  \renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+  \MakePerPage{footnote}
+  \let\oldfootnote\footnote
+  \renewcommand\footnote[1]{%
+  \oldfootnote{\hspace{1mm}#1}%
+  }
+
+  \renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+  \renewcommand{\textbf}[1]{%
+    \textcolor{mytheoremfr}{\bfseries\sffamily{#1}}%
+  }
+
+  \definecolor{mytheorembg}{HTML}{F2F2F9}
+  \definecolor{mytheoremfr}{HTML}{00007B}
+  \definecolor{mylemmabg}{HTML}{f2fbfc}
+  \definecolor{mylemmafr}{HTML}{191971}
+  \definecolor{myquesbg}{HTML}{FFFAF8}
+  \definecolor{myquesfr}{HTML}{983b0f}
+  \definecolor{LightGray}{gray}{0.9}
+
+  \captionsetup{%
+    labelfont={bf,sf},%
+    textfont={sf}%
+  }
+\fi
 
 % }}}
 
@@ -165,71 +173,73 @@
 
 % {{{ PAGE SETUP
 
-\addtokomafont{subtitle}{\Large}
-\setkomafont{author}{\Large\scshape}
-\setkomafont{date}{\Large\normalsize}
+\ifbubumax
+  \addtokomafont{subtitle}{\Large}
+  \setkomafont{author}{\Large\scshape}
+  \setkomafont{date}{\Large\normalsize}
 
-\makeatletter
-\providecommand{\thetitle}{\@title}
-\providecommand{\theauthor}{\@author}
-\providecommand{\thedate}{\@date}
-\makeatother
+  \makeatletter
+  \providecommand{\thetitle}{\@title}
+  \providecommand{\theauthor}{\@author}
+  \providecommand{\thedate}{\@date}
+  \makeatother
 
-\clearpairofpagestyles
-\pagestyle{scrheadings}
+  \clearpairofpagestyles
+  \pagestyle{scrheadings}
 
-\newcommand{\bubuiheadcontent}{}
-\newcommand{\bubuoheadcontent}{}
+  \newcommand{\bubuiheadcontent}{}
+  \newcommand{\bubuoheadcontent}{}
 
 
-\ifbubuhdr
-  \ifbubuauthor
-    \ifbubudate
-      \renewcommand{\bubuiheadcontent}{\footnotesize\textbf{\theauthor} --- \thedate}
+  \ifbubuhdr
+    \ifbubuauthor
+      \ifbubudate
+        \renewcommand{\bubuiheadcontent}{\footnotesize\textbf{\theauthor} --- \thedate}
+      \else
+        \renewcommand{\bubuiheadcontent}{\footnotesize\textbf{\theauthor}}
+      \fi
     \else
-      \renewcommand{\bubuiheadcontent}{\footnotesize\textbf{\theauthor}}
+      \ifbubudate
+        \renewcommand{\bubuiheadcontent}{\thedate}
+      \else
+        \renewcommand{\bubuiheadcontent}{}
+      \fi
     \fi
-  \else
-    \ifbubudate
-      \renewcommand{\bubuiheadcontent}{\thedate}
+    \ifbubutitle
+      \ifbubutitlemark
+        \renewcommand{\bubuoheadcontent}{\footnotesize\textbf{\thetitle}}
+      \else
+        \renewcommand{\bubuoheadcontent}{\rightmark}
+      \fi
     \else
-      \renewcommand{\bubuiheadcontent}{}
+      \renewcommand{\bubuoheadcontent}{}
     \fi
   \fi
-  \ifbubutitle
-    \ifbubutitlemark
-      \renewcommand{\bubuoheadcontent}{\footnotesize\textbf{\thetitle}}
-    \else
-      \renewcommand{\bubuoheadcontent}{\rightmark}
-    \fi
-  \else
-    \renewcommand{\bubuoheadcontent}{}
-  \fi
-\fi
 
-\makeatletter
-\@ifclassloaded{scrartcl}{%
-  \renewcommand{\headfont}{}%
-  \ihead{\bubuiheadcontent}%
-  \automark{section}%
-  \renewcommand*{\sectionmark}[1]{%
-    \markright{\footnotesize\textbf{\thesection. #1}}%
-  }%
-  \chead{}%
-  \ohead{\bubuoheadcontent}%
-  \cfoot{\pagemark}%
-}{%
-  \@ifclassloaded{scrreprt}{%
-    % scrreprt settings
-  }{%
-    \@ifclassloaded{scrbook}{%
-      % scrbook settings
-    }{%
-      \typeout{Unknown KOMA class!}%
+  \makeatletter
+  \@ifclassloaded{scrartcl}{%
+    \renewcommand{\headfont}{}%
+    \ihead{\bubuiheadcontent}%
+    \automark{section}%
+    \renewcommand*{\sectionmark}[1]{%
+      \markright{\footnotesize\textbf{\thesection. #1}}%
     }%
-  }%
-}
-\makeatother
+    \chead{}%
+    \ohead{\bubuoheadcontent}%
+    \cfoot{\pagemark}%
+  }{%
+    \@ifclassloaded{scrreprt}{%
+      % scrreprt settings
+    }{%
+      \@ifclassloaded{scrbook}{%
+        % scrbook settings
+      }{%
+        \typeout{Unknown KOMA class!}%
+      }%
+    }%
+  }
+  \makeatother
+\fi
 
 % }}}
 
@@ -241,6 +251,7 @@
 
 % {{{ OPTIONAL PACKAGES
 
+% minted setup
 \ifbubucs
   \RequirePackage{minted}
   \setminted{%
@@ -254,14 +265,14 @@
   }
 \fi
 
+% epigraph setup
 \ifbubuepi
   \RequirePackage{epigraph}
   \renewcommand{\epigraphsize}{\scriptsize}
   \renewcommand{\epigraphwidth}{60ex}
 \fi
 
-% Bib config which is blatantly copied from evan.sty
-
+% bib config which is blatantly copied from evan.sty
 \ifbububib
   \RequirePackage[backend=biber,backref=true,style=alphabetic]{biblatex}
   \DeclareFieldFormat{labelalpha}{\textbf{\small #1}} % citation ID's in small-bold
@@ -284,11 +295,27 @@
   \renewcommand{\finentrypunct}{}
 \fi
 
+% hints setup
 \ifbubuhints
   \RequirePackage{scrambledenvs}
   \newscrambledenv{hint}
   \hintprintenv{\begin{enumerate}\setcounter{enumi}{\the\numexpr\csname scrambledenvs@hint@start\endcsname-1\relax}}{\end{enumerate}}
   \hintlabelfont{\bfseries\sffamily}
+\fi
+
+% bon setup
+\ifbububon
+  \RequirePackage{pythontex}
+  \setpythontexoutputdir{.}
+  \newcommand{\bubuprob}[1]{%
+    \py{print_bubuproblem(r"#1")}%
+  }
+  \newcommand{\bubuprobnonum}[1]{%
+    \py{print_bubuproblem_nonum(r"#1")}%
+  }
+  \newcommand{\bubusoln}[1]{%
+    \py{print_bubusoln(r"#1")}%
+  }
 \fi
 
 % }}}
@@ -301,236 +328,259 @@
 
 % {{{ CORE STYLING
 
-\makeatletter
-\@ifundefined{chapter}{}{%
-  \addtokomafont{partprefix}{\rmfamily}%
-  \renewcommand*{\partformat}{%
-    \color{purple}%
-    \scalebox{2.5}{\thepart}\enlargethispage{2em}%
-    }
-  \addtokomafont{chapterprefix}{\raggedleft}
-  \RedeclareSectionCommand[beforeskip=0.5em]{chapter}
-  \renewcommand*{\chapterformat}{%
-    \mbox{%
-    \scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
-    \scalebox{2.718}{\color{purple}\thechapter}\enskip}%
-  }
-}
-\makeatother
-
-\renewcommand*{\sectionformat}{%
-  \color{violet}\bubuS\thesection\enskip%
-}
-\renewcommand*{\subsectionformat}{%
-  \color{violet}\bubuS\thesubsection\enskip%
-}
-\renewcommand*{\subsubsectionformat}{%
-  \color{violet}\bubuS\thesubsubsection\enskip%
-}
-\addtokomafont{paragraph}{\color{orange!35!black}\P\ }
-\KOMAoptions{numbers=noenddot}
-
 \newenvironment{soln}{%
   \begin{proof}[Solution]%
   \renewcommand{\qedsymbol}{$\blacksquare$}%
 }%
 {\end{proof}}
 
-\usetikzlibrary{shadows}
-\xpatchcmd{\endmdframed}%
-  {\aftergroup\endmdf@trivlist\color@endgroup}%
-  {\endmdf@trivlist\color@endgroup\@doendpe}%
-  {}%
-  {}
+\ifbubumax
+  \makeatletter
+  \@ifundefined{chapter}{}{%
+    \addtokomafont{partprefix}{\rmfamily}%
+    \renewcommand*{\partformat}{%
+      \color{purple}%
+      \scalebox{2.5}{\thepart}\enlargethispage{2em}%
+      }
+    \addtokomafont{chapterprefix}{\raggedleft}
+    \RedeclareSectionCommand[beforeskip=0.5em]{chapter}
+    \renewcommand*{\chapterformat}{%
+      \mbox{%
+      \scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
+      \scalebox{2.718}{\color{purple}\thechapter}\enskip}%
+    }
+  }
+  \makeatother
 
-\mdfdefinestyle{mdredbox}{%
-  linewidth=0.5pt,%
-  skipabove=12pt,%
-  frametitleaboveskip=5pt,%
-  frametitlebelowskip=0pt,%
-  skipbelow=2pt,%
-  frametitlefont=\bfseries,%
-  innertopmargin=4pt,%
-  innerbottommargin=8pt,%
-  nobreak=true,%
-  backgroundcolor=Salmon!5,%
-  linecolor=RawSienna,%
-}
-\declaretheoremstyle[%
-  headfont=\bfseries\sffamily\color{RawSienna},%
-  mdframed={style=mdredbox},%
-  headpunct={\\[3pt]},%
-  postheadspace={0pt},%
-]{thmredbox}
+  \renewcommand*{\sectionformat}{%
+    \color{violet}\bubuS\thesection\enskip%
+  }
+  \renewcommand*{\subsectionformat}{%
+    \color{violet}\bubuS\thesubsection\enskip%
+  }
+  \renewcommand*{\subsubsectionformat}{%
+    \color{violet}\bubuS\thesubsubsection\enskip%
+  }
+  \addtokomafont{paragraph}{\color{orange!35!black}\P\ }
+  \KOMAoptions{numbers=noenddot}
 
-\mdfdefinestyle{mddarkbluebox}{%
-  roundcorner=5pt,%
-  linewidth=0.8pt,%
-  skipabove=12pt,%
-  frametitleaboveskip=5pt,%
-  frametitlebelowskip=0pt,%
-  skipbelow=2pt,%
-  frametitlefont=\bfseries,%
-  innertopmargin=4pt,%
-  innerbottommargin=8pt,%
-  nobreak=true,%
-  backgroundcolor=mytheorembg,%
-  linecolor=mytheoremfr,%
-}
-\declaretheoremstyle[%
-  headfont=\bfseries\sffamily\color{mytheoremfr},%
-  mdframed={style=mddarkbluebox},%
-  headpunct={\\[3pt]},%
-  postheadspace={0pt},%
-]{thmdarkbluebox}
 
-\mdfdefinestyle{mdlightbluebox}{%
-  roundcorner=5pt,%
-  linewidth=0.8pt,%
-  skipabove=12pt,%
-  frametitleaboveskip=5pt,%
-  frametitlebelowskip=0pt,%
-  skipbelow=2pt,%
-  frametitlefont=\bfseries,%
-  innertopmargin=4pt,%
-  innerbottommargin=8pt,%
-  nobreak=true,%
-  backgroundcolor=mylemmabg,%
-  linecolor=mylemmafr,%
-}
-\declaretheoremstyle[%
-  headfont=\bfseries\sffamily\color{mylemmafr},%
-  mdframed={style=mdlightbluebox},%
-  headpunct={\\[3pt]},%
-  postheadspace={0pt},%
-]{thmlightbluebox}
+  \usetikzlibrary{shadows}
+  \xpatchcmd{\endmdframed}%
+    {\aftergroup\endmdf@trivlist\color@endgroup}%
+    {\endmdf@trivlist\color@endgroup\@doendpe}%
+    {}%
+    {}
 
-\mdfdefinestyle{mdmyqsbox}{%
-  skipabove=12pt,%
-  skipbelow=0pt,%
-  linewidth=2pt,%
-  rightline=false,%
-  leftline=true,%
-  topline=false,%
-  bottomline=false,%
-  linecolor=myquesfr,%
-  backgroundcolor=myquesbg,%
-}
-\declaretheoremstyle[%
-  headfont=\bfseries\sffamily\color{myquesfr},%
-  bodyfont=\normalfont,%
-  spaceabove=2pt,%
-  spacebelow=1pt,%
-  mdframed={style=mdmyqsbox},%
-]{thmmyqsbox}
-\mdfdefinestyle{mddefredbox}{%
-  roundcorner=5pt,%
-  linewidth=0.8pt,%
-  skipabove=12pt,%
-  frametitleaboveskip=5pt,%
-  frametitlebelowskip=0pt,%
-  skipbelow=2pt,%
-  frametitlefont=\bfseries,%
-  innertopmargin=4pt,%
-  innerbottommargin=8pt,%
-  nobreak=true,%
-  backgroundcolor=red!3,%
-  linecolor=red!80!black,%
-}
-\declaretheoremstyle[%
-  headfont=\bfseries\sffamily\color{red!80!black},%
-  mdframed={style=mddefredbox},%
-  headpunct={\\[3pt]},%
-  postheadspace={0pt},%
-]{thmdefredbox}
+  \mdfdefinestyle{mdredbox}{%
+    linewidth=0.5pt,%
+    skipabove=12pt,%
+    frametitleaboveskip=5pt,%
+    frametitlebelowskip=0pt,%
+    skipbelow=2pt,%
+    frametitlefont=\bfseries,%
+    innertopmargin=4pt,%
+    innerbottommargin=8pt,%
+    nobreak=true,%
+    backgroundcolor=Salmon!5,%
+    linecolor=RawSienna,%
+  }
+  \declaretheoremstyle[%
+    headfont=\bfseries\sffamily\color{RawSienna},%
+    mdframed={style=mdredbox},%
+    headpunct={\\[3pt]},%
+    postheadspace={0pt},%
+  ]{thmredbox}
 
-\mdfdefinestyle{mdgreenbox}{%
-  skipabove=12pt,%
-  skipbelow=0pt,%
-  linewidth=2pt,%
-  rightline=false,%
-  leftline=true,%
-  topline=false,%
-  bottomline=false,%
-  linecolor=ForestGreen,%
-  backgroundcolor=ForestGreen!5,%
-}
-\declaretheoremstyle[%
-  headfont=\bfseries\sffamily\color{ForestGreen!70!black},%
-  bodyfont=\normalfont,%
-  spaceabove=2pt,%
-  spacebelow=1pt,%
-  mdframed={style=mdgreenbox},%
-  headpunct={ --- },%
-]{thmgreenbox}
+  \mdfdefinestyle{mddarkbluebox}{%
+    roundcorner=5pt,%
+    linewidth=0.8pt,%
+    skipabove=12pt,%
+    frametitleaboveskip=5pt,%
+    frametitlebelowskip=0pt,%
+    skipbelow=2pt,%
+    frametitlefont=\bfseries,%
+    innertopmargin=4pt,%
+    innerbottommargin=8pt,%
+    nobreak=true,%
+    backgroundcolor=mytheorembg,%
+    linecolor=mytheoremfr,%
+  }
+  \declaretheoremstyle[%
+    headfont=\bfseries\sffamily\color{mytheoremfr},%
+    mdframed={style=mddarkbluebox},%
+    headpunct={\\[3pt]},%
+    postheadspace={0pt},%
+  ]{thmdarkbluebox}
 
-\mdfdefinestyle{mdblackbox}{%
-  skipabove=12pt,%
-  linewidth=3pt,%
-  rightline=false,%
-  leftline=true,%
-  topline=false,%
-  bottomline=false,%
-  linecolor=black,%
-  backgroundcolor=RedViolet!5!gray!5,%
-}
-\declaretheoremstyle[%
-  headfont=\bfseries\sffamily,%
-  bodyfont=\normalfont\small,%
-  spaceabove=0pt,%
-  spacebelow=0pt,%
-  mdframed={style=mdblackbox}%
-]{thmblackbox}
+  \mdfdefinestyle{mdlightbluebox}{%
+    roundcorner=5pt,%
+    linewidth=0.8pt,%
+    skipabove=12pt,%
+    frametitleaboveskip=5pt,%
+    frametitlebelowskip=0pt,%
+    skipbelow=2pt,%
+    frametitlefont=\bfseries,%
+    innertopmargin=4pt,%
+    innerbottommargin=8pt,%
+    nobreak=true,%
+    backgroundcolor=mylemmabg,%
+    linecolor=mylemmafr,%
+  }
+  \declaretheoremstyle[%
+    headfont=\bfseries\sffamily\color{mylemmafr},%
+    mdframed={style=mdlightbluebox},%
+    headpunct={\\[3pt]},%
+    postheadspace={0pt},%
+  ]{thmlightbluebox}
 
-\theoremstyle{definition}
+  \mdfdefinestyle{mdmyqsbox}{%
+    skipabove=12pt,%
+    skipbelow=0pt,%
+    linewidth=2pt,%
+    rightline=false,%
+    leftline=true,%
+    topline=false,%
+    bottomline=false,%
+    linecolor=myquesfr,%
+    backgroundcolor=myquesbg,%
+  }
+  \declaretheoremstyle[%
+    headfont=\bfseries\sffamily\color{myquesfr},%
+    bodyfont=\normalfont,%
+    spaceabove=2pt,%
+    spacebelow=1pt,%
+    mdframed={style=mdmyqsbox},%
+  ]{thmmyqsbox}
+  \mdfdefinestyle{mddefredbox}{%
+    roundcorner=5pt,%
+    linewidth=0.8pt,%
+    skipabove=12pt,%
+    frametitleaboveskip=5pt,%
+    frametitlebelowskip=0pt,%
+    skipbelow=2pt,%
+    frametitlefont=\bfseries,%
+    innertopmargin=4pt,%
+    innerbottommargin=8pt,%
+    nobreak=true,%
+    backgroundcolor=red!3,%
+    linecolor=red!80!black,%
+  }
+  \declaretheoremstyle[%
+    headfont=\bfseries\sffamily\color{red!80!black},%
+    mdframed={style=mddefredbox},%
+    headpunct={\\[3pt]},%
+    postheadspace={0pt},%
+  ]{thmdefredbox}
 
-\ifbubusecthm
-  \declaretheorem[style=thmlightbluebox,name=Theorem,numberwithin=section]{theorem}
+  \mdfdefinestyle{mdgreenbox}{%
+    skipabove=12pt,%
+    skipbelow=0pt,%
+    linewidth=2pt,%
+    rightline=false,%
+    leftline=true,%
+    topline=false,%
+    bottomline=false,%
+    linecolor=ForestGreen,%
+    backgroundcolor=ForestGreen!5,%
+  }
+  \declaretheoremstyle[%
+    headfont=\bfseries\sffamily\color{ForestGreen!70!black},%
+    bodyfont=\normalfont,%
+    spaceabove=2pt,%
+    spacebelow=1pt,%
+    mdframed={style=mdgreenbox},%
+    headpunct={ --- },%
+  ]{thmgreenbox}
+
+  \mdfdefinestyle{mdblackbox}{%
+    skipabove=12pt,%
+    linewidth=3pt,%
+    rightline=false,%
+    leftline=true,%
+    topline=false,%
+    bottomline=false,%
+    linecolor=black,%
+    backgroundcolor=RedViolet!5!gray!5,%
+  }
+  \declaretheoremstyle[%
+    headfont=\bfseries\sffamily,%
+    bodyfont=\normalfont\small,%
+    spaceabove=0pt,%
+    spacebelow=0pt,%
+    mdframed={style=mdblackbox}%
+  ]{thmblackbox}
+
+  \theoremstyle{definition}
+
+  \ifbubusecthm
+    \declaretheorem[style=thmlightbluebox,name=Theorem,numberwithin=section]{theorem}
+  \else
+    \declaretheorem[style=thmlightbluebox,name=Theorem]{theorem}
+  \fi
+
+  \declaretheorem[style=thmlightbluebox,name=Lemma,sibling=theorem]{lemma}
+  \declaretheorem[style=thmdarkbluebox,name=Proposition,sibling=theorem]{proposition}
+  \declaretheorem[style=thmlightbluebox,name=Corollary,sibling=theorem]{corollary}
+  \declaretheorem[style=thmdarkbluebox,name=Assumption,sibling=theorem]{assume}
+  \declaretheorem[style=thmlightbluebox,name=Theorem,numbered=no]{theorem*}
+  \declaretheorem[style=thmlightbluebox,name=Lemma,numbered=no]{lemma*}
+  \declaretheorem[style=thmdarkbluebox,name=Proposition,numbered=no]{proposition*}
+  \declaretheorem[style=thmlightbluebox,name=Corollary,numbered=no]{corollary*}
+  \declaretheorem[style=thmdarkbluebox,name=Assumption,numbered=no]{assume*}
+
+  \declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algorithm}
+  \declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algorithm*}
+  \declaretheorem[style=thmgreenbox,name=Claim,sibling=theorem]{claim}
+  \declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
+
+  \declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
+  \declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
+
+  \declaretheorem[style=thmblackbox,name=Remark,sibling=theorem]{remark}
+  \declaretheorem[style=thmblackbox,name=Remark,numbered=no]{remark*}
+
+  \declaretheoremstyle[%
+    headfont=\color{blue!40!black}\normalfont\bfseries\sffamily,%
+    spaceabove=8pt,%
+    spacebelow=8pt,%
+    bodyfont=\normalfont%
+  ]{basehead}
+  \declaretheorem[style=basehead,name=Answer,sibling=theorem]{answer}
+  \declaretheorem[style=basehead,name=Answer,numbered=no]{answer*}
+  \declaretheorem[style=thmmyqsbox,name=Conjecture,sibling=theorem]{conjecture}
+  \declaretheorem[style=thmmyqsbox,name=Conjecture,numbered=no]{conjecture*}
+  \declaretheorem[style=thmdefredbox,name=Definition,sibling=theorem]{definition}
+  \declaretheorem[style=thmdefredbox,name=Definition,numbered=no]{definition*}
+  \declaretheorem[style=basehead,name=Exercise,sibling=theorem]{exercise}
+  \declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
+  \declaretheorem[style=thmmyqsbox,name=Fact,sibling=theorem]{fact}
+  \declaretheorem[style=thmmyqsbox,name=Fact,numbered=no]{fact*}
+  \declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
+  \declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
+  \declaretheorem[style=thmmyqsbox,name=Question,sibling=theorem]{ques}
+  \declaretheorem[style=thmmyqsbox,name=Question,numbered=no]{ques*}
 \else
-  \declaretheorem[style=thmlightbluebox,name=Theorem]{theorem}
+  \theoremstyle{plain}
+  \newtheorem{theorem}{Theorem}
+  \newtheorem{lemma}[theorem]{Lemma}
+  \newtheorem{corollary}[theorem]{Corollary}
+  \newtheorem{proposition}[theorem]{Proposition}
+  \newtheorem{claim}[theorem]{Claim}
+  \newtheorem{problem}[theorem]{Problem}
+  \newtheorem{question}[theorem]{Question}
+  \newtheorem{exercise}[theorem]{Exercise}
+
+  \theoremstyle{definition}
+  \newtheorem{definition}[theorem]{Definition}
+  \newtheorem{example}[theorem]{Example}
+  \newtheorem{fact}[theorem]{Fact}
+  \newtheorem{algorithm}[theorem]{Algorithm}
+
+  \theoremstyle{remark}
+  \newtheorem{remark}[theorem]{Remark}
+  \newtheorem{answer}[theorem]{Answer}
 \fi
-
-\declaretheorem[style=thmlightbluebox,name=Lemma,sibling=theorem]{lemma}
-\declaretheorem[style=thmdarkbluebox,name=Proposition,sibling=theorem]{proposition}
-\declaretheorem[style=thmlightbluebox,name=Corollary,sibling=theorem]{corollary}
-\declaretheorem[style=thmdarkbluebox,name=Assumption,sibling=theorem]{assume}
-\declaretheorem[style=thmlightbluebox,name=Theorem,numbered=no]{theorem*}
-\declaretheorem[style=thmlightbluebox,name=Lemma,numbered=no]{lemma*}
-\declaretheorem[style=thmdarkbluebox,name=Proposition,numbered=no]{proposition*}
-\declaretheorem[style=thmlightbluebox,name=Corollary,numbered=no]{corollary*}
-\declaretheorem[style=thmdarkbluebox,name=Assumption,numbered=no]{assume*}
-
-\declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algorithm}
-\declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algorithm*}
-\declaretheorem[style=thmgreenbox,name=Claim,sibling=theorem]{claim}
-\declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
-
-\declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
-\declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
-
-\declaretheorem[style=thmblackbox,name=Remark,sibling=theorem]{remark}
-\declaretheorem[style=thmblackbox,name=Remark,numbered=no]{remark*}
-
-\declaretheoremstyle[%
-  headfont=\color{blue!40!black}\normalfont\bfseries\sffamily,%
-  spaceabove=8pt,%
-  spacebelow=8pt,%
-  bodyfont=\normalfont%
-]{basehead}
-\declaretheorem[style=basehead,name=Answer,sibling=theorem]{answer}
-\declaretheorem[style=basehead,name=Answer,numbered=no]{answer*}
-\declaretheorem[style=thmmyqsbox,name=Conjecture,sibling=theorem]{conjecture}
-\declaretheorem[style=thmmyqsbox,name=Conjecture,numbered=no]{conjecture*}
-\declaretheorem[style=thmdefredbox,name=Definition,sibling=theorem]{definition}
-\declaretheorem[style=thmdefredbox,name=Definition,numbered=no]{definition*}
-\declaretheorem[style=basehead,name=Exercise,sibling=theorem]{exercise}
-\declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
-\declaretheorem[style=thmmyqsbox,name=Fact,sibling=theorem]{fact}
-\declaretheorem[style=thmmyqsbox,name=Fact,numbered=no]{fact*}
-\declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
-\declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
-\declaretheorem[style=thmmyqsbox,name=Question,sibling=theorem]{ques}
-\declaretheorem[style=thmmyqsbox,name=Question,numbered=no]{ques*}
 
 % }}}
 
@@ -542,50 +592,53 @@
 
 % {{{ ASY SETUP (BY EVAN)
 
-\begin{asydef}
-    defaultpen(fontsize(10pt));
-    size(8cm); // set a reasonable default
-    usepackage("amsmath");
-    usepackage("amssymb");
-    settings.tex="pdflatex";
-    settings.outformat="pdf";
-    // Replacement for olympiad+cse5 which is not standard
-    import geometry;
-    // recalibrate fill and filldraw for conics
-    void filldraw(picture pic = currentpicture, conic g, pen fillpen=defaultpen, pen drawpen=defaultpen)
-      { filldraw(pic, (path) g, fillpen, drawpen); }
-    void fill(picture pic = currentpicture, conic g, pen p=defaultpen)
-      { filldraw(pic, (path) g, p); }
-    // some geometry
-    pair foot(pair P, pair A, pair B) { return foot(triangle(A,B,P).VC); }
-    pair centroid(pair A, pair B, pair C) { return (A+B+C)/3; }
-    // cse5 abbreviations
-    path CP(pair P, pair A) { return circle(P, abs(A-P)); }
-    path CR(pair P, real r) { return circle(P, r); }
-    pair IP(path p, path q) { return intersectionpoints(p,q)[0]; }
-    pair OP(path p, path q) { return intersectionpoints(p,q)[1]; }
-    path Line(pair A, pair B, real a=0.6, real b=a) { return (a*(A-B)+A)--(b*(B-A)+B); }
-    // cse5 more useful functions
-    picture CC() {
-      picture p=rotate(0)*currentpicture;
-      currentpicture.erase();
-      return p;
-    }
-    pair MP(Label s, pair A, pair B = plain.S, pen p = defaultpen) {
-      Label L = s;
-      L.s = "$"+s.s+"$";
-      label(L, A, B, p);
-      return A;
-    }
-    pair Drawing(Label s = "", pair A, pair B = plain.S, pen p = defaultpen) {
-      dot(MP(s, A, B, p), p);
-      return A;
-    }
-    path Drawing(path g, pen p = defaultpen, arrowbar ar = None) {
-      draw(g, p, ar);
-      return g;
-    }
-  \end{asydef}
+\ifbubuasy
+  \RequirePackage{asymptote}
+  \begin{asydef}
+      defaultpen(fontsize(10pt));
+      size(8cm); // set a reasonable default
+      usepackage("amsmath");
+      usepackage("amssymb");
+      settings.tex="pdflatex";
+      settings.outformat="pdf";
+      // Replacement for olympiad+cse5 which is not standard
+      import geometry;
+      // recalibrate fill and filldraw for conics
+      void filldraw(picture pic = currentpicture, conic g, pen fillpen=defaultpen, pen drawpen=defaultpen)
+        { filldraw(pic, (path) g, fillpen, drawpen); }
+      void fill(picture pic = currentpicture, conic g, pen p=defaultpen)
+        { filldraw(pic, (path) g, p); }
+      // some geometry
+      pair foot(pair P, pair A, pair B) { return foot(triangle(A,B,P).VC); }
+      pair centroid(pair A, pair B, pair C) { return (A+B+C)/3; }
+      // cse5 abbreviations
+      path CP(pair P, pair A) { return circle(P, abs(A-P)); }
+      path CR(pair P, real r) { return circle(P, r); }
+      pair IP(path p, path q) { return intersectionpoints(p,q)[0]; }
+      pair OP(path p, path q) { return intersectionpoints(p,q)[1]; }
+      path Line(pair A, pair B, real a=0.6, real b=a) { return (a*(A-B)+A)--(b*(B-A)+B); }
+      // cse5 more useful functions
+      picture CC() {
+        picture p=rotate(0)*currentpicture;
+        currentpicture.erase();
+        return p;
+      }
+      pair MP(Label s, pair A, pair B = plain.S, pen p = defaultpen) {
+        Label L = s;
+        L.s = "$"+s.s+"$";
+        label(L, A, B, p);
+        return A;
+      }
+      pair Drawing(Label s = "", pair A, pair B = plain.S, pen p = defaultpen) {
+        dot(MP(s, A, B, p), p);
+        return A;
+      }
+      path Drawing(path g, pen p = defaultpen, arrowbar ar = None) {
+        draw(g, p, ar);
+        return g;
+      }
+    \end{asydef}
+\fi
 
 % }}}
 
@@ -616,7 +669,9 @@
 \providecommand{\arc}[1]{\wideparen{#1}}
 
 \newcommand{\hrulebar}{%
-  \par\hspace{\fill}\rule{0.95\linewidth}{.7pt}\hspace{\fill}%
+  \centering
+  \par\hspace*{\fill}\rule{0.8\textwidth}{.7pt}\hspace*{\fill}%
+  % \par\noindent\rule{\textwidth}{0.7pt}%
   \par\nointerlineskip \vspace{\baselineskip}%
 }
 
@@ -677,5 +732,3 @@
 }
 
 % }}}
-
-

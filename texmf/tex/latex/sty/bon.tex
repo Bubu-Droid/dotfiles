@@ -1,0 +1,39 @@
+\begin{pycode}
+import os
+import sys
+LOCAL_HOME = os.environ.get("HOME", "/home/bubu")
+DB_SCRIPTS_PATH = os.path.join(LOCAL_HOME, "bon/bon-scripts/")
+sys.path.insert(0, DB_SCRIPTS_PATH)
+import bon
+def print_bubuproblem(puid: str) -> None:
+    db_file_path = os.path.join(bon.HOME, "bon/bon-db/", f"{puid}{bon.DB_FILE_EXT}")
+    try:
+        with open(db_file_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        db_sec = content.split(bon.SEPARATOR)
+        return (db_sec[1])
+    except Exception as e:
+        return (f"[Error: {e}]")
+def print_bubuproblem_nonum(puid: str) -> None:
+    db_file_path = os.path.join(bon.HOME, "bon/bon-db/", f"{puid}{bon.DB_FILE_EXT}")
+    try:
+        with open(db_file_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        db_sec = content.split(bon.SEPARATOR)
+        db_sec[1] = db_sec[1].replace("\\begin{problem}", "\\begin{problem*}")
+        db_sec[1] = db_sec[1].replace("\\end{problem}", "\\end{problem*}")
+        return (db_sec[1])
+    except Exception as e:
+        return (f"[Error: {e}]")
+def print_bubusoln(puid: str) -> None:
+    db_file_path = os.path.join(bon.HOME, "bon/bon-db/", f"{puid}{bon.DB_FILE_EXT}")
+    try:
+        with open(db_file_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        db_sec = content.split(bon.SEPARATOR)
+        bon_inner_txt = "\n\\hrulebar\n".join(db_sec[2:])
+        return (bon_inner_txt)
+    except Exception as e:
+        return (f"[Error: {e}]")
+\end{pycode}
+
