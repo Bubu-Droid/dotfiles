@@ -3,3 +3,5 @@
 	email = fufudadw@gmail.com
 [core]
 	excludesfile = /home/bubu/.gitignore-global
+[init]
+	defaultBranch = main
