@@ -1,38 +1,51 @@
-# ARCH i3 dotfiles
+# ARCH i3 Dotfiles
 
-This repo contains my ARCH i3 dotfiles. I also go through the process of
-installing ARCH manually after which I also add the method for setting up
-the dotfiles using my configs. I've also added my LaTeX template since I
-sometimes need to share them with others.
+This repository contains my ARCH i3 dotfiles. It also contains:
 
-## Why add installation procces and why not use archinstall to install ARCH?
+- Instructions for setting up these dotfiles on a freshly
+  installed system
+- My custom LaTeX template, which I use and sometimes share
 
-I've seen a few ARCH users online who scream at people for installing ARCH
-via archinstall. In fact, until the last moment I tried installing ARCH using
-archinstall too. But the difficulty was that it was throwing an error everytime
-I was trying to bare metal install ARCH. Finally I gave up on archinstall and
-proceeded with manual install. I was helped a lot by @rosemarys_baby during the
-install without whom I wouldn't have been able to install ARCH. Not all ARCH
-users are maniacs :3 . But while installing ARCH following the ARCH wiki, I got
-stuck a few times and some of them turned out to be facts that were missing in
-the ARCH wiki. This is why I add this tutorial that anyone with UEFI mode and
-with GPT partitions for disks can follow.
+Thanks a lot to @rosemarys_baby for helping me out whenever
+I was clueless during my first Arch installation.
 
-[Here](https://github.com/Bubu-Droid/dotfiles/blob/main/archINSTALL.md) we go!
+After being almost a complete year into using Arch as my
+primary OS, I get why the veterans are so fixated on making
+the newbies read the
+[Arch Wiki installation guide][archinstallguide].
+Read the Wiki people. :joy:
 
-## Ricing the system using my dotfiles
+A few resources for installing Arch Linux:
 
-[This](https://github.com/Bubu-Droid/dotfiles/blob/main/INSTALL.md) file
-contains instructions how to rice your setup like mine.
+- [Arch Wiki installation guide][archinstallguide]
+- [Arch installation guide by Mental Outlaw][mentaloutarchinstall]
+- [Setting up Graphical Environments and
+  Users by Luke Smith][archlinuxlukesmith]
 
-<!--TODO:-->
+## Ricing a fresh system with my Dotfiles
 
-TODOs:
+- Follow [this][ricing] guided manual for ricing the setup.
 
-- [ ] Create a separate branch for laptop for its features.
-- [ ] Organize dotfiles and mention the fix about firefox b/w print bug.
-- [ ] Add light mode and dark mode.
+Here is the screenshot of my current rice. My previous
+rices can be found in [dotfiles-screenshots/][dotfilesss]
+directory. Both dark and light theme based wallpapers
+can be found in [wallpapers/][wallpapers] directory.
+
+![Setup 3](dotfiles-screenshots/setup-3.png "My current setup")
 
 ## Additional resources
 
-[Archived packages for ARCH](https://archive.archlinux.org/packages/)
+- [Archived packages for ARCH][archarchive]
+
+### TODOs
+
+- [ ] Create a separate branch for laptop specific features.
+- [ ] Add light mode and dark mode themes.
+
+[archinstallguide]: https://wiki.archlinux.org/title/Installation_guide
+[mentaloutarchinstall]: https://youtu.be/rUEnS1zj1DM?si=ftzJVo7DClwe8sOJ
+[ricing]: https://github.com/Bubu-Droid/dotfiles/blob/main/INSTALL.md
+[archarchive]: https://archive.archlinux.org/packages/
+[archlinuxlukesmith]: https://youtu.be/nSHOb8YU9Gw?si=o0N_tjCUDyeJyQTW
+[dotfilesss]: https://github.com/Bubu-Droid/dotfiles/tree/main/dotfiles-screenshots
+[wallpapers]: https://github.com/Bubu-Droid/dotfiles/tree/main/wallpapers
