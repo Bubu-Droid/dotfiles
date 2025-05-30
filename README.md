@@ -1,6 +1,6 @@
-# ARCH i3 Dotfiles
+# Arch i3 Dotfiles
 
-This repository contains my ARCH i3 dotfiles. It also contains:
+This repository contains my Arch i3 Dotfiles. It also contains:
 
 - Instructions for setting up these dotfiles on a freshly
   installed system
@@ -35,7 +35,9 @@ can be found in [wallpapers/](wallpapers) directory.
 
 ## Additional resources
 
-- [Archived packages for ARCH][archarchive]
+- [Archived packages for Arch][archarchive]
+
+---
 
 ### TODOs
 
