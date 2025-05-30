@@ -24,12 +24,12 @@ A few resources for installing Arch Linux:
 
 ## Ricing a fresh system with my Dotfiles
 
-- Follow [this][ricing] guided manual for ricing the setup.
+- Follow [this](RICING.md) guided manual for ricing the setup.
 
 Here is the screenshot of my current rice. My previous
-rices can be found in [dotfiles-screenshots/][dotfilesss]
+rices can be found in [dotfiles-screenshots/](dotfiles-screenshots)
 directory. Both dark and light theme based wallpapers
-can be found in [wallpapers/][wallpapers] directory.
+can be found in [wallpapers/](wallpapers) directory.
 
 ![Setup 3](dotfiles-screenshots/setup-3.png "My current setup")
 
@@ -44,8 +44,5 @@ can be found in [wallpapers/][wallpapers] directory.
 
 [archinstallguide]: https://wiki.archlinux.org/title/Installation_guide
 [mentaloutarchinstall]: https://youtu.be/rUEnS1zj1DM?si=ftzJVo7DClwe8sOJ
-[ricing]: https://github.com/Bubu-Droid/dotfiles/blob/main/INSTALL.md
 [archarchive]: https://archive.archlinux.org/packages/
 [archlinuxlukesmith]: https://youtu.be/nSHOb8YU9Gw?si=o0N_tjCUDyeJyQTW
-[dotfilesss]: https://github.com/Bubu-Droid/dotfiles/tree/main/dotfiles-screenshots
-[wallpapers]: https://github.com/Bubu-Droid/dotfiles/tree/main/wallpapers
