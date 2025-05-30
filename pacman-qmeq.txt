@@ -1,13 +1,6 @@
-audio-recorder
-debtap
 hp-printer-app
 i3lock-fancy-git
-idle
-iriunwebcam-bin
 lightdm-webkit-theme-aether
-otf-openmoji
-python-pyautogui
-spotify
+whatsapp-for-linux
 yay
-zoom
 zsh-theme-powerlevel10k-git

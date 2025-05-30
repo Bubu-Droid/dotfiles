@@ -11,8 +11,6 @@ bluez-utils
 cmus
 corectrl
 cups
-distrobox
-dmenu
 docker
 dosfstools
 efibootmgr
