@@ -2,8 +2,8 @@
 
 sudo pacman -Syu
 yay
-sudo pacman -Qneq | sudo tee "$HOME"/pacman-Qneq.txt >/dev/null
-sudo pacman -Qmeq | sudo tee "$HOME"/pacman-Qmeq.txt >/dev/null
+# sudo pacman -Qneq | sudo tee "$HOME"/pacman-qneq.txt >/dev/null
+# sudo pacman -Qmeq | sudo tee "$HOME"/pacman-qmeq.txt >/dev/null
 sudo updatedb
 nvim --headless -c ":TSUpdate all" -c qall
 nvim --headless -c ":MasonToolsClean" -c qall
