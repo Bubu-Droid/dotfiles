@@ -23,9 +23,9 @@
 
 - Install `yay`.
 
-- Install necessary AUR packages from [pacman-qmeq.txt][pacqmeq].
+- Install necessary AUR packages from [pacman-qmeq.txt](pacman-qmeq.txt).
 
-- Install necessary pacman packages from [pacman-qneq.txt][pacqneq].
+- Install necessary pacman packages from [pacman-qneq.txt](pacman-qneq.txt).
 
 - Set up printing services. Here is a beautiful
   and comprehensive YouTube tutorial for [setting up
@@ -76,8 +76,6 @@
 >   `sudo pacman -Sy` whenever needed.
 
 [archwikidotfiles]: https://wiki.archlinux.org/title/Dotfiles
-[pacqneq]: https://github.com/Bubu-Droid/dotfiles/blob/main/pacman-qneq.txt
-[pacqmeq]: https://github.com/Bubu-Droid/dotfiles/blob/main/pacman-qmeq.txt
 [meslolgs]: https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#fonts
 [nerdfonts]: https://www.nerdfonts.com/font-downloads
 [notocolemoji]: https://fonts.google.com/noto/specimen/Noto+Color+Emoji
