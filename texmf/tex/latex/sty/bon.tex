@@ -31,9 +31,21 @@ def print_bubusoln(puid: str) -> None:
         with open(db_file_path, "r", encoding="utf-8") as f:
             content = f.read()
         db_sec = content.split(bon.SEPARATOR)
-        bon_inner_txt = "\n\\hrulebar\n".join(db_sec[2:])
-        return (bon_inner_txt)
+        bon_inner_list = db_sec[2:]
+        bon_fin_list = []
+        res = ""
+        if len(bon_inner_list) == 1:
+            res = bon_inner_list[0]
+        elif len(bon_inner_list) >= 2:
+            for i, sec in enumerate(bon_inner_list):
+                sec = sec.replace(
+                    "\\begin{soln}",
+                    f"\\begin{{proof}}[Solution {i+1}.]\\renewcommand{{\\qedsymbol}}{{$\\blacksquare$}}",
+                )
+                sec = sec.replace("\\end{soln}", "\\end{proof}")
+                bon_fin_list.append(sec)
+            res = "\n".join(bon_fin_list)
+        return res
     except Exception as e:
         return (f"[Error: {e}]")
 \end{pycode}
-
