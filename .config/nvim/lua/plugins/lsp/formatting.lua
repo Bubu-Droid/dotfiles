@@ -10,6 +10,7 @@ return {
       javascriptreact = { "prettier" },
       typescriptreact = { "prettier" },
       -- html = { "prettier" },
+      -- htmldjango = { "djlint" },
       css = { "prettier" },
       yaml = { "prettier" },
       toml = { "prettier" },
@@ -20,7 +21,7 @@ return {
     format_on_save = {
       lsp_fallback = true,
       async = false,
-      timeout_ms = 1000,
+      timeout_ms = 1500,
     },
   },
 }

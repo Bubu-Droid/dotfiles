@@ -75,18 +75,32 @@ return {
       capabilities = capabilities,
     })
 
-    -- configure emmet language server
     vim.lsp.config("emmet_ls", {
       capabilities = capabilities,
-      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+      filetypes = {
+        "html",
+        "htmldjango",
+        "typescriptreact",
+        "javascriptreact",
+        "css",
+        "sass",
+        "scss",
+        "less",
+        "svelte",
+      },
     })
 
-    -- configure lua server (with special settings)
+    -- vim.lsp.config("django_template_ls", {
+    --   cmd = { vim.fn.stdpath("data") .. "/mason/bin/djlsp" },
+    --   capabilities = capabilities,
+    --   filetypes = { "htmldjango" },
+    -- })
+    -- vim.lsp.enable("django_template_ls")
+
     vim.lsp.config("lua_ls", {
       capabilities = capabilities,
       settings = {
         Lua = {
-          -- make the language server recognize "vim" global
           diagnostics = {
             globals = { "vim" },
           },
@@ -109,7 +123,10 @@ return {
 
     vim.lsp.config("html", {
       capabilities = capabilities,
-      filetypes = { "html" },
+      filetypes = {
+        "html",
+        -- "htmldjango",
+      },
     })
 
     vim.lsp.config("css", {

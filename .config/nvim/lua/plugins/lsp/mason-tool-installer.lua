@@ -15,6 +15,7 @@ return {
       "taplo", -- toml
       "yamlls", -- yaml
       "bashls", -- bash
+      -- "django-template-lsp", -- django
       -- formatter
       "prettier", -- primary-ft
       "stylua", -- lua
@@ -31,6 +32,7 @@ return {
       -- "toml-lint", -- toml
       "yamllint", -- yaml
       "textlint", -- text
+      -- "djlint", -- htmldjango
     },
   },
 }

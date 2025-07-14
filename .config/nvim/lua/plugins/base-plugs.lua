@@ -7,7 +7,7 @@ return {
       default = true,
       override = {
         css = {
-          icon = "",
+          icon = "",
           color = "#00BFFF",
           name = "Css",
         },
