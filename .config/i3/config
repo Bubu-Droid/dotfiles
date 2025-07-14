@@ -203,7 +203,8 @@ exec_always picom &
 exec_always feh --bg-fill $HOME/wallpapers/dark-abstract.jpg &
 
 # Screenshots(flameshot)
-bindsym Ctrl+Print exec flameshot full --path $HOME/Pictures/screenshots
+bindsym Print exec flameshot full --path $HOME/Pictures/screenshots
 bindsym Ctrl+Shift+Print exec flameshot gui
 bindsym $modalt+e exec rofi -show emoji
+bindsym $modalt+s exec rofi -dmenu -i -p "Symbol:" <"$HOME"/.config/rofi/custom-symbols.txt | awk '{print $1}' | tr -d "\n" | xclip -selection clipboard
 bindsym $modalt+l exec i3lock-fancy
