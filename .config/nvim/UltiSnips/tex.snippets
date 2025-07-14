@@ -85,7 +85,7 @@ $0
 endsnippet
 
 snippet enum "enumerate" bA
-\begin{enumerate}
+\begin{enumerate}[(i)]
   \ii $1
 \end{enumerate}
 $0
@@ -169,7 +169,7 @@ endsnippet
 
 context "math()"
 snippet sq "\sqrt{}" iA
-\sqrt{$1} 
+\sqrt{$1}
 endsnippet
 
 context "math()"
@@ -184,7 +184,7 @@ endsnippet
 
 context "math()"
 snippet td "to the ... power" iA
-^{$1} $0
+^{$1}
 endsnippet
 
 context "math()"
@@ -275,7 +275,7 @@ endsnippet
 
 snippet dm "display math" wA
 \[
-${1:${VISUAL}}
+  ${1:${VISUAL}}
 .\]
 $0
 endsnippet
@@ -287,17 +287,17 @@ endsnippet
 
 context "math()"
 snippet // "fraction" iA
-\\frac{$1}{$2}$0
+\\frac{$1}{$2} 
 endsnippet
 
 context "math()"
 snippet / "fraction" i
-\\frac{${VISUAL}}{$1}$0
+\\frac{${VISUAL}}{$1} 
 endsnippet
 
 context "math()"
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "symbol frac" wrA
-\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+\\frac{`!p snip.rv = match.group(1)`}{$1} 
 endsnippet
 
 priority 1000
@@ -363,7 +363,7 @@ endsnippet
 
 context "math()"
 snippet tt "text" iA
-\text{$1} 
+\text{$1}
 endsnippet
 
 # }}}
@@ -373,12 +373,12 @@ endsnippet
 
 context "math()"
 snippet bra "left( right)" iA
-\left( ${1:${VISUAL}} \right) $0
+\left( ${1:${VISUAL}} \right)
 endsnippet
 
 context "math()"
 snippet cur "left{ right}" iA
-\left\\{ ${1:${VISUAL}} \right\\} $0
+\left\\{ ${1:${VISUAL}} \right\\}
 endsnippet
 
 # }}}
@@ -413,7 +413,7 @@ endsnippet
 priority 100
 context "math()"
 snippet '(?<!\\)\b(floor|ceil|abs|norm|opname)\b' "math functions 3" rwA
-\\`!p snip.rv = match.group(1)`{$1} 
+\\`!p snip.rv = match.group(1)`{$1}
 endsnippet
 
 priority 100
@@ -437,7 +437,7 @@ endsnippet
 priority 100
 context "math()"
 snippet '(?<!\\)\b(emptyset|cap|cup|not|nmid|mid|sim|neq|ell)\b' "math symbols 4" rwA
-\\`!p snip.rv = match.group(1)`
+\\`!p snip.rv = match.group(1)` 
 endsnippet
 
 priority 100
@@ -519,6 +519,11 @@ endsnippet
 
 
 # {{{ Calculus commands
+
+context "math()"
+snippet seq "sequence" iA
+\left\\{ ${1:${VISUAL}} \right\\}_{n \ge 1}
+endsnippet
 
 priority 300
 context "math()"
