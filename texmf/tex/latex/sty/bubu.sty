@@ -40,6 +40,7 @@
 \newif\ifbubuasy\bubuasytrue
 \newif\ifbubumax\bubumaxtrue
 \newif\ifbububon\bububonfalse
+\newif\ifbubucountcont\bubucountconttrue
 
 \DeclareOption{nohdr}{\bubuhdrfalse}
 \DeclareOption{noauthor}{\bubuauthorfalse}
@@ -54,6 +55,8 @@
 \DeclareOption{noasy}{\bubuasyfalse}
 \DeclareOption{min}{\bubumaxfalse\bubuasyfalse}
 \DeclareOption{bon}{\bububontrue}
+\DeclareOption{bon}{\bububontrue}
+\DeclareOption{nocountcont}{\bubucountcontfalse}
 
 \ProcessOptions\relax
 
@@ -85,7 +88,7 @@
   \RequirePackage{tikz}
   \RequirePackage{thmtools}
   \RequirePackage[framemethod=TikZ]{mdframed}
-  \RequirePackage[colorlinks=true,pdfusetitle]{hyperref}
+  \RequirePackage[colorlinks=true,pdfusetitle,hypertexnames=false]{hyperref}
   % TODO: Update these fields
   % \hypersetup{pdfkeywords={bubu.sty},pdfsubject={website-link}}
   \hypersetup{%
@@ -307,14 +310,13 @@
 \ifbububon
   \RequirePackage{pythontex}
   \setpythontexoutputdir{.}
-  \newcommand{\bubuprob}[1]{%
-    \py{print_bubuproblem(r"#1")}%
+  \newcommand{\bonhook}[1]{%
+    \normalmarginpar%
+    \noindent%
+    \marginpar{\hspace*{1em}\scriptsize\ttfamily\color{Green}#1}%
   }
-  \newcommand{\bubuprobnonum}[1]{%
-    \py{print_bubuproblem_nonum(r"#1")}%
-  }
-  \newcommand{\bubusoln}[1]{%
-    \py{print_bubusoln(r"#1")}%
+  \newcommand{\boninclude}[2]{%
+    \py{boninclude(r"#1", r"#2")}%
   }
 \fi
 
@@ -519,48 +521,93 @@
     \declaretheorem[style=thmlightbluebox,name=Theorem]{theorem}
   \fi
 
-  \declaretheorem[style=thmlightbluebox,name=Lemma,sibling=theorem]{lemma}
-  \declaretheorem[style=thmdarkbluebox,name=Proposition,sibling=theorem]{proposition}
-  \declaretheorem[style=thmlightbluebox,name=Corollary,sibling=theorem]{corollary}
-  \declaretheorem[style=thmdarkbluebox,name=Assumption,sibling=theorem]{assume}
-  \declaretheorem[style=thmlightbluebox,name=Theorem,numbered=no]{theorem*}
-  \declaretheorem[style=thmlightbluebox,name=Lemma,numbered=no]{lemma*}
-  \declaretheorem[style=thmdarkbluebox,name=Proposition,numbered=no]{proposition*}
-  \declaretheorem[style=thmlightbluebox,name=Corollary,numbered=no]{corollary*}
-  \declaretheorem[style=thmdarkbluebox,name=Assumption,numbered=no]{assume*}
+  \ifbubucountcont
+    \declaretheorem[style=thmlightbluebox,name=Lemma,sibling=theorem]{lemma}
+    \declaretheorem[style=thmdarkbluebox,name=Proposition,sibling=theorem]{proposition}
+    \declaretheorem[style=thmlightbluebox,name=Corollary,sibling=theorem]{corollary}
+    \declaretheorem[style=thmdarkbluebox,name=Assumption,sibling=theorem]{assume}
+    \declaretheorem[style=thmlightbluebox,name=Theorem,numbered=no]{theorem*}
+    \declaretheorem[style=thmlightbluebox,name=Lemma,numbered=no]{lemma*}
+    \declaretheorem[style=thmdarkbluebox,name=Proposition,numbered=no]{proposition*}
+    \declaretheorem[style=thmlightbluebox,name=Corollary,numbered=no]{corollary*}
+    \declaretheorem[style=thmdarkbluebox,name=Assumption,numbered=no]{assume*}
 
-  \declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algorithm}
-  \declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algorithm*}
-  \declaretheorem[style=thmgreenbox,name=Claim,sibling=theorem]{claim}
-  \declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
+    \declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algorithm}
+    \declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algorithm*}
+    \declaretheorem[style=thmgreenbox,name=Claim,sibling=theorem]{claim}
+    \declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
 
-  \declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
-  \declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
+    \declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
+    \declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
 
-  \declaretheorem[style=thmblackbox,name=Remark,sibling=theorem]{remark}
-  \declaretheorem[style=thmblackbox,name=Remark,numbered=no]{remark*}
+    \declaretheorem[style=thmblackbox,name=Remark,sibling=theorem]{remark}
+    \declaretheorem[style=thmblackbox,name=Remark,numbered=no]{remark*}
 
-  \declaretheoremstyle[%
-    headfont=\color{blue!40!black}\normalfont\bfseries\sffamily,%
-    spaceabove=8pt,%
-    spacebelow=8pt,%
-    bodyfont=\normalfont%
-  ]{basehead}
-  \declaretheorem[style=basehead,name=Answer,sibling=theorem]{answer}
-  \declaretheorem[style=basehead,name=Answer,numbered=no]{answer*}
-  \declaretheorem[style=thmmyqsbox,name=Conjecture,sibling=theorem]{conjecture}
-  \declaretheorem[style=thmmyqsbox,name=Conjecture,numbered=no]{conjecture*}
-  \declaretheorem[style=thmdefredbox,name=Definition,sibling=theorem]{definition}
-  \declaretheorem[style=thmdefredbox,name=Definition,numbered=no]{definition*}
-  \declaretheorem[style=basehead,name=Exercise,sibling=theorem]{exercise}
-  \declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
-  \declaretheorem[style=thmmyqsbox,name=Fact,sibling=theorem]{fact}
-  \declaretheorem[style=thmmyqsbox,name=Fact,numbered=no]{fact*}
-  \declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
-  \declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
-  \declaretheorem[style=thmmyqsbox,name=Question,sibling=theorem]{ques}
-  \declaretheorem[style=thmmyqsbox,name=Question,numbered=no]{ques*}
+    \declaretheoremstyle[%
+      headfont=\color{blue!40!black}\normalfont\bfseries\sffamily,%
+      spaceabove=8pt,%
+      spacebelow=8pt,%
+      bodyfont=\normalfont%
+    ]{basehead}
+    \declaretheorem[style=basehead,name=Answer,sibling=theorem]{answer}
+    \declaretheorem[style=basehead,name=Answer,numbered=no]{answer*}
+    \declaretheorem[style=thmmyqsbox,name=Conjecture,sibling=theorem]{conjecture}
+    \declaretheorem[style=thmmyqsbox,name=Conjecture,numbered=no]{conjecture*}
+    \declaretheorem[style=thmdefredbox,name=Definition,sibling=theorem]{definition}
+    \declaretheorem[style=thmdefredbox,name=Definition,numbered=no]{definition*}
+    \declaretheorem[style=basehead,name=Exercise,sibling=theorem]{exercise}
+    \declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
+    \declaretheorem[style=thmmyqsbox,name=Fact,sibling=theorem]{fact}
+    \declaretheorem[style=thmmyqsbox,name=Fact,numbered=no]{fact*}
+    \declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
+    \declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
+    \declaretheorem[style=thmmyqsbox,name=Question,sibling=theorem]{ques}
+    \declaretheorem[style=thmmyqsbox,name=Question,numbered=no]{ques*}
+  \else
+    \declaretheorem[style=thmlightbluebox,name=Lemma,numberwithin=section]{lemma}
+    \declaretheorem[style=thmdarkbluebox,name=Proposition,numberwithin=section]{proposition}
+    \declaretheorem[style=thmlightbluebox,name=Corollary,numberwithin=section]{corollary}
+    \declaretheorem[style=thmdarkbluebox,name=Assumption,numberwithin=section]{assume}
+    \declaretheorem[style=thmlightbluebox,name=Theorem,numberwithin=section]{theorem*}
+    \declaretheorem[style=thmlightbluebox,name=Lemma,numberwithin=section]{lemma*}
+    \declaretheorem[style=thmdarkbluebox,name=Proposition,numberwithin=section]{proposition*}
+    \declaretheorem[style=thmlightbluebox,name=Corollary,numberwithin=section]{corollary*}
+    \declaretheorem[style=thmdarkbluebox,name=Assumption,numberwithin=section]{assume*}
+
+    \declaretheorem[style=thmgreenbox,name=Algorithm,numberwithin=section]{algorithm}
+    \declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algorithm*}
+    \declaretheorem[style=thmgreenbox,name=Claim,numberwithin=section]{claim}
+    \declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
+
+    \declaretheorem[style=thmredbox,name=Example,numberwithin=section]{example}
+    \declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
+
+    \declaretheorem[style=thmblackbox,name=Remark,numberwithin=section]{remark}
+    \declaretheorem[style=thmblackbox,name=Remark,numbered=no]{remark*}
+
+    \declaretheoremstyle[%
+      headfont=\color{blue!40!black}\normalfont\bfseries\sffamily,%
+      spaceabove=8pt,%
+      spacebelow=8pt,%
+      bodyfont=\normalfont%
+    ]{basehead}
+    \declaretheorem[style=basehead,name=Answer,numberwithin=section]{answer}
+    \declaretheorem[style=basehead,name=Answer,numbered=no]{answer*}
+    \declaretheorem[style=thmmyqsbox,name=Conjecture,numberwithin=section]{conjecture}
+    \declaretheorem[style=thmmyqsbox,name=Conjecture,numbered=no]{conjecture*}
+    \declaretheorem[style=thmdefredbox,name=Definition,numberwithin=section]{definition}
+    \declaretheorem[style=thmdefredbox,name=Definition,numbered=no]{definition*}
+    \declaretheorem[style=basehead,name=Exercise,numberwithin=section]{exercise}
+    \declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
+    \declaretheorem[style=thmmyqsbox,name=Fact,numberwithin=section]{fact}
+    \declaretheorem[style=thmmyqsbox,name=Fact,numbered=no]{fact*}
+    \declaretheorem[style=basehead,name=Problem,numberwithin=section]{problem}
+    \declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
+    \declaretheorem[style=thmmyqsbox,name=Question,numberwithin=section]{ques}
+    \declaretheorem[style=thmmyqsbox,name=Question,numbered=no]{ques*}   
+  \fi
 \else
+
   \theoremstyle{plain}
   \newtheorem{theorem}{Theorem}
   \newtheorem*{theorem*}{Theorem}

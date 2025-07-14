@@ -1,51 +1,66 @@
 \begin{pycode}
 import os
+import re
 import sys
+
 LOCAL_HOME = os.environ.get("HOME", "/home/bubu")
 DB_SCRIPTS_PATH = os.path.join(LOCAL_HOME, "bon/bon-scripts/")
 sys.path.insert(0, DB_SCRIPTS_PATH)
 import bon
-def print_bubuproblem(puid: str) -> None:
+
+
+def boninclude(env: str, puid: str) -> str:
+    res = ""
     db_file_path = os.path.join(bon.HOME, "bon/bon-db/", f"{puid}{bon.DB_FILE_EXT}")
-    try:
-        with open(db_file_path, "r", encoding="utf-8") as f:
-            content = f.read()
-        db_sec = content.split(bon.SEPARATOR)
-        return (db_sec[1])
-    except Exception as e:
-        return (f"[Error: {e}]")
-def print_bubuproblem_nonum(puid: str) -> None:
-    db_file_path = os.path.join(bon.HOME, "bon/bon-db/", f"{puid}{bon.DB_FILE_EXT}")
-    try:
-        with open(db_file_path, "r", encoding="utf-8") as f:
-            content = f.read()
-        db_sec = content.split(bon.SEPARATOR)
-        db_sec[1] = db_sec[1].replace("\\begin{problem}", "\\begin{problem*}")
-        db_sec[1] = db_sec[1].replace("\\end{problem}", "\\end{problem*}")
-        return (db_sec[1])
-    except Exception as e:
-        return (f"[Error: {e}]")
-def print_bubusoln(puid: str) -> None:
-    db_file_path = os.path.join(bon.HOME, "bon/bon-db/", f"{puid}{bon.DB_FILE_EXT}")
-    try:
-        with open(db_file_path, "r", encoding="utf-8") as f:
-            content = f.read()
-        db_sec = content.split(bon.SEPARATOR)
-        bon_inner_list = db_sec[2:]
-        bon_fin_list = []
-        res = ""
-        if len(bon_inner_list) == 1:
-            res = bon_inner_list[0]
-        elif len(bon_inner_list) >= 2:
-            for i, sec in enumerate(bon_inner_list):
-                sec = sec.replace(
-                    "\\begin{soln}",
-                    f"\\begin{{proof}}[Solution {i+1}.]\\renewcommand{{\\qedsymbol}}{{$\\blacksquare$}}",
-                )
-                sec = sec.replace("\\end{soln}", "\\end{proof}")
-                bon_fin_list.append(sec)
-            res = "\n".join(bon_fin_list)
-        return res
-    except Exception as e:
-        return (f"[Error: {e}]")
+    if env in (
+        "problem",
+        "exercise",
+        "problem*",
+        "exercise*",
+    ):
+        try:
+            with open(db_file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            db_sec = content.split(bon.SEPARATOR)
+
+            pattern = r"(\\begin\{problem\}\s*(\[.*?\])?)"
+            replacement = r"\1\n\\bonhook{" + puid + r"}"
+            res = re.sub(pattern, replacement, db_sec[1], flags=re.DOTALL)
+            res = res.replace("\\begin{problem}", f"\\begin{{{env}}}")
+            res = res.replace("\\end{problem}", f"\\end{{{env}}}")
+        except Exception as e:
+            res = f"[Error: {e}]"
+    elif env in ("example", "example*"):
+        try:
+            with open(db_file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            db_sec = content.split(bon.SEPARATOR)
+
+            res = db_sec[1].replace("\\begin{problem}", f"\\begin{{{env}}}")
+            res = res.replace("\\end{problem}", f"\\end{{{env}}}")
+        except Exception as e:
+            res = f"[Error: {e}]"
+    elif env in ("soln", "solution"):
+        try:
+            with open(db_file_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            db_sec = content.split(bon.SEPARATOR)
+            bon_inner_list = db_sec[2:]
+            bon_fin_list = []
+            if len(bon_inner_list) == 1:
+                res = bon_inner_list[0]
+            elif len(bon_inner_list) >= 2:
+                for i, sec in enumerate(bon_inner_list):
+                    sec = sec.replace(
+                        "\\begin{soln}",
+                        f"\\begin{{proof}}[Solution {i+1}.]\\renewcommand{{\\qedsymbol}}{{$\\blacksquare$}}",
+                    )
+                    sec = sec.replace("\\end{soln}", "\\end{proof}")
+                    bon_fin_list.append(sec)
+                res = (bon.TEX_SEP).join(bon_fin_list)
+        except Exception as e:
+            res = f"[Error: {e}]"
+    else:
+        res = "Incorrect environment!"
+    return res
 \end{pycode}
