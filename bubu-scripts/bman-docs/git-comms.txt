@@ -34,6 +34,10 @@
 
   This prints the fetch and push URLs.
 
+9) git remote add origin <new_link>
+
+  This adds the push/pull link to the new link.
+
 8) git remote set-url origin <new_link>
 
   This updates the push/pull link to the new link.
