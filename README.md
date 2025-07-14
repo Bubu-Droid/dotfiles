@@ -6,6 +6,18 @@ This repository contains my Arch i3 Dotfiles. It also contains:
   installed system
 - My custom LaTeX template, which I use and sometimes share
 
+System Configuration:
+
+- Distro : `Arch Linux`
+- WM : `i3`
+- Terminal : `Alacritty`
+- Font : `Meslo LGS NF`
+- Bar : `Polybar`
+- Editor : `Neovim`
+- Shell : `Zsh`
+- Launcher : `Rofi`
+- Browser : `Firefox`
+
 Thanks a lot to @rosemarys_baby for helping me out whenever
 I was clueless during my first Arch installation.
 
@@ -24,7 +36,7 @@ A few resources for installing Arch Linux:
 
 ## Ricing a fresh system with my Dotfiles
 
-- Follow [this](RICING.md) guided manual for ricing the setup.
+> Follow [this](RICING.md) guided manual for ricing the setup.
 
 Here is the screenshot of my current rice. My previous
 rices can be found in [dotfiles-screenshots/](dotfiles-screenshots)
