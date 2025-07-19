@@ -6,6 +6,7 @@ sudo updatedb
 nvim --headless -c ":TSUpdate all" -c qall
 nvim --headless -c ":MasonToolsClean" -c qall
 nvim --headless -c ":MasonToolsUpdateSync" -c qall
+nvim --headless -c ":Lazy sync" -c qall
 
 echo ""
 cat "$HOME"/Desktop/.gitignore
