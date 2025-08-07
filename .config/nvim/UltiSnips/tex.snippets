@@ -131,10 +131,16 @@ endsnippet
 
 # {{{ Math symbol snippets
 
+#priority 100
+#context "math()"
+#snippet ... "ldots" iA
+#\ldots 
+#endsnippet
+
 priority 100
 context "math()"
-snippet ... "ldots" iA
-\ldots 
+snippet ... "dots" iA
+\dots 
 endsnippet
 
 context "math()"
@@ -287,17 +293,17 @@ endsnippet
 
 context "math()"
 snippet // "fraction" iA
-\\frac{$1}{$2} 
+\\frac{$1}{$2}
 endsnippet
 
 context "math()"
 snippet / "fraction" i
-\\frac{${VISUAL}}{$1} 
+\\frac{${VISUAL}}{$1}
 endsnippet
 
 context "math()"
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "symbol frac" wrA
-\\frac{`!p snip.rv = match.group(1)`}{$1} 
+\\frac{`!p snip.rv = match.group(1)`}{$1}
 endsnippet
 
 priority 1000
@@ -512,7 +518,7 @@ endsnippet
 
 context "math()"
 snippet pfact "prime factorization" iA
-p_1^{e_1}\cdot p_2^{e_2}\cdot\ldots\cdot p_{n}^{e_n} 
+p_1^{e_1}p_2^{e_2} \dots p_{n}^{e_n} 
 endsnippet
 
 # }}}
