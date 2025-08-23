@@ -168,5 +168,10 @@ return {
       capabilities = capabilities,
       filetypes = { "sh" },
     })
+
+    vim.lsp.config("clangd", {
+      capabilities = capabilities,
+      filetypes = { "c", "cpp" },
+    })
   end,
 }

@@ -32,6 +32,7 @@ return {
         "query",
         "vimdoc",
         "c",
+        "cpp",
         "comment",
       },
       highlight = {

@@ -16,12 +16,14 @@ return {
       "yamlls", -- yaml
       "bashls", -- bash
       -- "django-template-lsp", -- django
+      "clangd", -- c
       -- formatter
       "prettier", -- primary-ft
       "stylua", -- lua
       "isort", -- python-primary
       "black", -- python-secondary
       "shfmt", -- bash
+      "clang-format", -- c
       -- linter
       "pylint", -- python
       "eslint_d", -- web-dev
@@ -33,6 +35,7 @@ return {
       "yamllint", -- yaml
       "textlint", -- text
       -- "djlint", -- htmldjango
+      "cpplint", -- c
     },
   },
 }
