@@ -344,6 +344,12 @@
 }%
 {\end{proof}}
 
+\newenvironment{subproof}{%
+  \begin{proof}%
+  \renewcommand{\qedsymbol}{$\square$}%
+}%
+{\end{proof}}
+
 \ifbubumax
   \makeatletter
   \@ifundefined{chapter}{}{%
@@ -749,6 +755,8 @@
 \DeclareMathOperator*{\argmin}{arg min}
 \DeclareMathOperator*{\argmax}{arg max}
 \DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\pow}{Pow}
 
 \newcommand{\CC}{\mathbb C}
 \newcommand{\FF}{\mathbb F}
@@ -775,9 +783,6 @@
 \newcommand{\opname}{\operatorname}
 \newcommand{\OO}{\mathcal O}
 \newcommand{\oo}{\infty}
-\newcommand{\vp}[2]{\nu_{#1}#2}
-\newcommand{\ord}[2]{\operatorname{ord}_{#1}#2}
-\newcommand{\Pow}[2]{\operatorname{Pow}_{#1}#2}
 \newcommand{\dgnin}{90^{\circ}}
 \newcommand{\dgone}{180^{\circ}}
 \newcommand{\mailto}[1]{%
