@@ -201,7 +201,7 @@ bindsym $mod+r mode "resize"
 
 exec_always $HOME/.config/polybar/launch.sh &
 exec_always picom &
-exec_always feh --bg-fill $HOME/wallpapers/tokyonight/dark-venom.jpg.webp &
+exec_always feh --bg-fill $HOME/wallpapers/tokyonight/0.webp &
 
 # Screenshots(flameshot)
 bindsym Print exec flameshot full --path $HOME/Pictures/screenshots
