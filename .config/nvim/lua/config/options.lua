@@ -91,5 +91,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "ini" },
+  callback = function()
+    vim.opt_local.commentstring = "; %s"
+  end,
+})
+
 -- set recommended settings for auto-session
 opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
