@@ -11,7 +11,6 @@
   Here are a few shortlisted fonts.
   You may find a comprehensive list at the [Arch Wiki page
   dedicated for fonts][archwikifonts].
-
   - [meslo-lgs-nerd-font (patched for p10k)][meslolgs]
   - [jetbrains-mono-nerd-font][nerdfonts]
   - [noto-fonts-emoji][notocolemoji]
@@ -27,20 +26,20 @@
 
 - Install necessary pacman packages from [pacman-qneq.txt](pacman-qneq.txt).
 
-- Set up printing services. Here is a beautiful
-  and comprehensive YouTube tutorial for [setting up
-  HP printers in Arch Linux][hpprint].
+- Enable `clipcat` service using `systemctl`.
 
 - Set up Bluetooth services by following the
   [Arch Wiki Bluetooth manual][bluetooth].
+
+- Set up printing services. Here is a beautiful
+  and comprehensive YouTube tutorial for [setting up
+  HP printers in Arch Linux][hpprint].
 
 - Turn on `Color`, `ILoveCandy` and `VerbosePkgLists` for pacman.
   For some other pretty changes, you may search for
   ''how to prettify my pacman''.
 
-- Turn on numlock by default when after booting.
-  You may follow this [Arch Wiki manual][numlock] for doing so.
-  For other general recommendations, you may follow
+- For other general recommendations, you may follow
   this [Arch Wiki article][archwikipostinstall]
   on post-installation general recommendations.
 
@@ -53,7 +52,6 @@
 - (Optional) I have a few node packages installed for my neovim plugins.
   You may install them using `sudo npm install -g <package-name>`.
   Here is a shortlist of a few packages I require.
-
   - tree-sitter-cli
   - live-server
   - stylelint --save-dev
