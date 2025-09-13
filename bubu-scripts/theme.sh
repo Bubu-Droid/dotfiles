@@ -36,7 +36,7 @@ selected=$(
   IFS='
 '
   for rice in $rices; do
-    printf "%s\000icon\037%s/wallpapers/%s/0.webp\n" "$rice" "$HOME" "$rice"
+    printf "%s\000icon\037%s/wallpapers/%s/0.png\n" "$rice" "$HOME" "$rice"
   done | rofi -dmenu -p "Theme Selector" \
     -theme "$HOME/.config/rofi/selector.rasi" \
     -selected-row "$selected_index"
@@ -56,7 +56,7 @@ if [ -n "$selected" ] && [ "$selected" != "$current_rice" ]; then
 
   # Update wallpaper in i3 config
   sed -i "$HOME/.config/i3/config" \
-    -e "s|\$HOME/wallpapers/$current_rice/.*\.webp|\$HOME/wallpapers/$selected/0.webp|"
+    -e "s|\$HOME/wallpapers/$current_rice/.*\.png|\$HOME/wallpapers/$selected/0.png|"
 
   # Restart i3
   i3-msg restart
