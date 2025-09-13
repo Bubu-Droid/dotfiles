@@ -33,6 +33,6 @@ else
     if [[ "$chosen_network" =~ "" ]]; then
       wifi_password=$(rofi -dmenu -p "Password: ")
     fi
-    nmcli device wifi connect "$chosen_id" password "$wifi_password" | grep "successfully" && notify-send "Connection Established" "$success_message"
+    nmcli device wifi connect "$chosen_id" password "$wifi_password" -a | grep "successfully" && notify-send "Connection Established" "$success_message"
   fi
 fi
