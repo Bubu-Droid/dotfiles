@@ -39,7 +39,7 @@ if [ -n "$selected" ] && [ "$selected" != "$current_wall" ]; then
 
   # Update Polybar theme
   sed -i "$HOME/.config/i3/config" \
-    -e "s|\$HOME/wallpapers/$current_rice/.*\.webp|\$HOME/wallpapers/$current_rice/$selected.webp|"
+    -e "s|\$HOME/wallpapers/$current_rice/.*\.png|\$HOME/wallpapers/$current_rice/$selected.png|"
 
   # Restart i3
   i3-msg restart
