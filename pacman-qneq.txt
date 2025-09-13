@@ -8,6 +8,7 @@ biber
 blueman
 bluez-tools
 bluez-utils
+clipcat
 cmus
 corectrl
 cups

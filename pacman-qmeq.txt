@@ -1,6 +1,7 @@
+electron35-bin
+ferdium
 hp-printer-app
 i3lock-fancy-git
 lightdm-webkit-theme-aether
-whatsapp-for-linux
 yay
 zsh-theme-powerlevel10k-git
