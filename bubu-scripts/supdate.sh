@@ -9,7 +9,7 @@ nvim --headless -c ":MasonToolsUpdateSync" -c qall
 nvim --headless -c ":Lazy sync" -c qall
 
 echo ""
-cat "$HOME"/Desktop/.gitignore
+cat "$HOME/Desktop/.gitignore"
 echo "DOWNLOADS"
 echo "DESKTOP"
 echo "DOCUMENTS"
