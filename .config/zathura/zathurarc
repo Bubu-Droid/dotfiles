@@ -8,40 +8,41 @@ map R rotate
 map i recolor
 map u set recolor-keephue
 
-set default-fg                rgba(192,202,245,1)
-set default-bg                rgba(31,35,53,1)
-
-set completion-bg             rgba(36,40,59,1)
-set completion-fg             rgba(192,202,245,1)
-set completion-highlight-bg   rgba(65,72,104,1)
-set completion-highlight-fg   rgba(192,202,245,1)
-set completion-group-bg       rgba(36,40,59,1)
-set completion-group-fg       rgba(122,162,247,1)
-
-set statusbar-fg              rgba(192,202,245,1)
-set statusbar-bg              rgba(36,40,59,1)
-
-set notification-bg           rgba(36,40,59,1)
-set notification-fg           rgba(192,202,245,1)
-set notification-error-bg     rgba(36,40,59,1)
-set notification-error-fg     rgba(247,117,127,1)
-set notification-warning-bg   rgba(36,40,59,1)
-set notification-warning-fg   rgba(255,199,119,1)
-
-set inputbar-fg               rgba(192,202,245,1)
-set inputbar-bg               rgba(36,40,59,1)
-
-set recolor-lightcolor        rgba(31,35,53,1)
-set recolor-darkcolor         rgba(192,202,245,1)
-
-set index-fg                  rgba(192,202,245,1)
-set index-bg                  rgba(31,35,53,1)
-set index-active-fg           rgba(192,202,245,1)
-set index-active-bg           rgba(36,40,59,1)
-
-set render-loading-bg         rgba(31,35,53,1)
-set render-loading-fg         rgba(192,202,245,1)
-
-set highlight-color           rgba(65,72,104,0.5)
-set highlight-fg              rgba(187,154,247,0.5)
-set highlight-active-color    rgba(187,154,247,0.5)
+# Tokyonight color theme for Zathura
+# Swaps Foreground for Background to get a light version if the user prefers
+#
+# Tokyonight color theme
+#
+set notification-error-bg "#f7768e"
+set notification-error-fg "#c0caf5"
+set notification-warning-bg "#e0af68"
+set notification-warning-fg "#414868"
+set notification-bg "#1a1b26"
+set notification-fg "#c0caf5"
+set completion-bg "#1a1b26"
+set completion-fg "#a9b1d6"
+set completion-group-bg "#1a1b26"
+set completion-group-fg "#a9b1d6"
+set completion-highlight-bg "#414868"
+set completion-highlight-fg "#c0caf5"
+set index-bg "#1a1b26"
+set index-fg "#c0caf5"
+set index-active-bg "#414868"
+set index-active-fg "#c0caf5"
+set inputbar-bg "#1a1b26"
+set inputbar-fg "#c0caf5"
+set statusbar-bg "#1a1b26"
+set statusbar-fg "#c0caf5"
+set highlight-color "#e0af68"
+set highlight-active-color "#9ece6a"
+set default-bg "#1a1b26"
+set default-fg "#c0caf5"
+set render-loading true
+set render-loading-fg "#1a1b26"
+set render-loading-bg "#c0caf5"
+#
+# Recolor mode settings
+# <C-r> to switch modes
+#
+set recolor-lightcolor "#1a1b26"
+set recolor-darkcolor "#c0caf5"
