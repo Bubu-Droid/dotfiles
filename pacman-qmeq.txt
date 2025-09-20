@@ -3,5 +3,6 @@ ferdium
 hp-printer-app
 i3lock-fancy-git
 lightdm-webkit-theme-aether
+overskride
 yay
 zsh-theme-powerlevel10k-git
