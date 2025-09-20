@@ -36,7 +36,7 @@ selected=$(
   IFS='
 '
   for rice in $rices; do
-    printf "%s\000icon\037%s/wallpapers/%s/0.png\n" "$rice" "$HOME" "$rice"
+    printf "%s\000icon\037%s/wallpapers/%s/preview.png\n" "$rice" "$HOME" "$rice"
   done | rofi -dmenu -p "Theme Selector" \
     -theme "$HOME/.config/rofi/selector.rasi" \
     -selected-row "$selected_index"
@@ -49,6 +49,16 @@ if [ -n "$selected" ] && [ "$selected" != "$current_rice" ]; then
   # Update Polybar theme
   sed -i "$HOME/.config/polybar/config.ini" \
     -e "s|\$HOME/.config/polybar/colors/.*\.ini|\$HOME/.config/polybar/colors/$selected.ini|"
+  if [ "$selected" = "tokyonight" ]; then
+    sed -i "$HOME/.config/polybar/modules/xkeyboard.ini" \
+      -e "s|%{F#[0-9a-fA-F]\{6\}}|%{F#8db0ff}|"
+  elif [ "$selected" = "coolnight" ]; then
+    sed -i "$HOME/.config/polybar/modules/xkeyboard.ini" \
+      -e "s|%{F#[0-9a-fA-F]\{6\}}|%{F#00BFFF}|"
+  else
+    sed -i "$HOME/.config/polybar/modules/xkeyboard.ini" \
+      -e "s|%{F#[0-9a-fA-F]\{6\}}|%{F#8db0ff}|"
+  fi
 
   # Update Alacritty theme
   sed -i "$HOME/.config/alacritty/alacritty.toml" \
@@ -56,7 +66,24 @@ if [ -n "$selected" ] && [ "$selected" != "$current_rice" ]; then
 
   # Update wallpaper in i3 config
   sed -i "$HOME/.config/i3/config" \
-    -e "s|\$HOME/wallpapers/$current_rice/.*\.png|\$HOME/wallpapers/$selected/0.png|"
+    -e "s|\$HOME/wallpapers/$current_rice/.*\.png|\$HOME/wallpapers/$selected/01.png|"
+
+  # Update GTK theme
+  if [ "$selected" = "tokyonight" ] || [ "$selected" = "coolnight" ]; then
+    sed -i "$HOME/.config/gtk-3.0/settings.ini" \
+      -e "s|^gtk-theme-name=.*|gtk-theme-name=Tokyonight-Dark|"
+    sed -i "$HOME/.config/gtk-4.0/settings.ini" \
+      -e "s|^gtk-theme-name=.*|gtk-theme-name=Tokyonight-Dark|"
+    sudo sed -i "/etc/environment" \
+      -e "s|^GTK_THEME=.*|GTK_THEME=Tokyonight-Dark|"
+  else
+    sed -i "$HOME/.config/gtk-3.0/settings.ini" \
+      -e "s|^gtk-theme-name=.*|gtk-theme-name=Tokyonight-Dark|"
+    sed -i "$HOME/.config/gtk-4.0/settings.ini" \
+      -e "s|^gtk-theme-name=.*|gtk-theme-name=Tokyonight-Dark|"
+    sudo sed -i "/etc/environment" \
+      -e "s|^GTK_THEME=.*|GTK_THEME=Tokyonight-Dark|"
+  fi
 
   # Restart i3
   i3-msg restart

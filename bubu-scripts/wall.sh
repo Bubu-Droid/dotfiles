@@ -5,7 +5,7 @@ read -r current_rice <"$HOME/.rice"
 read -r current_wall <"$HOME/.wall"
 
 # List rices
-walls=$(find "$HOME/wallpapers/$current_rice/" -mindepth 1 -maxdepth 1 -type f -exec basename {} \; | sort)
+walls=$(find "$HOME/wallpapers/$current_rice/" -mindepth 1 -maxdepth 1 -type f ! -name "preview.png" -exec basename {} \; | sort)
 
 # Find current rice
 selected_index=-1
@@ -35,12 +35,11 @@ selected=$(
 # If a valid option was selected, write the value to the configuration file and change theme.
 if [ -n "$selected" ] && [ "$selected" != "$current_wall" ]; then
   echo "$selected" >"$HOME"/.wall
+
+  # Update wallpaper
   feh --bg-fill "$HOME/wallpapers/$current_rice/$selected" &
 
   # Update Polybar theme
   sed -i "$HOME/.config/i3/config" \
-    -e "s|\$HOME/wallpapers/$current_rice/.*\.png|\$HOME/wallpapers/$current_rice/$selected.png|"
-
-  # Restart i3
-  i3-msg restart
+    -e "s|\$HOME/wallpapers/$current_rice/.*\.png|\$HOME/wallpapers/$current_rice/$selected|"
 fi
