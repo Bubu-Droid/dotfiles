@@ -201,12 +201,14 @@ bindsym $mod+r mode "resize"
 
 exec_always $HOME/.config/polybar/launch.sh &
 exec_always picom &
-exec_always feh --bg-fill $HOME/wallpapers/coolnight/0.png &
+exec_always feh --bg-fill $HOME/wallpapers/tokyonight/$(cat $HOME/.wall) &
 
 # Screenshots(flameshot)
-bindsym Print exec flameshot full --path $HOME/Pictures/screenshots
-bindsym Ctrl+Shift+Print exec flameshot gui
+bindsym Print exec $HOME/bubu-scripts/full-ss.sh
+bindsym Ctrl+Shift+Print exec spectacle -g
 bindsym $modalt+e exec rofi -show emoji
 bindsym $modalt+s exec rofi -dmenu -i -p "Symbol:" <$HOME/.config/rofi/custom-symbols.txt | awk '{print $1}' | tr -d "\n" | xclip -selection clipboard
 bindsym $modalt+v exec clipcat-menu
+bindsym $modalt+t exec $HOME/bubu-scripts/theme.sh
+bindsym $modalt+w exec $HOME/bubu-scripts/wall.sh
 bindsym $modalt+l exec i3lock-fancy
