@@ -4,21 +4,24 @@ This repository contains my Arch i3 Dotfiles. It also contains:
 
 - Instructions for setting up these dotfiles on a freshly
   installed system
-- My custom LaTeX template, which I use and sometimes share
+- Wallpapers I use
+- My custom LaTeX template
 
 System Configuration:
 
 - Distro : `Arch Linux`
 - WM : `i3`
 - Terminal : `Alacritty`
-- Font : `Meslo LGS NF`
+- Terminal Font : `Meslo LGS NF`
 - Bar : `Polybar`
 - Editor : `Neovim`
 - Shell : `Zsh`
 - Launcher : `Rofi`
 - Browser : `Firefox`
+- Screenshot Tool : `Spectacle`
+- File Explorer : `Thunar`
 
-Thanks a lot to @rosemarys_baby for helping me out whenever
+Thanks a lot to `@rosemarys_baby` for helping me out whenever
 I was clueless during my first Arch installation.
 
 After being almost a complete year into using Arch as my
@@ -29,32 +32,57 @@ Read the Wiki people. :joy:
 
 A few resources for installing Arch Linux:
 
-- [Arch Wiki installation guide][archinstallguide]
+- [Arch (Wiki) installation guide][archinstallguide]
 - [Arch installation guide by Mental Outlaw][mentaloutarchinstall]
 - [Setting up Graphical Environments and
   Users by Luke Smith][archlinuxlukesmith]
 
-## Ricing a fresh system with my Dotfiles
+## :rocket: Overview of my Arch i3 rice
 
+> [!NOTE]
 > Follow [this](RICING.md) guided manual for ricing the setup.
 
-Here is the screenshot of my current rice. My previous
-rices can be found in [dotfiles-screenshots/](dotfiles-screenshots)
-directory. Both dark and light theme based wallpapers
+Here are the screenshots of my current rice. My previous
+rices can be found in
+[dotfiles-screenshots/](dotfiles-screenshots)
+directory. The wallpapers which I use
 can be found in [wallpapers/](wallpapers) directory.
 
-![Setup 3](dotfiles-screenshots/setup-3.png "My current setup")
+|                     :night_with_stars: TokyoNight                     |
+| :-------------------------------------------------------------------: |
+| ![Setup 4-1](dotfiles-screenshots/setup-4-1.png "My_current_setup_1") |
 
-## Additional resources
+|                         :milky_way: CoolNight                         |
+| :-------------------------------------------------------------------: |
+| ![Setup 4-2](dotfiles-screenshots/setup-4-2.png "My_current_setup_2") |
+
+### :butterfly: Changing themes and wallpapers on the fly
+
+---
+
+I've finally added the functionality of changing
+color schemes and wallpapers on the fly
+using a rofi applet. (This applet is due to
+[gh0stzk](https://github.com/gh0stzk).)
+
+|               :art: Color Scheme Selector                |
+| :------------------------------------------------------: |
+| ![Theme](dotfiles-screenshots/theme.png "Theme_Changer") |
+
+|           :sunrise_over_mountains: Wallpaper Selector            |
+| :--------------------------------------------------------------: |
+| ![Wallpapers](dotfiles-screenshots/wall.png "Wallpaper_Changer") |
+
+## :books: Additional resources
 
 - [Archived packages for Arch][archarchive]
 
 ---
 
-### TODOs
+### :memo: TODOs
 
-- [ ] Create a separate branch for laptop specific features.
-- [ ] Add light mode and dark mode themes.
+- [ ] Create a script for switching between rices
+      for laptop specific features.
 
 [archinstallguide]: https://wiki.archlinux.org/title/Installation_guide
 [mentaloutarchinstall]: https://youtu.be/rUEnS1zj1DM?si=ftzJVo7DClwe8sOJ
