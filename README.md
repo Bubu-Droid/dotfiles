@@ -58,8 +58,6 @@ can be found in [wallpapers/](wallpapers) directory.
 
 ### :butterfly: Changing themes and wallpapers on the fly
 
----
-
 I've finally added the functionality of changing
 color schemes and wallpapers on the fly
 using a rofi applet. (This applet is due to
@@ -73,13 +71,13 @@ using a rofi applet. (This applet is due to
 | :--------------------------------------------------------------: |
 | ![Wallpapers](dotfiles-screenshots/wall.png "Wallpaper_Changer") |
 
+---
+
 ## :books: Additional resources
 
 - [Archived packages for Arch][archarchive]
 
----
-
-### :memo: TODOs
+## :memo: TODOs
 
 - [ ] Create a script for switching between rices
       for laptop specific features.
