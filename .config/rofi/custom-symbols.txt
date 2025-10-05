@@ -1,8 +1,8 @@
-’ right single quote apostrophe
 — em dash
 – en dash
 “ left double quote
 ” right double quote
+’ right single quote apostrophe
 ‘ left single quote
 → right arrow
 ← left arrow
