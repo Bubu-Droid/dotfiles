@@ -2,15 +2,22 @@
 % ============== PROVIDES THE PACKAGE ============== %
 % ================================================== %
 
-% This sty file is heavily inspired by Evan Chen's
-% evan.sty. Most of the credit for this file goes
-% to him.
+% This sty file is heavily inspired by vEnhance's
+% and sohamcho8's style files.
+% Most of the credit for this file goes to them.
+% The design in the bottom-left corner of the
+% fancy cover page is due to Jishnu.
 
 % My sty file can be found at
 % https://github.com/Bubu-Droid/dotfiles/blob/main/texmf/tex/latex/sty/bubu.sty
 
-% Evan's sty file can be found at
+% vEnhance's sty file can be found at:
 % https://github.com/vEnhance/dotfiles/blob/main/texmf/tex/latex/evan/evan.sty
+
+% sohamcho8's sty file can be found at:
+% https://github.com/sohamch08/LaTeX/tree/master
+% Alternate resource:
+% https://github.com/SeniorMars/dotfiles/tree/main/latex_template
 
 % {{{ PROVIDES THE PACKAGE
 
@@ -540,6 +547,8 @@
   \tcbset{%
     claimstyle/.style={%
       enhanced,
+      before skip=8pt,
+      after skip=0pt,
       colback = lightgreen!10,
       frame hidden,
       boxrule = 0sp,
@@ -560,6 +569,8 @@
   \tcbset{%
     examplestyle/.style={%
       enhanced,
+      before skip=12pt,
+      after skip=2pt,
       colback = lightgreen!10,
       colframe = darkgreenbg,
       coltitle = darkgreenfg,
@@ -579,9 +590,12 @@
   \tcbset{%
     notationstyle/.style={%
       enhanced jigsaw,
+      before skip=12pt,
+      after skip=2pt,
       colback=gray!20!white,
       colframe=gray!80!black,
       size=small,
+      top=2mm,
       bottom=2mm,
       boxrule=1pt,
       title=\bfseries{Notation:},
