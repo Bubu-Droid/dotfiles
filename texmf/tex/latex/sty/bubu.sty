@@ -181,7 +181,6 @@
     \textcolor{deepbluefg}{\bfseries{#1}}%
   }
 
-
   \captionsetup{%
     labelfont={bf,sf},%
     textfont={sf}%
@@ -219,13 +218,13 @@
   \ifbubuhdr
     \ifbubuauthor
       \ifbubudate
-        \renewcommand{\bubuiheadcontent}{\footnotesize\textbf{\theauthor} --- \textcolor{bubured}{\thedate}}
+        \renewcommand{\bubuiheadcontent}{\footnotesize\textbf{\theauthor} --- \thedate}
       \else
         \renewcommand{\bubuiheadcontent}{\footnotesize\textbf{\theauthor}}
       \fi
     \else
       \ifbubudate
-        \renewcommand{\bubuiheadcontent}{\textcolor{bubured}{\thedate}}
+        \renewcommand{\bubuiheadcontent}{\thedate}
       \else
         \renewcommand{\bubuiheadcontent}{}
       \fi
@@ -239,8 +238,11 @@
     \else
       \renewcommand{\bubuoheadcontent}{}
     \fi
+  \else
+    \KOMAoptions{headsepline=false}
   \fi
 
+  % TODO: add styling for scrreprt and scrbook
   \makeatletter
   \@ifclassloaded{scrartcl}{%
     \renewcommand{\headfont}{}%
@@ -279,15 +281,30 @@
 % minted setup
 \ifbubucs
   \RequirePackage{minted}
-  \setminted{%
-    frame=lines,%
-    framesep=2mm,%
-    baselinestretch=1.2,%
-    bgcolor=LightGray,%
-    fontsize=\footnotesize,%
-    linenos,%
-    tabsize=2%
+
+  \definecolor{codebg}{HTML}{FAFAFA}
+  \definecolor{coderule}{HTML}{DDDDDD}
+  \definecolor{codenum}{HTML}{999999}
+
+  \setminted{
+    bgcolor=codebg,
+    fontsize=\small,
+    baselinestretch=1.05,
+    breaklines=true,
+    frame=lines,
+    framesep=2mm,
+    rulecolor=\color{coderule},
+    xleftmargin=1em,
+    linenos,
+    numbersep=8pt,
+    fontfamily=tt,
+    tabsize=2
   }
+
+  \renewcommand{\theFancyVerbLine}{\textcolor{codenum}{%
+    \small\arabic{FancyVerbLine}%
+    }}
+  \usemintedstyle{vs}
 \fi
 
 % epigraph setup
@@ -310,7 +327,9 @@
   \DeclareFieldFormat[article]{title}{#1} % title of journal article is printed as normal text
   \DeclareFieldFormat[article]{volume}{\textbf{#1}\addcolon\space} % bold volume numbers
   % Separate ISBN-13 field
-  \DeclareSourcemap{\maps[datatype=bibtex]{\map{\step[fieldsource=ISBN-13,fieldtarget=ISBN]}}}
+  \DeclareSourcemap{%
+    \maps[datatype=bibtex]{\map{\step[fieldsource=ISBN-13,fieldtarget=ISBN]}}%
+    }
   % Evan likes small caps for bibliography author names
   \renewcommand{\mkbibnamegiven}[1]{\textsc{#1}}
   \renewcommand{\mkbibnamefamily}[1]{\textsc{#1}}
@@ -318,6 +337,7 @@
   \renewcommand{\mkbibnamesuffix}[1]{\textsc{#1}}
   % Drop trailing punctuation in bibliography names
   \renewcommand{\finentrypunct}{}
+
 \fi
 
 % hints setup
@@ -338,12 +358,11 @@
     \marginpar{\hspace*{1em}\scriptsize\ttfamily\color{Green}#1}%
   }
   \newcommand{\boninclude}[2]{%
-    \py{boninclude(r"#1", r"#2")}%
+    \pyc{print(boninclude(r"#1", r"#2"))}%
   }
 \fi
 
 % cover page setup
-
 \ifbubucover
   \RequirePackage{tikz-cd}
   \RequirePackage{pgfplots}
@@ -439,8 +458,22 @@
 
 % {{{ CORE STYLING
 
+\newenvironment{soln}{%
+  \begin{proof}[Solution]%
+  \renewcommand{\qedsymbol}{$\blacksquare$}%
+}%
+{\end{proof}}
+
+\newenvironment{subproof}{%
+  \begin{proof}%
+  \renewcommand{\qedsymbol}{$\square$}%
+}%
+{\end{proof}}
+
+
 \ifbubumax
   \makeatletter
+  % TODO: add styling for scrreprt and scrbook
   \@ifundefined{chapter}{}{%
     \addtokomafont{partprefix}{\rmfamily}%
     \renewcommand*{\partformat}{%
@@ -469,26 +502,12 @@
   \addtokomafont{paragraph}{\color{orange!35!black}\P\ }
   \KOMAoptions{numbers=noenddot}
 
-
   % \usetikzlibrary{shadows}
   % \xpatchcmd{\endmdframed}%
   %   {\aftergroup\endmdf@trivlist\color@endgroup}%
   %   {\endmdf@trivlist\color@endgroup\@doendpe}%
   %   {}%
   %   {}
-
-
-  \newenvironment{soln}{%
-    \begin{proof}[Solution]%
-    \renewcommand{\qedsymbol}{$\blacksquare$}%
-  }%
-  {\end{proof}}
-
-  \newenvironment{subproof}{%
-    \begin{proof}%
-    \renewcommand{\qedsymbol}{$\square$}%
-  }%
-  {\end{proof}}
 
   \newtheoremstyle{problemstyle}
     {8pt}
@@ -660,9 +679,7 @@
 
       \theoremstyle{problemstyle}
       \newtheorem{exercise}[mathcounter]{Exercise}
-      \newtheorem*{exercise*}{Exercise}
       \newtheorem{problem}[mathcounter]{Problem}
-      \newtheorem*{problem*}{Problem}
 
     \else
       \tcbuselibrary{theorems,skins,hooks}
@@ -696,9 +713,7 @@
 
       \theoremstyle{problemstyle}
       \newtheorem{exercise}{Exercise}[section]
-      \newtheorem*{exercise*}{Exercise}
       \newtheorem{problem}{Problem}[section]
-      \newtheorem*{problem*}{Problem}
     \fi
 
   \else
@@ -736,9 +751,7 @@
 
       \theoremstyle{problemstyle}
       \newtheorem{exercise}[mathcounter]{Exercise}
-      \newtheorem*{exercise*}{Exercise}
       \newtheorem{problem}[mathcounter]{Problem}
-      \newtheorem*{problem*}{Problem}
 
     \else
       \tcbuselibrary{theorems,skins,hooks}
@@ -772,9 +785,7 @@
 
       \theoremstyle{problemstyle}
       \newtheorem{exercise}{Exercise}
-      \newtheorem*{exercise*}{Exercise}
       \newtheorem{problem}{Problem}
-      \newtheorem*{problem*}{Problem}
     \fi
   \fi
 
@@ -785,18 +796,40 @@
       #1,
     }
 
+  \theoremstyle{problemstyle}
+  \newtheorem*{problem*}{Problem}
+  \newtheorem*{exercise*}{Exercise}
+
   \thmbox{definitionbase}{Definition}
-  \thmbox{theorembase}{Theorem}[colback=newbluebg,colframe=deepbluefg,colbacktitle=deepbluefg,coltitle=deepbluefg]
-  \thmbox{lemmabase}{Lemma}[colback=newbluebg,colframe=deepbluefg,colbacktitle=deepbluefg,coltitle=deepbluefg]
-  \thmbox{corollarybase}{Corollary}[colback=deepbluebg,colframe=deepbluefg,colbacktitle=lightbluefg,coltitle=deepbluefg]
-  \thmbox{propositionbase}{Proposition}[colback=deepbluebg,colframe=deepbluefg,colbacktitle=lightbluefg,coltitle=deepbluefg]
+  \thmbox{theorembase}{Theorem}[%
+    colback=newbluebg,
+    colframe=deepbluefg,
+    colbacktitle=deepbluefg,
+    coltitle=deepbluefg]
+  \thmbox{lemmabase}{Lemma}[%
+    colback=newbluebg,
+    colframe=deepbluefg,
+    colbacktitle=deepbluefg,
+    coltitle=deepbluefg]
+  \thmbox{corollarybase}{Corollary}[%
+    colback=deepbluebg,
+    colframe=deepbluefg,
+    colbacktitle=lightbluefg,
+    coltitle=deepbluefg]
+  \thmbox{propositionbase}{Proposition}[%
+    colback=deepbluebg,
+    colframe=deepbluefg,
+    colbacktitle=lightbluefg,
+    coltitle=deepbluefg]
 
   \claimbox{algorithmbase}{Algorithm}
-  \claimbox{claimbase}{Claim}[before upper={\tcbtitle\ {\bfseries\sffamily\color{lightgreen!85!black}---\ }},]
+  \claimbox{claimbase}{Claim}[%
+    before upper={\tcbtitle\ {\bfseries\sffamily\color{lightgreen!85!black}---\ }},
+    ]
   \claimbox{questionbase}{Question}[%
       before upper={\tcbtitle{\bfseries\sffamily\color{darkgreenfg}.}\ },
       coltitle = darkgreenfg,
-      segmentation style={darkgreenfg}%
+      segmentation style={darkgreenfg}
     ]
   \claimbox{remarkbase}{Remark}[%
       colback=RedViolet!5!gray!5,
@@ -834,6 +867,18 @@
   \MakeWrapper{claim}{claimbase}
   \MakeWrapper{ques}{questionbase}
   \MakeWrapper{remark}{remarkbase}
+
+  \MakeWrapper{definition*}{definitionbase*}
+  \MakeWrapper{theorem*}{theorembase*}
+  \MakeWrapper{lemma*}{lemmabase*}
+  \MakeWrapper{corollary*}{corollarybase*}
+  \MakeWrapper{proposition*}{propositionbase*}
+
+  \MakeWrapper{example*}{examplebase*}
+  \MakeWrapper{algorithm*}{algorithmbase*}
+  \MakeWrapper{claim*}{claimbase*}
+  \MakeWrapper{ques*}{questionbase*}
+  \MakeWrapper{remark*}{remarkbase*}
 
 \else
   \theoremstyle{plain}
@@ -985,7 +1030,7 @@
 
 \DeclareMathOperator{\id}{id}
 \newcommand{\inv}{^{-1}}
-\newcommand{\dg}{^\circ}
+\newcommand{\dg}{^{\circ}}
 \newcommand{\trans}{%
   ^{\mathsf{T}}%
 }
