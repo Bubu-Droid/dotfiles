@@ -47,11 +47,14 @@
 - Turn on `Color`, `ILoveCandy`, and `VerbosePkgLists`
   for pacman.
   For some other pretty changes, you may search for
-  ''how to prettify my pacman''.
+  “how to prettify my pacman”.
 
 - For other general recommendations, you may follow
   this [Arch Wiki article][archwikipostinstall]
   on post-installation general recommendations.
+
+- Add the line `GTK_THEME=Adwaita`
+  at the end of `/etc/environment`.
 
 - Configure your login screen using Aether. You
   may follow [this][loginaether] article.
