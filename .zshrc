@@ -37,11 +37,12 @@ alias supdate="supdate.sh"
 alias mirdate="mirdate.sh"
 alias niceasy="niceasy.py"
 alias aops="aops.py"
-alias bon="bon.py"
+alias bon="python3 -m bon"
 alias cd="z"
 eval "$(zoxide init zsh)"
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/bubu-scripts:$HOME/bon/bon-scripts:$HOME/.config/polybar/poly-scripts
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/bubu-scripts:$HOME/bon/bon:$HOME/.config/polybar/poly-scripts
+export PYTHONPATH="$PYTHONPATH:$HOME/bon"
 export EDITOR="nvim"
 export BROWSER="firefox"
 
