@@ -19,6 +19,7 @@ return {
       -- text = { "prettier" },
       c = { "clang-format" },
       cpp = { "clang-format" },
+      json = { "jq" },
     },
     format_on_save = {
       lsp_fallback = true,

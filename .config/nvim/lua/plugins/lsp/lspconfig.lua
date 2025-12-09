@@ -6,6 +6,7 @@ return {
     "mason-lspconfig.nvim",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
+    "b0o/schemastore.nvim",
   },
   config = function()
     -- import mason_lspconfig plugin
@@ -155,7 +156,7 @@ return {
       settings = {
         yaml = {
           schemas = {
-            kubernetes = "/*.yaml", -- Example schema for Kubernetes files
+            kubernetes = "/*.yaml",
           },
           validate = true,
           completion = true,
@@ -172,6 +173,15 @@ return {
     vim.lsp.config("clangd", {
       capabilities = capabilities,
       filetypes = { "c", "cpp" },
+    })
+
+    vim.lsp.config("jsonls", {
+      capabilities = capabilities,
+      filetypes = { "json" },
+      settings = {
+        schemas = require("schemastore").json.schemas(),
+        validate = true,
+      },
     })
   end,
 }

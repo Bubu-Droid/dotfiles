@@ -17,6 +17,7 @@ return {
       "bashls", -- bash
       -- "django-template-lsp", -- django
       "clangd", -- c
+      "jsonls", -- json
       -- formatter
       "prettier", -- primary-ft
       "stylua", -- lua
@@ -24,6 +25,7 @@ return {
       "black", -- python-secondary
       "shfmt", -- bash
       "clang-format", -- c
+      "jq", -- json
       -- linter
       "pylint", -- python
       "eslint_d", -- web-dev
@@ -36,6 +38,7 @@ return {
       "textlint", -- text
       -- "djlint", -- htmldjango
       "cpplint", -- c
+      "jsonlint", -- json
     },
   },
 }
