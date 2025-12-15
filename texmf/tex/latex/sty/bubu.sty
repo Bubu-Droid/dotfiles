@@ -106,21 +106,6 @@
     citecolor=ForestGreen%
   }
   \RequirePackage[left=0.9in,right=0.9in,top=1.1in,bottom=1.2in]{geometry}
-  \RequirePackage[nameinlink]{cleveref}
-  \Crefname{theorem}{\bfseries\sffamily Theorem}{\bfseries\sffamily Theorems}
-  \Crefname{lemma}{\bfseries\sffamily Lemma}{\bfseries\sffamily Lemmas}
-  \Crefname{proposition}{\bfseries\sffamily Proposition}{\bfseries\sffamily Propositions}
-  \Crefname{corollary}{\bfseries\sffamily Corollary}{\bfseries\sffamily Corollaries}
-  \Crefname{algorithm}{\bfseries\sffamily Algorithm}{\bfseries\sffamily Algorithms}
-  \Crefname{claim}{\bfseries\sffamily Claim}{\bfseries\sffamily Claims}
-  \Crefname{example}{\bfseries\sffamily Example}{\bfseries\sffamily Examples}
-  \Crefname{remark}{\bfseries\sffamily Remark}{\bfseries\sffamily Remarks}
-  \Crefname{answer}{\bfseries\sffamily Answer}{\bfseries\sffamily Answers}
-  \Crefname{definition}{\bfseries\sffamily Definition}{\bfseries\sffamily Definitions}
-  \Crefname{exercise}{\bfseries\sffamily Exercise}{\bfseries\sffamily Exercises}
-  \Crefname{problem}{\bfseries\sffamily Problem}{\bfseries\sffamily Problems}
-  \Crefname{ques}{\bfseries\sffamily Question}{\bfseries\sffamily Questions}
-  \Crefname{notation}{\bfseries\sffamily Notation}{\bfseries\sffamily Notations}
   \RequirePackage{microtype}
   \RequirePackage{perpage}
   \RequirePackage[makeroom]{cancel}
@@ -128,6 +113,8 @@
 \else
   \RequirePackage[colorlinks=true,linkcolor=blue]{hyperref}
 \fi
+
+\RequirePackage[nameinlink]{cleveref}
 
 % }}}
 
@@ -508,22 +495,22 @@
   %   {}%
   %   {}
 
-  \newtheoremstyle{problemstyle}
-    {8pt}
-    {8pt}
-    {\normalfont}
-    {}
-    {\color{blue!40!black}\normalfont\bfseries}
-    {.}
-    { }
-    {}
+  % \newtheoremstyle{problemstyle}
+  %   {8pt}
+  %   {8pt}
+  %   {\normalfont}
+  %   {}
+  %   {\color{blue!40!black}\normalfont\bfseries}
+  %   {.}
+  %   { }
+  %   {}
 
   \tcbuselibrary{theorems,skins,hooks}
   \tcbset{%
-    thmstyle/.style={%
+    defnstyle/.style={%
       enhanced,
       before skip=12pt,
-      after skip=2pt,
+      after skip=12pt,
       coltitle=RawSienna,
       colback=Salmon!5,
       colframe=RawSienna,
@@ -566,7 +553,7 @@
     claimstyle/.style={%
       enhanced,
       before skip=8pt,
-      after skip=0pt,
+      after skip=8pt,
       colback = lightgreen!10,
       frame hidden,
       boxrule = 0sp,
@@ -588,7 +575,7 @@
     examplestyle/.style={%
       enhanced,
       before skip=12pt,
-      after skip=2pt,
+      after skip=12pt,
       colback = lightgreen!10,
       colframe = darkgreenbg,
       coltitle = darkgreenfg,
@@ -603,18 +590,43 @@
     }
   }
 
+  \tcbuselibrary{theorems,skins,hooks}
+  \tcbset{
+    problemstyle/.style={
+      enhanced,
+      frame hidden,
+      boxrule=0pt,
+      boxsep=0pt,
+      colback=white,
+      colframe=white,
+      sharp corners,
+      before upper={\noindent\ignorespaces},
+      before skip=12pt,
+      after skip=12pt,
+      top=0pt, bottom=0pt, left=0pt, right=0pt,
+      fonttitle=\bfseries\color{blue!40!black},
+      coltitle=blue!40!black,
+      attach title to upper,
+      after title={.\space},
+      description delimiters parenthesis,
+      separator sign none,
+    }
+  }
+
   \usetikzlibrary{arrows,calc,shadows.blur}
   \tcbuselibrary{skins}
   \tcbset{%
     notationstyle/.style={%
       enhanced jigsaw,
       before skip=12pt,
-      after skip=2pt,
+      after skip=12pt,
       colback=gray!20!white,
       colframe=gray!80!black,
       size=small,
       top=2mm,
-      bottom=2mm,
+      bottom=3mm,
+      left=4mm,
+      right=4mm,
       boxrule=1pt,
       title=\bfseries{Notation:},
       halign title=flush center,
@@ -645,20 +657,36 @@
 
   \ifbubusecthm
     \ifbubucountcont
-      \newcounter{mathcounter}[section]
-      \renewcommand{\themathcounter}{\thesection.\arabic{mathcounter}}
       \tcbuselibrary{theorems,skins,hooks}
-      \NewDocumentCommand{\thmbox}{m m O{}}{%
-        \newtcbtheorem[number within=section,use counter=mathcounter]{#1}{#2}{%
-          thmstyle,
+      \newtcbtheorem[
+        number within=section,
+        crefname={definition}{definitions},
+        Crefname={Definition}{Definitions}
+      ]{definition}{Definition}{%
+        defnstyle,
+        title=Definition,
+      }{definition}
+
+      \tcbuselibrary{theorems,skins,hooks}
+      \NewDocumentCommand{\thmbox}{m m O{} m}{%
+        \newtcbtheorem[
+          number within=section,
+          use counter from=definition,
+          #4
+        ]{#1}{#2}{%
+          defnstyle,
           title={#2},
           #3%
         }{#1}%
       }
 
       \tcbuselibrary{theorems,skins,hooks}
-      \NewDocumentCommand{\claimbox}{m m O{}}{%
-        \newtcbtheorem[number within=section,use counter=mathcounter]{#1}{#2}
+      \NewDocumentCommand{\claimbox}{m m O{} m}{%
+        \newtcbtheorem[
+          number within=section,
+          use counter from=definition,
+          #4
+        ]{#1}{#2}
         {%
           claimstyle,
           title={#2},
@@ -667,8 +695,12 @@
       }
 
       \tcbuselibrary{theorems,skins,hooks}
-      \NewDocumentCommand{\examplebox}{m m O{}}{%
-        \newtcbtheorem[number within=section,use counter=mathcounter]{#1}{#2}
+      \NewDocumentCommand{\examplebox}{m m O{} m}{%
+        \newtcbtheorem[
+          number within=section,
+          use counter from=definition,
+          #4
+        ]{#1}{#2}
         {%
           examplestyle,
           title={#2},
@@ -676,23 +708,49 @@
         }{#1}%
       }
 
-      \theoremstyle{problemstyle}
-      \newtheorem{exercise}[mathcounter]{Exercise}
-      \newtheorem{problem}[mathcounter]{Problem}
+      \tcbuselibrary{theorems,skins,hooks}
+      \NewDocumentCommand{\problembox}{m m O{} m}{%
+        \newtcbtheorem[
+          number within=section,
+          use counter from=definition,
+          #4
+        ]{#1}{#2}
+        {%
+          problemstyle,
+          title={#2},
+          #3%
+        }{#1}%
+      }
 
     \else
       \tcbuselibrary{theorems,skins,hooks}
-      \NewDocumentCommand{\thmbox}{m m O{}}{%
-        \newtcbtheorem[number within=section]{#1}{#2}{%
-          thmstyle,
+      \newtcbtheorem[
+        number within=section,
+        crefname={definition}{definitions},
+        Crefname={Definition}{Definitions}
+      ]{definition}{Definition}{%
+        defnstyle,
+        title=Definition,
+      }{definition}
+
+      \tcbuselibrary{theorems,skins,hooks}
+      \NewDocumentCommand{\thmbox}{m m O{} m}{%
+        \newtcbtheorem[
+          number within=section,
+          #4
+        ]{#1}{#2}{%
+          defnstyle,
           title={#2},
           #3%
         }{#1}%
       }
 
       \tcbuselibrary{theorems,skins,hooks}
-      \NewDocumentCommand{\claimbox}{m m O{}}{%
-        \newtcbtheorem[number within=section]{#1}{#2}
+      \NewDocumentCommand{\claimbox}{m m O{} m}{%
+        \newtcbtheorem[
+          number within=section,
+          #4
+        ]{#1}{#2}
         {%
           claimstyle,
           title={#2},
@@ -701,8 +759,11 @@
       }
 
       \tcbuselibrary{theorems,skins,hooks}
-      \NewDocumentCommand{\examplebox}{m m O{}}{%
-        \newtcbtheorem[number within=section]{#1}{#2}
+      \NewDocumentCommand{\examplebox}{m m O{} m}{%
+        \newtcbtheorem[
+          number within=section,
+          #4
+        ]{#1}{#2}
         {%
           examplestyle,
           title={#2},
@@ -710,27 +771,49 @@
         }{#1}%
       }
 
-      \theoremstyle{problemstyle}
-      \newtheorem{exercise}{Exercise}[section]
-      \newtheorem{problem}{Problem}[section]
+      \tcbuselibrary{theorems,skins,hooks}
+      \NewDocumentCommand{\problembox}{m m O{} m}{%
+        \newtcbtheorem[
+          number within=section,
+          #4
+        ]{#1}{#2}
+        {%
+          problemstyle,
+          title={#2},
+          #3%
+        }{#1}%
+      }
     \fi
 
   \else
     \ifbubucountcont
-      \newcounter{mathcounter}[section]
-      \renewcommand{\themathcounter}{\thesection.\arabic{mathcounter}}
       \tcbuselibrary{theorems,skins,hooks}
-      \NewDocumentCommand{\thmbox}{m m O{}}{%
-        \newtcbtheorem[use counter=mathcounter]{#1}{#2}{%
-          thmstyle,
+      \newtcbtheorem[
+        crefname={definition}{definitions},
+        Crefname={Definition}{Definitions}
+      ]{definition}{Definition}{%
+        defnstyle,
+        title=Definition,
+      }{definition}
+
+      \tcbuselibrary{theorems,skins,hooks}
+      \NewDocumentCommand{\thmbox}{m m O{} m}{%
+        \newtcbtheorem[
+          use counter from=definition,
+          #4
+        ]{#1}{#2}{%
+          defnstyle,
           title={#2},
           #3%
         }{#1}%
       }
 
       \tcbuselibrary{theorems,skins,hooks}
-      \NewDocumentCommand{\claimbox}{m m O{}}{%
-        \newtcbtheorem[use counter=mathcounter]{#1}{#2}
+      \NewDocumentCommand{\claimbox}{m m O{} m}{%
+        \newtcbtheorem[
+          use counter from=definition,
+          #4
+        ]{#1}{#2}
         {%
           claimstyle,
           title={#2},
@@ -739,8 +822,11 @@
       }
 
       \tcbuselibrary{theorems,skins,hooks}
-      \NewDocumentCommand{\examplebox}{m m O{}}{%
-        \newtcbtheorem[use counter=mathcounter]{#1}{#2}
+      \NewDocumentCommand{\examplebox}{m m O{} m}{%
+        \newtcbtheorem[
+          use counter from=definition,
+          #4
+        ]{#1}{#2}
         {%
           examplestyle,
           title={#2},
@@ -748,23 +834,45 @@
         }{#1}%
       }
 
-      \theoremstyle{problemstyle}
-      \newtheorem{exercise}[mathcounter]{Exercise}
-      \newtheorem{problem}[mathcounter]{Problem}
+      \tcbuselibrary{theorems,skins,hooks}
+      \NewDocumentCommand{\problembox}{m m O{} m}{%
+        \newtcbtheorem[
+          use counter from=definition,
+          #4
+        ]{#1}{#2}
+        {%
+          problemstyle,
+          title={#2},
+          #3%
+        }{#1}%
+      }
 
     \else
       \tcbuselibrary{theorems,skins,hooks}
-      \NewDocumentCommand{\thmbox}{m m O{}}{%
-        \newtcbtheorem[]{#1}{#2}{%
-          thmstyle,
+      \newtcbtheorem[
+        crefname={definition}{definitions},
+        Crefname={Definition}{Definitions}
+      ]{definition}{Definition}{%
+        defnstyle,
+        title=Definition,
+      }{definition}
+
+      \tcbuselibrary{theorems,skins,hooks}
+      \NewDocumentCommand{\thmbox}{m m O{} m}{%
+        \newtcbtheorem[
+          #4
+        ]{#1}{#2}{%
+          defnstyle,
           title={#2},
           #3%
         }{#1}%
       }
 
       \tcbuselibrary{theorems,skins,hooks}
-      \NewDocumentCommand{\claimbox}{m m O{}}{%
-        \newtcbtheorem[]{#1}{#2}
+      \NewDocumentCommand{\claimbox}{m m O{} m}{%
+        \newtcbtheorem[
+          #4
+        ]{#1}{#2}
         {%
           claimstyle,
           title={#2},
@@ -773,8 +881,10 @@
       }
 
       \tcbuselibrary{theorems,skins,hooks}
-      \NewDocumentCommand{\examplebox}{m m O{}}{%
-        \newtcbtheorem[]{#1}{#2}
+      \NewDocumentCommand{\examplebox}{m m O{} m}{%
+        \newtcbtheorem[
+          #4
+        ]{#1}{#2}
         {%
           examplestyle,
           title={#2},
@@ -782,102 +892,102 @@
         }{#1}%
       }
 
-      \theoremstyle{problemstyle}
-      \newtheorem{exercise}{Exercise}
-      \newtheorem{problem}{Problem}
+      \tcbuselibrary{theorems,skins,hooks}
+      \NewDocumentCommand{\problembox}{m m O{} m}{%
+        \newtcbtheorem[
+          #4
+        ]{#1}{#2}
+        {%
+          problemstyle,
+          title={#2},
+          #3%
+        }{#1}%
+      }
     \fi
   \fi
 
   \usetikzlibrary{arrows,calc,shadows.blur}
   \tcbuselibrary{skins}
-  \newtcolorbox{notationbase}[1][]{%
-      notationstyle,
-      #1,
-    }
-
-  \theoremstyle{problemstyle}
-  \newtheorem*{problem*}{Problem}
-  \newtheorem*{exercise*}{Exercise}
-
-  \thmbox{definitionbase}{Definition}
-  \thmbox{theorembase}{Theorem}[%
-    colback=newbluebg,
-    colframe=deepbluefg,
-    colbacktitle=deepbluefg,
-    coltitle=deepbluefg]
-  \thmbox{lemmabase}{Lemma}[%
-    colback=newbluebg,
-    colframe=deepbluefg,
-    colbacktitle=deepbluefg,
-    coltitle=deepbluefg]
-  \thmbox{corollarybase}{Corollary}[%
-    colback=deepbluebg,
-    colframe=deepbluefg,
-    colbacktitle=lightbluefg,
-    coltitle=deepbluefg]
-  \thmbox{propositionbase}{Proposition}[%
-    colback=deepbluebg,
-    colframe=deepbluefg,
-    colbacktitle=lightbluefg,
-    coltitle=deepbluefg]
-
-  \claimbox{algorithmbase}{Algorithm}
-  \claimbox{claimbase}{Claim}[%
-    before upper={\tcbtitle\ {\bfseries\sffamily\color{lightgreen!85!black}---\ }},
-    ]
-  \claimbox{questionbase}{Question}[%
-      before upper={\tcbtitle{\bfseries\sffamily\color{darkgreenfg}.}\ },
-      coltitle = darkgreenfg,
-      segmentation style={darkgreenfg}
-    ]
-  \claimbox{remarkbase}{Remark}[%
-      colback=RedViolet!5!gray!5,
-      borderline west = {2.5pt}{0pt}{black},
-      before upper={\tcbtitle{\bfseries\sffamily\color{black}.}\ },
-      coltitle = black,
-      segmentation style={solid, black}%
-    ]
-
-  \examplebox{examplebase}{Example}
-
-  % Mother wrapper generator
-  \NewDocumentCommand{\MakeWrapper}{mm}{%
-    \NewDocumentEnvironment{#1}{o}%
-    {%
-      \IfValueTF{##1}%
-        {\begin{#2}{##1}{}}%
-        {\begin{#2}{}{}}%
-    }
-    {%
-      \end{#2}%
-    }%
+  \newtcolorbox{notation}[1][]{%
+    notationstyle,%
+    #1,%
   }
 
-  \MakeWrapper{notation}{notationbase}
+  \thmbox{theorem}{Theorem}[%
+    colback=newbluebg,%
+    colframe=deepbluefg,%
+    colbacktitle=deepbluefg,%
+    coltitle=deepbluefg]{%
+      crefname={theorem}{theorems},%
+      Crefname={Theorem}{Theorems}%
+    }
+  \thmbox{lemma}{Lemma}[%
+    colback=newbluebg,%
+    colframe=deepbluefg,%
+    colbacktitle=deepbluefg,%
+    coltitle=deepbluefg]{%
+      crefname={lemma}{lemmas},%
+      Crefname={Lemma}{Lemmas}%
+    }
+  \thmbox{corollary}{Corollary}[%
+    colback=deepbluebg,%
+    colframe=deepbluefg,%
+    colbacktitle=lightbluefg,%
+    coltitle=deepbluefg]{%
+      crefname={corollary}{corollaries},%
+      Crefname={Corollary}{Corollaries}%
+    }
+  \thmbox{proposition}{Proposition}[%
+    colback=deepbluebg,%
+    colframe=deepbluefg,%
+    colbacktitle=lightbluefg,%
+    coltitle=deepbluefg]{%
+      crefname={proposition}{propositions},%
+      Crefname={Proposition}{Propositions}%
+    }
 
-  \MakeWrapper{definition}{definitionbase}
-  \MakeWrapper{theorem}{theorembase}
-  \MakeWrapper{lemma}{lemmabase}
-  \MakeWrapper{corollary}{corollarybase}
-  \MakeWrapper{proposition}{propositionbase}
+  \claimbox{algorithm}{Algorithm}[]{%
+      crefname={algorithm}{algorithms},%
+      Crefname={Algorithm}{Algorithms}%
+  }
+  \claimbox{claim}{Claim}[%
+    before upper={\tcbtitle\ {\bfseries\sffamily\color{lightgreen!85!black}---\ }},%
+    ]{%
+      crefname={claim}{claims},%
+      Crefname={Claim}{Claims}%
+    }
+  \claimbox{question}{Question}[%
+      before upper={\tcbtitle{\bfseries\sffamily\color{darkgreenfg}.}\ },%
+      coltitle = darkgreenfg,%
+      segmentation style={darkgreenfg}%
+    ]{%
+      crefname={question}{questions},%
+      Crefname={Question}{Questions}%
+    }
+  \claimbox{remark}{Remark}[%
+      colback=RedViolet!5!gray!5,%
+      borderline west = {2.5pt}{0pt}{black},%
+      before upper={\tcbtitle{\bfseries\sffamily\color{black}.}\ },%
+      coltitle = black,%
+      segmentation style={solid, black}%
+    ]{%
+      crefname={remark}{remarks},%
+      Crefname={Remark}{Remarks}%
+    }
 
-  \MakeWrapper{example}{examplebase}
-  \MakeWrapper{algorithm}{algorithmbase}
-  \MakeWrapper{claim}{claimbase}
-  \MakeWrapper{ques}{questionbase}
-  \MakeWrapper{remark}{remarkbase}
+  \examplebox{example}{Example}[]{%
+      crefname={example}{examples},%
+      Crefname={Example}{Examples}%
+  }
 
-  \MakeWrapper{definition*}{definitionbase*}
-  \MakeWrapper{theorem*}{theorembase*}
-  \MakeWrapper{lemma*}{lemmabase*}
-  \MakeWrapper{corollary*}{corollarybase*}
-  \MakeWrapper{proposition*}{propositionbase*}
-
-  \MakeWrapper{example*}{examplebase*}
-  \MakeWrapper{algorithm*}{algorithmbase*}
-  \MakeWrapper{claim*}{claimbase*}
-  \MakeWrapper{ques*}{questionbase*}
-  \MakeWrapper{remark*}{remarkbase*}
+  \problembox{problem}{Problem}[]{%
+      crefname={problem}{problems},%
+      Crefname={Problem}{Problems}%
+  }
+  \problembox{exercise}{Example}[]{%
+      crefname={exercise}{exercises},%
+      Crefname={Exercise}{Exercises}%
+  }
 
 \else
   \theoremstyle{plain}
@@ -909,6 +1019,40 @@
   \theoremstyle{remark}
   \newtheorem{remark}[theorem]{Remark}
   \newtheorem*{remark*}{Remark}
+\fi
+
+
+\ifbubumax
+\else
+  \crefname{theorem}{theorem}{theorems}
+  \crefname{lemma}{lemma}{lemmas}
+  \crefname{proposition}{proposition}{propositions}
+  \crefname{corollary}{corollary}{corollaries}
+  \crefname{algorithm}{algorithm}{algorithms}
+  \crefname{claim}{claim}{claims}
+  \crefname{example}{example}{examples}
+  \crefname{remark}{remark}{remarks}
+  \crefname{answer}{answer}{answers}
+  \crefname{definition}{definition}{definitions}
+  \crefname{exercise}{exercise}{exercises}
+  \crefname{problem}{problem}{problems}
+  \crefname{question}{question}{questions}
+  \crefname{notation}{notation}{notations}
+
+  \Crefname{theorem}{Theorem}{Theorems}
+  \Crefname{lemma}{Lemma}{Lemmas}
+  \Crefname{proposition}{Proposition}{Propositions}
+  \Crefname{corollary}{Corollary}{Corollaries}
+  \Crefname{algorithm}{Algorithm}{Algorithms}
+  \Crefname{claim}{Claim}{Claims}
+  \Crefname{example}{Example}{Examples}
+  \Crefname{remark}{Remark}{Remarks}
+  \Crefname{answer}{Answer}{Answers}
+  \Crefname{definition}{Definition}{Definitions}
+  \Crefname{exercise}{Exercise}{Exercises}
+  \Crefname{problem}{Problem}{Problems}
+  \Crefname{question}{Question}{Questions}
+  \Crefname{notation}{Notation}{Notations}
 \fi
 
 % }}}
