@@ -2,7 +2,9 @@
 
 sudo pacman -Syu
 yay
+echo "Updating locate database..."
 sudo updatedb
+echo "Updating nvim packages..."
 nvim --headless -c ":TSUpdate all" -c qall
 nvim --headless -c ":MasonToolsClean" -c qall
 nvim --headless -c ":MasonToolsUpdateSync" -c qall
