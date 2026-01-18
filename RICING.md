@@ -38,7 +38,8 @@
 > `sudo pacman -Sy` whenever needed.
 
 - Set up Bluetooth services by following the
-  [Arch Wiki Bluetooth manual][bluetooth].
+  Arch Wiki [Bluetooth][bluetooth]
+  and [MPRIS][mpris] pages.
 
 - Set up printing services. Here is a beautiful
   and comprehensive YouTube tutorial for [setting up
@@ -89,6 +90,7 @@
 [archwikifonts]: https://wiki.archlinux.org/title/Fonts
 [hpprint]: https://youtu.be/dSRblSh48DM?si=ef0uAXNTo7KrJAzD
 [bluetooth]: https://wiki.archlinux.org/title/Bluetooth
+[mpris]: https://wiki.archlinux.org/title/MPRIS
 [archwikipostinstall]: https://wiki.archlinux.org/title/General_recommendations
 [loginaether]: https://github.com/iamsubhranil/Rice/blob/main/lightdm-webkit2-greeter_executive.md
 [firefoxbwbug]: https://bugzilla.mozilla.org/show_bug.cgi?id=1676191#c27
