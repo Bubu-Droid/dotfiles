@@ -61,7 +61,7 @@
 \DeclareOption{bib}{\bububibtrue}
 \DeclareOption{hints}{\bubuhintstrue}
 \DeclareOption{noasy}{\bubuasyfalse}
-\DeclareOption{min}{\bubumaxfalse\bubuasyfalse}
+\DeclareOption{min}{\bubumaxfalse\bubuasytrue}
 \DeclareOption{bon}{\bububontrue}
 \DeclareOption{nocountcont}{\bubucountcontfalse}
 \DeclareOption{fancycover}{\bubucovertrue}
@@ -86,6 +86,7 @@
 \RequirePackage{mathtools}
 \RequirePackage{graphicx}
 \RequirePackage{xparse}
+\RequirePackage{float}
 
 \ifbubumax
   \RequirePackage[utf8]{inputenc}
@@ -111,7 +112,7 @@
   \RequirePackage[makeroom]{cancel}
   \RequirePackage{caption}
 \else
-  \RequirePackage[colorlinks=true,linkcolor=blue]{hyperref}
+  \RequirePackage[colorlinks=true,pdfusetitle,hypertexnames=false,linkcolor=blue]{hyperref}
 \fi
 
 \RequirePackage[nameinlink]{cleveref}
@@ -489,6 +490,7 @@
   \KOMAoptions{numbers=noenddot}
 
   % \usetikzlibrary{shadows}
+  % \usepackage{xpatch}
   % \xpatchcmd{\endmdframed}%
   %   {\aftergroup\endmdf@trivlist\color@endgroup}%
   %   {\endmdf@trivlist\color@endgroup\@doendpe}%
@@ -1205,5 +1207,6 @@
 
 \newcommand{\aopssoln}[3]{\href{#3}{Solution} by \textbf{#1} (\##2 on the thread).}
 \newcommand{\msesoln}[2]{\href{#2}{Solution} by \textbf{#1}.}
+\newcommand{\verbsoln}[1]{Solution by \textbf{#1}.}
 
 % }}}
