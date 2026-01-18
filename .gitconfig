@@ -5,3 +5,5 @@
 	excludesfile = /home/bubu/.gitignore-global
 [init]
 	defaultBranch = main
+[credential]
+	helper = cache
