@@ -12,11 +12,11 @@ global !p
 def math():
   return vim.eval('vimtex#syntax#in_mathzone()') == '1'
 
-def comment(): 
+def comment():
   return vim.eval('vimtex#syntax#in_comment()') == '1'
 
 def env(name):
-  [x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+  [x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
   return x != '0' and y != '0'
 
 endglobal
@@ -60,7 +60,7 @@ endsnippet
 # {{{ Environments
 
 snippet beg "begin{} / end{}" bA
-\begin{$1}
+\begin{$1}{}{}
   $2
 \end{$1}
 $0
@@ -107,6 +107,14 @@ snippet fig "figure template" b
 \end{figure}
 endsnippet
 
+snippet asy "asy template" b
+\begin{center}
+	\begin{asy}
+		$1
+	\end{asy}
+\end{center}
+endsnippet
+
 snippet ali "align" bA
 \begin{align*}
   ${1:${VISUAL}}
@@ -131,26 +139,20 @@ endsnippet
 
 # {{{ Math symbol snippets
 
-#priority 100
-#context "math()"
-#snippet ... "ldots" iA
-#\ldots 
-#endsnippet
-
 priority 100
 context "math()"
 snippet ... "dots" iA
-\dots 
+\dots
 endsnippet
 
 context "math()"
 snippet => "implies" iA
-\implies 
+\implies
 endsnippet
 
 context "math()"
 snippet =< "implied by" iA
-\impliedby 
+\impliedby
 endsnippet
 
 context "math()"
@@ -165,12 +167,12 @@ endsnippet
 
 context "math()"
 snippet sum "sum" iA
-\sum_{$1}^{$2} ${3:${VISUAL}} 
+\sum_{$1}^{$2} ${3:${VISUAL}}
 endsnippet
 
 context "math()"
 snippet prod "product" iA
-\prod_{$1}^{$2} ${3:${VISUAL}} 
+\prod_{$1}^{$2} ${3:${VISUAL}}
 endsnippet
 
 context "math()"
@@ -195,22 +197,22 @@ endsnippet
 
 context "math()"
 snippet EE "geq" iA
-\exists 
+\exists
 endsnippet
 
 context "math()"
 snippet AA "forall" iA
-\forall 
+\forall
 endsnippet
 
 context "math()"
 snippet xx "cross" iA
-\times 
+\times
 endsnippet
 
 context "math()"
 snippet ** "cdot" iA
-\cdot 
+\cdot
 endsnippet
 
 context "math()"
@@ -219,50 +221,50 @@ snippet mcal "mathcal" iA
 endsnippet
 
 context "math()"
-snippet *.. "cdots" iA
-\cdots 
+snippet *.. "dotsm" iA
+\dotsm
 endsnippet
 
 context "math()"
 snippet inn "in" iA
-\in 
+\in
 endsnippet
 
 priority 100
 context "math()"
 snippet -> "to" iA
-\to 
+\to
 endsnippet
 
 priority 200
 context "math()"
 snippet <-> "leftrightarrow" iA
-\leftrightarrow 
+\leftrightarrow
 endsnippet
 
 context "math()"
 snippet !> "mapsto" iA
-\mapsto 
+\mapsto
 endsnippet
 
 context "math()"
 snippet \\\ "setminus" iA
-\setminus 
+\setminus
 endsnippet
 
 context "math()"
 snippet >> ">>" iA
-\gg 
+\gg
 endsnippet
 
 context "math()"
 snippet << "<<" iA
-\ll 
+\ll
 endsnippet
 
 context "math()"
 snippet cC "subset" iA
-\subseteq 
+\subseteq
 endsnippet
 
 # }}}
@@ -443,7 +445,7 @@ endsnippet
 priority 100
 context "math()"
 snippet '(?<!\\)\b(emptyset|cap|cup|not|nmid|mid|sim|neq|ell)\b' "math symbols 4" rwA
-\\`!p snip.rv = match.group(1)` 
+\\`!p snip.rv = match.group(1)`
 endsnippet
 
 priority 100
@@ -454,7 +456,7 @@ endsnippet
 
 priority 10
 snippet '(?<!\\)\b(ii)\b' "ii" wrA
-\\ii 
+\\ii
 endsnippet
 
 # }}}
@@ -503,12 +505,12 @@ endsnippet
 
 context "math()"
 snippet achas "angle chase" iA
-\ang $1=\ang $2=\ang $3=\ang 
+\ang $1=\ang $2=\ang $3=\ang
 endsnippet
 
 context "math()"
 snippet dchas "dangle chase" iA
-\dang $1=\dang $2=\dang $3=\dang 
+\dang $1=\dang $2=\dang $3=\dang
 endsnippet
 
 context "math()"
@@ -518,7 +520,7 @@ endsnippet
 
 context "math()"
 snippet pfact "prime factorization" iA
-p_1^{e_1}p_2^{e_2} \dots p_{n}^{e_n} 
+p_1^{e_1}p_2^{e_2} \dotso p_{n}^{e_n}
 endsnippet
 
 # }}}
@@ -551,37 +553,37 @@ endsnippet
 
 context "math()"
 snippet lim "limit" iA
-\lim_{$1 \to $2} 
+\lim_{$1 \to $2}
 endsnippet
 
 context "math()"
 snippet lsup "limsup" iA
-\limsup_{$1 \to $2} 
+\limsup_{$1 \to $2}
 endsnippet
 
 context "math()"
 snippet linf "liminf" iA
-\liminf_{$1 \to $2} 
+\liminf_{$1 \to $2}
 endsnippet
 
 context "math()"
 snippet ddd "derivative" iA
-\dd{$1}{$2} 
+\dd{$1}{$2}
 endsnippet
 
 context "math()"
 snippet ddn "nth derivative" iA
-\dd[$1]{$2}{$3} 
+\dd[$1]{$2}{$3}
 endsnippet
 
 context "math()"
 snippet pdd "partial derivative" iA
-\pd{$1}{$2} 
+\pd{$1}{$2}
 endsnippet
 
 context "math()"
 snippet pdn "nth partial derivative" iA
-\pd[$1]{$2}{$3} 
+\pd[$1]{$2}{$3}
 endsnippet
 
 # }}}
