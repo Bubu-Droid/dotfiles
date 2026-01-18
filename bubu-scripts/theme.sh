@@ -64,6 +64,30 @@ if [ -n "$selected" ] && [ "$selected" != "$current_rice" ]; then
   sed -i "$HOME/.config/alacritty/alacritty.toml" \
     -e "s|/home/bubu/.config/alacritty/themes/.*\.toml|/home/bubu/.config/alacritty/themes/$selected.toml|"
 
+  # Update Rofi theme
+  if [ "$selected" = "tokyonight" ]; then
+    sed -i "$HOME/.config/rofi/config.rasi" \
+      -e 's|background:[[:space:]]*#[0-9a-fA-F]\+;|background: #15161E;|'
+    sed -i "$HOME/.config/rofi/config.rasi" \
+      -e 's|background-alt:[[:space:]]*#[0-9a-fA-F]\+;|background-alt: #1A1B26;|'
+    sed -i "$HOME/.config/rofi/config.rasi" \
+      -e 's|bg/[a-zA-Z0-9_.-]\+|bg/tokyonight-bg.webp|'
+  elif [ "$selected" = "coolnight" ]; then
+    sed -i "$HOME/.config/rofi/config.rasi" \
+      -e 's|background:[[:space:]]*#[0-9a-fA-F]\+;|background: #11092D;|'
+    sed -i "$HOME/.config/rofi/config.rasi" \
+      -e 's|background-alt:[[:space:]]*#[0-9a-fA-F]\+;|background-alt: #281657;|'
+    sed -i "$HOME/.config/rofi/config.rasi" \
+      -e 's|bg/[a-zA-Z0-9_.-]\+|bg/coolnight-bg.png|'
+  else
+    sed -i "$HOME/.config/rofi/config.rasi" \
+      -e 's|background:[[:space:]]*#[0-9a-fA-F]\+;|background: #15161E;|'
+    sed -i "$HOME/.config/rofi/config.rasi" \
+      -e 's|background-alt:[[:space:]]*#[0-9a-fA-F]\+;|background-alt: #1A1B26;|'
+    sed -i "$HOME/.config/rofi/config.rasi" \
+      -e 's|bg/[a-zA-Z0-9_.-]\+|bg/tokyonight-bg.webp|'
+  fi
+
   # Update wallpaper in i3 config
   sed -i "$HOME/.config/i3/config" \
     -e "s|\$HOME/wallpapers/$current_rice/.*\.png|\$HOME/wallpapers/$selected/01.png|"
