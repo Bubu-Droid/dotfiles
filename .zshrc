@@ -3,7 +3,7 @@
 # confirmations, etc.) must go above this block; everything else may go below.
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then
-	pgrep i3 || startx
+  pgrep i3 || startx
 fi
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
