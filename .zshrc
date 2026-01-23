@@ -35,6 +35,7 @@ alias grep='grep --color=auto'
 alias bman="bman.sh"
 alias supdate="supdate.sh"
 alias mirdate="mirdate.sh"
+alias whichkey="whichkey.sh"
 alias niceasy="niceasy.py"
 alias aops="aops.py"
 alias bon="python3 -m bon"
