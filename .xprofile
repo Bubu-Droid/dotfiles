@@ -2,4 +2,5 @@
 
 numlockx &
 clipcatd &
+flameshot &
 exec i3
