@@ -1,9 +1,14 @@
 [user]
-	name = Bubu-Droid
-	email = fufudadw@gmail.com
+  name = Bubu-Droid
+  email = fufudadw@gmail.com
+  signingkey = /home/bubu/.ssh/id_ed25519.pub
 [core]
-	excludesfile = /home/bubu/.gitignore-global
+  excludesfile = /home/bubu/.gitignore-global
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [credential]
-	helper = cache
+  helper = cache
+[gpg]
+  format = ssh
+[commit]
+  gpgsign = true
