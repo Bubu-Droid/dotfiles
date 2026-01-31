@@ -206,9 +206,9 @@ exec_always $HOME/.config/polybar/launch.sh &
 exec_always picom &
 exec_always feh --bg-fill $HOME/wallpapers/tokyonight/$(cat $HOME/.wall) &
 
-# Screenshots(spectacle)
+# Screenshots(flameshot)
 bindsym Print exec $HOME/bubu-scripts/full-ss.sh
-bindsym Ctrl+Shift+Print exec spectacle -g
+bindsym Ctrl+Shift+Print exec flameshot gui
 
 # Custom scripts
 bindsym $modalt+e exec rofi -show emoji
