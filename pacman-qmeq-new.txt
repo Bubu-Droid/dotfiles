@@ -1,0 +1,11 @@
+yay
+yay-debug
+zsh-theme-powerlevel10k-git
+lightdm-webkit-theme-aether
+i3lock-fancy-git
+hp-printer-app
+overskride-bin
+electron35-bin
+ferdium-bin
+colorpicker-git
+gtk-engine-murrine
