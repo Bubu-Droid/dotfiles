@@ -37,6 +37,9 @@
 > Synchronize the pacman package database using
 > `sudo pacman -Sy` whenever needed.
 
+- If you're using an AMD GPU, set up drivers by following
+  Arch Wiki [AMDGPU][amdgpu] page.
+
 - Set up Bluetooth services by following the
   Arch Wiki [Bluetooth][bluetooth]
   and [MPRIS][mpris] pages.
@@ -48,7 +51,7 @@
 - Turn on `Color`, `ILoveCandy`, and `VerbosePkgLists`
   for pacman.
   For some other pretty changes, you may search for
-  “how to prettify my pacman”.
+  “how to prettify my pacman.”
 
 - For other general recommendations, you may follow
   this [Arch Wiki article][archwikipostinstall]
@@ -91,6 +94,7 @@
 [hpprint]: https://youtu.be/dSRblSh48DM?si=ef0uAXNTo7KrJAzD
 [bluetooth]: https://wiki.archlinux.org/title/Bluetooth
 [mpris]: https://wiki.archlinux.org/title/MPRIS
+[amdgpu]: https://wiki.archlinux.org/title/AMDGPU
 [archwikipostinstall]: https://wiki.archlinux.org/title/General_recommendations
-[loginaether]: https://github.com/iamsubhranil/Rice/blob/main/lightdm-webkit2-greeter_executive.md
+[loginaether]: https://github.com/iamsubhranil/Rice/blob/master/lightdm-webkit2-greeter_executive.md
 [firefoxbwbug]: https://bugzilla.mozilla.org/show_bug.cgi?id=1676191#c27
