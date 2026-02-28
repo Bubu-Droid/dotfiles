@@ -212,15 +212,9 @@ exec_always $HOME/.config/polybar/launch.sh &
 exec_always picom &
 exec_always feh --bg-fill "$HOME/wallpapers/tokyonight/04.png" &
 
-<<<<<<< HEAD
 # Screenshots(flameshot)
 bindsym Print exec $HOME/bubu-scripts/full-ss.sh
 bindsym Ctrl+Shift+Print exec flameshot gui
-=======
-# Screenshots (flameshot)
-bindsym Print exec $HOME/bubu-scripts/full-ss.sh
-bindsym Ctrl+Shift+Print exec flameshot gui
->>>>>>> 5621530 (Add keybinds for brightnessctl)
 
 # Custom scripts
 bindsym $modalt+e exec rofi -show emoji
