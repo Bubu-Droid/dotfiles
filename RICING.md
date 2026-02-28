@@ -24,13 +24,13 @@
 
 - Install `yay`.
 
-- Install necessary AUR packages from [pacman-qmeq.txt](pacman-qmeq.txt).
+- Install necessary AUR packages from [pacman-qmeq-new.txt](pacman-qmeq-new.txt).
 
-- Install necessary pacman packages from [pacman-qneq.txt](pacman-qneq.txt).
+- Install necessary pacman packages from [pacman-qneq-new.txt](pacman-qneq-new.txt).
 
 > [!TIP]
 > You may use the command
-> `sudo pacman -Syu --needed - < ~/pacman-qneq.txt` to
+> `sudo pacman -Syu --needed - < ~/pacman-qneq-new.txt` to
 > automate the package downloading procedure.
 
 > [!IMPORTANT]
