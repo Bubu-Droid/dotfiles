@@ -58,6 +58,7 @@ pipewire
 pipewire-pulse
 pulseaudio-alsa
 playerctl
+brightnessctl
 pavucontrol
 clipcat
 xorg-xev
