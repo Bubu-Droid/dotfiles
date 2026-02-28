@@ -98,9 +98,16 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- remove trailing white spaces
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*" },
-  command = [[%s/\s\+$//e]],
+  command = [[%s/\s\+$//ge]],
+})
+
+-- change tabs to nbsp
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*" },
+  command = [[%s/\t/  /ge]],
 })
 
 -- set recommended settings for auto-session
