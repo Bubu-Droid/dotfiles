@@ -37,7 +37,7 @@ A few resources for installing Arch Linux:
 - [Setting up Graphical Environments and
   Users by Luke Smith][archlinuxlukesmith]
 
-## :rocket: Overview of my Arch i3 rice
+## :penguin: Overview of my Arch i3 rice
 
 > [!NOTE]
 > Follow [this](RICING.md) guided manual for ricing the setup.
