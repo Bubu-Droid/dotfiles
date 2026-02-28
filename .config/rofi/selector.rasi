@@ -7,12 +7,7 @@ configuration {
     font:                        "JetBrainsMono NF Bold 11";
 }
 
-* {
-    main-bg: #14171c;
-    main-fg: #b8bfe5;
-    select-bg: #7560d3;
-    select-fg: #14171c;
-}
+@import "themes/tokyonight.rasi"
 
 window {
     enabled:                     true;
@@ -31,7 +26,7 @@ window {
 mainbox {
     enabled:                     true;
     children:                    [ "listview" ];
-    background-color:            @main-bg;
+    background-color:            @background;
 }
 
 listview {
@@ -49,7 +44,7 @@ listview {
     fixed-columns:               true;
     cursor:                      "default";
     background-color:            transparent;
-    text-color:                  @main-fg;
+    text-color:                  @foreground;
 }
 
 element {
@@ -60,7 +55,7 @@ element {
     border-radius:               20px;
     cursor:                      pointer;
     background-color:            transparent;
-    text-color:                  @main-fg;
+    text-color:                  @foreground;
 }
 
 @media(max-aspect-ratio: 1.8) {
@@ -69,8 +64,8 @@ element {
     }
 }
 element selected.normal {
-    background-color:            @select-bg;
-    text-color:                  @select-fg;
+    background-color:            @active;
+    text-color:                  @background;
 }
 
 element-icon {

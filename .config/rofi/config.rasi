@@ -2,33 +2,29 @@
  *
  * Author : Aditya Shakya (adi1090x)
  * Github : @adi1090x
- * 
+ *
  * Rofi Theme File
  * Rofi Version: 1.7.3
  **/
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser,window,emoji";
+    modi:                       "drun,run,filebrowser,window,emoji";
     show-icons:                 true;
     display-drun:               "";
     display-run:                "";
     display-filebrowser:        "";
     display-window:             "";
-	drun-display-format:        "{name}";
-	window-format:              "{w} · {c} · {t}";
+    drun-display-format:        "{name}";
+    window-format:              "{w} · {c} · {t}";
 }
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "JetBrains Mono Nerd Font 10";
-    background: #15161E;
-    background-alt: #1A1B26;
-    foreground:                  #FFFFFF;
-    selected:                    #DF5296;
-    active:                      #6E77FF;
-    urgent:                      #8E3596;
+    font: "JetBrains Mono Nerd Font 13";
 }
+
+@import "themes/tokyonight.rasi"
 
 /*****----- Main Window -----*****/
 window {
@@ -71,7 +67,7 @@ inputbar {
     spacing:                     10px;
     padding:                     80px 60px;
     background-color:            transparent;
-    background-image:            url("~/.config/rofi/bg/tokyonight-bg.webp", width);
+    background-image:            url("~/.config/rofi/images/tokyonight-bg.webp", width);
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    [ "textbox-prompt-colon", "prompt", "entry", "dummy", "mode-switcher" ];
@@ -141,7 +137,7 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     padding:                     18px;
-    
+
     spacing:                     10px;
     background-color:            transparent;
     text-color:                  @foreground;
