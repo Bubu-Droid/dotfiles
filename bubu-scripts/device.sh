@@ -67,6 +67,9 @@ if [ -n "$selected" ] && [ "$selected" != "$current_device" ]; then
     sed -Ei "s|label-unfocused[[:space:]]*\=[[:space:]]*.*|label-unfocused = %index% %icon%|" "$HOME/.config/polybar/modules/i3.ini"
     sed -Ei "s|reverse-scroll[[:space:]]*\=[[:space:]][a-z]*|reverse-scroll = false|" "$HOME/.config/polybar/modules/pulseaudio.ini"
 
+    # Update Rofi config
+    sed -Ei "s|font:[[:space:]]([^0-9]*)[0-9]+(.*)|font: \110\2|g" "$HOME/.config/rofi/config.rasi"
+
   elif [ "$selected" == "laptop" ]; then
     # Update Alacritty config
     sed -Ei "s|size[[:space:]]*\=[[:space:]]*[0-9]+|size = 10|g" "$HOME/.config/alacritty/alacritty.toml"
@@ -98,6 +101,9 @@ if [ -n "$selected" ] && [ "$selected" != "$current_device" ]; then
     sed -Ei "s|label-focused[[:space:]]*\=[[:space:]]*.*|label-focused = %index%|" "$HOME/.config/polybar/modules/i3.ini"
     sed -Ei "s|label-unfocused[[:space:]]*\=[[:space:]]*.*|label-unfocused = %index%|" "$HOME/.config/polybar/modules/i3.ini"
     sed -Ei "s|reverse-scroll[[:space:]]*\=[[:space:]][a-z]*|reverse-scroll = true|" "$HOME/.config/polybar/modules/pulseaudio.ini"
+
+    # Update Rofi config
+    sed -Ei "s|font:[[:space:]]([^0-9]*)[0-9]+(.*)|font: \113\2|g" "$HOME/.config/rofi/config.rasi"
   fi
 
   # Restart i3
