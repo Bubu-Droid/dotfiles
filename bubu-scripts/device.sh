@@ -37,16 +37,16 @@ if [ -n "$selected" ] && [ "$selected" != "$current_device" ]; then
 
   if [ "$selected" == "desktop" ]; then
     # Update Alacritty config
-    sed -Ei "s|size[[:space:]]*\=[[:space:]]*[0-9]+|size = 12|g" "$HOME/.config/alacritty/alacritty.toml"
+    sed -Ei "s|size[[:space:]]*\=[[:space:]]*[0-9]+|size = 12|" "$HOME/.config/alacritty/alacritty.toml"
 
     # Update GTK config
-    sed -Ei "s|gtk-font-name=[a-zA-Z0-9_[:space:]]*|gtk-font-name=Inter 11|g" "$HOME/.config/gtk-3.0/settings.ini"
-    sed -Ei "s|gtk-font-name=[a-zA-Z0-9_[:space:]]*|gtk-font-name=Inter 11|g" "$HOME/.config/gtk-4.0/settings.ini"
+    sed -Ei "s|gtk-font-name=[a-zA-Z0-9_[:space:]]*|gtk-font-name=Inter 11|" "$HOME/.config/gtk-3.0/settings.ini"
+    sed -Ei "s|gtk-font-name=[a-zA-Z0-9_[:space:]]*|gtk-font-name=Inter 11|" "$HOME/.config/gtk-4.0/settings.ini"
 
     # Update i3 config
-    sed -Ei "s|gaps inner [0-9]+|gaps inner 10|g" "$HOME/.config/i3/config"
-    sed -Ei "s|gaps outer [0-9]+|gaps outer 5|g" "$HOME/.config/i3/config"
-    sed -Ei "s|[#[:space:]]*gaps top [0-9]+|gaps top 80|g" "$HOME/.config/i3/config"
+    sed -Ei "s|gaps inner [0-9]+|gaps inner 10|" "$HOME/.config/i3/config"
+    sed -Ei "s|gaps outer [0-9]+|gaps outer 5|" "$HOME/.config/i3/config"
+    sed -Ei "s|[#[:space:]]*gaps top [0-9]+|gaps top 80|" "$HOME/.config/i3/config"
 
     # Update picom config
     sed -Ei "s|corner-radius[[:space:]]*\=[[:space:]]*[0-9]+$|corner-radius = 20|" "$HOME/.config/picom/picom.conf"
@@ -65,23 +65,26 @@ if [ -n "$selected" ] && [ "$selected" != "$current_device" ]; then
     sed -Ei "s|reverse-scroll[[:space:]]*\=[[:space:]]*[a-z]*|reverse-scroll = false|" "$HOME/.config/polybar/modules/i3.ini"
     sed -Ei "s|label-focused[[:space:]]*\=[[:space:]]*.*|label-focused = %index% %icon%|" "$HOME/.config/polybar/modules/i3.ini"
     sed -Ei "s|label-unfocused[[:space:]]*\=[[:space:]]*.*|label-unfocused = %index% %icon%|" "$HOME/.config/polybar/modules/i3.ini"
-    sed -Ei "s|reverse-scroll[[:space:]]*\=[[:space:]][a-z]*|reverse-scroll = false|" "$HOME/.config/polybar/modules/pulseaudio.ini"
+    sed -Ei "s|reverse-scroll[[:space:]]*\=[[:space:]]*[a-z]*|reverse-scroll = false|" "$HOME/.config/polybar/modules/pulseaudio.ini"
 
     # Update Rofi config
-    sed -Ei "s|font:[[:space:]]([^0-9]*)[0-9]+(.*)|font: \110\2|g" "$HOME/.config/rofi/config.rasi"
+    sed -Ei "s|font:[[:space:]]*([^0-9]*)[0-9]+(.*)|font: \110\2|" "$HOME/.config/rofi/config.rasi"
+
+    # Update WiFi config
+    sed -Ei "s|interface[[:space:]]*=[[:space:]]*[a-zA-Z0-9_]*|interface = enp37s0|g" "$HOME/.config/polybar/modules/network.ini"
 
   elif [ "$selected" == "laptop" ]; then
     # Update Alacritty config
-    sed -Ei "s|size[[:space:]]*\=[[:space:]]*[0-9]+|size = 10|g" "$HOME/.config/alacritty/alacritty.toml"
+    sed -Ei "s|size[[:space:]]*\=[[:space:]]*[0-9]+|size = 10|" "$HOME/.config/alacritty/alacritty.toml"
 
     # Update GTK config
-    sed -Ei "s|gtk-font-name=[a-zA-Z0-9_[:space:]]*|gtk-font-name=Inter 14|g" "$HOME/.config/gtk-3.0/settings.ini"
-    sed -Ei "s|gtk-font-name=[a-zA-Z0-9_[:space:]]*|gtk-font-name=Inter 14|g" "$HOME/.config/gtk-4.0/settings.ini"
+    sed -Ei "s|gtk-font-name=[a-zA-Z0-9_[:space:]]*|gtk-font-name=Inter 14|" "$HOME/.config/gtk-3.0/settings.ini"
+    sed -Ei "s|gtk-font-name=[a-zA-Z0-9_[:space:]]*|gtk-font-name=Inter 14|" "$HOME/.config/gtk-4.0/settings.ini"
 
     # Update i3 config
-    sed -Ei "s|gaps inner [0-9]+|gaps inner 6|g" "$HOME/.config/i3/config"
-    sed -Ei "s|gaps outer [0-9]+|gaps outer 2|g" "$HOME/.config/i3/config"
-    sed -Ei "s|[#[:space:]]*gaps top [0-9]+|# gaps top 80|g" "$HOME/.config/i3/config"
+    sed -Ei "s|gaps inner [0-9]+|gaps inner 6|" "$HOME/.config/i3/config"
+    sed -Ei "s|gaps outer [0-9]+|gaps outer 2|" "$HOME/.config/i3/config"
+    sed -Ei "s|[#[:space:]]*gaps top [0-9]+|# gaps top 80|" "$HOME/.config/i3/config"
 
     # Update picom config
     sed -Ei "s|corner-radius[[:space:]]*\=[[:space:]]*[0-9]+$|corner-radius = 10|" "$HOME/.config/picom/picom.conf"
@@ -97,13 +100,22 @@ if [ -n "$selected" ] && [ "$selected" != "$current_device" ]; then
     sed -Ei "s|^font-1([^0-9]*)[0-9.]+;[0-9.]+(.*)|font-1\128.5;6\2|" "$HOME/.config/polybar/config.ini"
     sed -Ei "s|^font-3([^0-9]*)[0-9.]+;[0-9.]+(.*)|font-3\120;4\2|" "$HOME/.config/polybar/config.ini"
     sed -Ei "s|modules-right[[:space:]]*\=[[:space:]]*(.*) pulseaudio bgr .* bgl date br|modules-right = \1 pulseaudio bgr bgl backlight bgr bgl battery bgr bgl date br|" "$HOME/.config/polybar/config.ini"
-    sed -Ei "s|reverse-scroll[[:space:]]*\=[[:space:]][a-z]*|reverse-scroll = true|" "$HOME/.config/polybar/modules/i3.ini"
+    sed -Ei "s|reverse-scroll[[:space:]]*\=[[:space:]]*[a-z]*|reverse-scroll = true|" "$HOME/.config/polybar/modules/i3.ini"
     sed -Ei "s|label-focused[[:space:]]*\=[[:space:]]*.*|label-focused = %index%|" "$HOME/.config/polybar/modules/i3.ini"
     sed -Ei "s|label-unfocused[[:space:]]*\=[[:space:]]*.*|label-unfocused = %index%|" "$HOME/.config/polybar/modules/i3.ini"
-    sed -Ei "s|reverse-scroll[[:space:]]*\=[[:space:]][a-z]*|reverse-scroll = true|" "$HOME/.config/polybar/modules/pulseaudio.ini"
+    sed -Ei "s|reverse-scroll[[:space:]]*\=[[:space:]]*[a-z]*|reverse-scroll = true|" "$HOME/.config/polybar/modules/pulseaudio.ini"
 
     # Update Rofi config
-    sed -Ei "s|font:[[:space:]]([^0-9]*)[0-9]+(.*)|font: \113\2|g" "$HOME/.config/rofi/config.rasi"
+    sed -Ei "s|font:[[:space:]]*([^0-9]*)[0-9]+(.*)|font: \113\2|" "$HOME/.config/rofi/config.rasi"
+
+    # Update WiFi config
+    if [ "$(nmcli connection show --active | grep 'ethernet' | wc -c)" -eq 0 ]; then
+      nmcli radio wifi on
+      sed -Ei "s|interface[[:space:]]*=[[:space:]]*[a-zA-Z0-9_]*|interface = wlp2s0|g" "$HOME/.config/polybar/modules/network.ini"
+    else
+      nmcli radio wifi off
+      sed -Ei "s|interface[[:space:]]*=[[:space:]]*[a-zA-Z0-9_]*|interface = enp1s0|g" "$HOME/.config/polybar/modules/network.ini"
+    fi
   fi
 
   # Restart i3
