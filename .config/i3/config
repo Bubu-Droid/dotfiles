@@ -213,8 +213,8 @@ exec_always picom &
 exec_always feh --bg-fill "$HOME/wallpapers/tokyonight/04.png" &
 
 # Screenshots(flameshot)
-bindsym Print exec $HOME/bubu-scripts/full-ss.sh
-bindsym Ctrl+Shift+Print exec flameshot gui
+bindsym $modalt+p exec $HOME/bubu-scripts/full-ss.sh
+bindsym $modalt+Shift+p exec flameshot gui
 
 # Custom scripts
 bindsym $modalt+e exec rofi -show emoji
