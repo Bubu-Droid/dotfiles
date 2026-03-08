@@ -56,7 +56,7 @@ system-config-printer
 picom
 pipewire
 pipewire-pulse
-pulseaudio-alsa
+pipewire-alsa
 playerctl
 brightnessctl
 pavucontrol
