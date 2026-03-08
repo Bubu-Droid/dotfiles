@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 
 from bon.puid import fetch_file
-from bon.rc import HOME, MODULE_NAME, TEX_SEP
+from bon.config import HOME, MODULE_NAME, TEX_SEP
 
 
 def boninclude(puid: str, env: str) -> str:
@@ -25,8 +25,9 @@ def boninclude(puid: str, env: str) -> str:
                 db_content = json.load(f)
 
             res = db_content["problem"].split("\n")
-
             bonhook = f"  \\bonhook{{{puid}}}"
+            source = ""
+
             if env in (
                 "problem",
                 "exercise",
@@ -50,11 +51,10 @@ def boninclude(puid: str, env: str) -> str:
                         )
                     else:
                         source_list.append(next(iter(source)))
-                source = "  [" + ", ".join(source_list) + "]"
-                res.insert(1, source)
+                source = ", ".join(source_list)
 
             res = "\n".join(res)
-            res = res.replace("\\begin{problem*}", f"\\begin{{{env}}}")
+            res = res.replace("\\begin{problem*}{}", f"\\begin{{{env}}}{{{source}}}")
             res = res.replace("\\end{problem*}", f"\\end{{{env}}}")
         except Exception as e:
             res = f"[Error: {e}]"
