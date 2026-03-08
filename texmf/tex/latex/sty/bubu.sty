@@ -338,11 +338,10 @@
 % bon setup
 \ifbububon
   \RequirePackage{pythontex}
+  \RequirePackage{marginnote}
   \setpythontexoutputdir{.}
   \newcommand{\bonhook}[1]{%
-    \normalmarginpar%
-    \noindent%
-    \marginpar{\hspace*{1em}\scriptsize\ttfamily\color{Green}#1}%
+    \marginnote{\scriptsize\ttfamily\color{Green}#1}%
   }
   \newcommand{\boninclude}[2]{%
     \pyc{print(boninclude(r"#1", r"#2"))}%
@@ -369,7 +368,7 @@
 
   \begin{scope}[\maincolor!63,line width=12pt,rounded corners=12pt]
   \draw[\maincolor!63]
-    (aux1) -- coordinate (a) 
+    (aux1) -- coordinate (a)
     ++(225:5) --
     ++(-45:5.1) coordinate (b);
   \draw[shorten <= -10pt]
@@ -395,7 +394,7 @@
     (c) --
     ++(135:2.5) --
     ++(45:2.5) --
-    ++(-45:2.5) coordinate[pos=0.3] (d);   
+    ++(-45:2.5) coordinate[pos=0.3] (d);
   \draw[\secondcolor!65!\maincolor]
     (d) -- +(45:1);
   \end{scope}
@@ -986,7 +985,7 @@
       crefname={problem}{problems},%
       Crefname={Problem}{Problems}%
   }
-  \problembox{exercise}{Example}[]{%
+  \problembox{exercise}{Exercise}[]{%
       crefname={exercise}{exercises},%
       Crefname={Exercise}{Exercises}%
   }
