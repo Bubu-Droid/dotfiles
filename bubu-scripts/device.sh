@@ -111,10 +111,10 @@ if [ -n "$selected" ] && [ "$selected" != "$current_device" ]; then
     # Update WiFi config
     if [ "$(nmcli connection show --active | grep 'ethernet' | wc -c)" -eq 0 ]; then
       nmcli radio wifi on
-      sed -Ei "s|interface[[:space:]]*=[[:space:]]*[a-zA-Z0-9_]*|interface = wlp2s0|g" "$HOME/.config/polybar/modules/network.ini"
+      sed -Ei "s|interface[[:space:]]*=[[:space:]]*[a-zA-Z0-9_]*|interface = wlp3s0|g" "$HOME/.config/polybar/modules/network.ini"
     else
       nmcli radio wifi off
-      sed -Ei "s|interface[[:space:]]*=[[:space:]]*[a-zA-Z0-9_]*|interface = enp1s0|g" "$HOME/.config/polybar/modules/network.ini"
+      sed -Ei "s|interface[[:space:]]*=[[:space:]]*[a-zA-Z0-9_]*|interface = enp2s0|g" "$HOME/.config/polybar/modules/network.ini"
     fi
   fi
 
