@@ -69,10 +69,10 @@ endsnippet
 snippet table "table environment" b
 \begin{table}[${1:htbp}]
 \centering
-\begin{tabular}{||${4:c c c}||}
+\begin{tabular}{|| ${4:c c c} ||}
 
 \hline
-Col1 & Col2 & Col3 \\\\ [0.5ex]$5
+Col1 & Col2 & Col3 \\\\[0.5ex]$5
 \hline\hline
 1 & 2 & 3 \\\\
 \hline
@@ -103,15 +103,15 @@ snippet fig "figure template" b
   \centering
   \includegraphics[width=\textwidth,keepaspectratio]{images/$2}
   \caption{$3}
-	\label{fig:${4:label}}
+  \label{fig:${4:label}}
 \end{figure}
 endsnippet
 
 snippet asy "asy template" b
 \begin{center}
-	\begin{asy}
-		$1
-	\end{asy}
+  \begin{asy}
+    $1
+  \end{asy}
 \end{center}
 endsnippet
 
@@ -125,7 +125,7 @@ endsnippet
 context "math()"
 snippet case "case" iA
 \begin{cases}
-	${1:value}, & \text{if } ${2:condition}
+  ${1:value}, & \text{if } ${2:condition}
 .\end{cases}$0
 endsnippet
 
@@ -445,6 +445,12 @@ endsnippet
 priority 100
 context "math()"
 snippet '(?<!\\)\b(emptyset|cap|cup|not|nmid|mid|sim|neq|ell)\b' "math symbols 4" rwA
+\\`!p snip.rv = match.group(1)`
+endsnippet
+
+priority 100
+context "math()"
+snippet '(?<!\\)\b(alpha|beta|gamma|delta|sigma|tau|mu|nu)\b' "math symbols 5" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
