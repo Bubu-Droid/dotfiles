@@ -9,7 +9,7 @@ if [ -d "$xinitdir"/xinitrc.d ]; then
   unset f
 fi
 
-numlockx &
-clipcatd &
+numlockx
+clipcatd
 flameshot &
 exec i3
