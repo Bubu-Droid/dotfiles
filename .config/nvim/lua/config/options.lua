@@ -9,6 +9,12 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
+-- configure live-server
+vim.g.live_server = {
+  port = 8080,
+  -- browser = false,
+}
+
 -- turn on relative numbering
 opt.relativenumber = true
 opt.number = true
