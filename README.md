@@ -60,7 +60,7 @@ can be found in [wallpapers/](wallpapers) directory.
 
 I've finally added the functionality of changing
 color schemes and wallpapers on the fly
-using a rofi applet. (This applet is due to
+using a Rofi applet. (This applet is due to
 [gh0stzk](https://github.com/gh0stzk).)
 
 |               :art: Color Scheme Selector                |
@@ -71,16 +71,23 @@ using a rofi applet. (This applet is due to
 | :--------------------------------------------------------------: |
 | ![Wallpapers](dotfiles-screenshots/wall.png "Wallpaper_Changer") |
 
+### :hammer_and_wrench: Changing device rices on the fly
+
+I've finally added a rice for laptop based installations
+and a [script](bubu-scripts/device.sh)
+to seamlessly switch between device dependent rices
+using a Rofi applet
+(same applet as the one used for changing themes).
+
+|                  :desktop_computer: Device Selector                   |
+| :-------------------------------------------------------------------: |
+| ![Device_Rice](dotfiles-screenshots/device.png "Device_Rice_Changer") |
+
 ---
 
 ## :books: Additional resources
 
 - [Archived packages for Arch][archarchive]
-
-## :memo: TODOs
-
-- [ ] Create a script for switching between rices
-      for laptop specific features.
 
 [archinstallguide]: https://wiki.archlinux.org/title/Installation_guide
 [mentaloutarchinstall]: https://youtu.be/rUEnS1zj1DM?si=ftzJVo7DClwe8sOJ
