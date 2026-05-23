@@ -12,7 +12,6 @@ return {
     vim.g.vimtex_compiler_method = "latexmk"
   end,
   keys = {
-    -- latex hotkeys
     { "<leader>le", "<Plug>(vimtex-errors)", desc = "Open the error console" },
     { "cse", "<Plug>(vimtex-env-change)", desc = "Change the surrounding enviroment" },
     { "dse", "<Plug>(vimtex-env-delete)", desc = "Delete the surrounding enviroment" },
