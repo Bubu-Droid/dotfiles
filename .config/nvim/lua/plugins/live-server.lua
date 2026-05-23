@@ -1,10 +1,9 @@
 return {
-  "barrett-ruth/live-server.nvim",
-  build = "npm add -g live-server",
+  "https://git.barrettruth.com/barrettruth/live-server.nvim",
   cmd = { "LiveServerStart", "LiveServerStop" },
-  config = true,
+  -- opts = {},
   keys = {
-    { "<leader>ls", "<cmd>LiveServerStart<CR>", desc = "Start live-server" },
-    { "<leader>lq", "<cmd>LiveServerStop<CR>", desc = "Stop live-server" },
+    { "<leader>ls", "<Plug>(live-server-start)", desc = "Start live-server" },
+    { "<leader>lq", "<Plug>(live-server-stop)", desc = "Stop live-server" },
   },
 }
