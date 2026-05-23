@@ -2,7 +2,7 @@ return {
   "folke/tokyonight.nvim",
   lazy = false,
   priority = 1000,
-  opts = {},
+  -- opts = {},
   config = function()
     local rice_file = os.getenv("HOME") .. "/.rice"
     local theme_name = "tokyonight" -- fallback
