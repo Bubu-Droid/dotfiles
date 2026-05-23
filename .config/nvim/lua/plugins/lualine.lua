@@ -1,15 +1,18 @@
 return {
   "nvim-lualine/lualine.nvim",
-  event = { "UIEnter" },
+  event = "UIEnter",
   config = function()
     local lualine = require("lualine")
-    local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+    local lazy_status = require("lazy.status")
+
+    local theme_name = "tokyonight"
+    local my_lualine_theme
 
     local rice_file = os.getenv("HOME") .. "/.rice"
-    local theme_name = "tokyonight" -- fallback
     local f = io.open(rice_file, "r")
+
     if f then
-      theme_name = f:read("*l") -- read the first line
+      theme_name = f:read("*l")
       f:close()
     end
 
@@ -24,7 +27,8 @@ return {
         bg = "#112638",
         inactive_bg = "#2c3043",
       }
-      local my_lualine_theme = {
+
+      my_lualine_theme = {
         normal = {
           a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
           b = { bg = colors.bg, fg = colors.fg },
@@ -56,54 +60,42 @@ return {
           c = { bg = colors.inactive_bg, fg = colors.semilightgray },
         },
       }
-
-      -- configure lualine with modified theme
-      lualine.setup({
-        options = {
-          theme = my_lualine_theme,
-        },
-        sections = {
-          lualine_x = {
-            {
-              lazy_status.updates,
-              cond = lazy_status.has_updates,
-              color = { fg = "#ff9e64" },
-            },
-            { "encoding" },
-            { "fileformat" },
-            { "filetype" },
-          },
-          lualine_c = {
-            function()
-              return require("auto-session.lib").current_session_name(true)
-            end,
-          },
-        },
-      })
     else
-      -- fallback / default
-      lualine.setup({
-        options = {
-          theme = "tokyonight-night",
-        },
-        sections = {
-          lualine_x = {
-            {
-              lazy_status.updates,
-              cond = lazy_status.has_updates,
-              color = { fg = "#ff9e64" },
-            },
-            { "encoding" },
-            { "fileformat" },
-            { "filetype" },
+      my_lualine_theme = "tokyonight-night"
+    end
+
+    lualine.setup({
+      options = {
+        theme = my_lualine_theme,
+        globalstatus = true,
+        -- ignore_focus = { "NvimTree" },
+      },
+      sections = {
+        lualine_x = {
+          {
+            lazy_status.updates,
+            cond = lazy_status.has_updates,
+            color = { fg = "#ff9e64" },
           },
-          lualine_c = {
+          { "lsp_status" },
+          -- { "encoding" },
+          -- { "fileformat" },
+          { "filetype" },
+        },
+        lualine_c = {
+          { "filename" },
+          {
             function()
               return require("auto-session.lib").current_session_name(true)
             end,
           },
         },
-      })
-    end
+      },
+      extensions = {
+        "lazy",
+        "mason",
+        "nvim-tree",
+      },
+    })
   end,
 }
