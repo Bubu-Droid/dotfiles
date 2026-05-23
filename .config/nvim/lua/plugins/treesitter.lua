@@ -10,6 +10,8 @@ return {
     treesitter.setup({
       ensure_installed = {
         "elixir",
+        "python",
+        "c",
         "heex",
         "json",
         "cmake",
