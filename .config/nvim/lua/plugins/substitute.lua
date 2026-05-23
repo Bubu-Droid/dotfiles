@@ -7,7 +7,6 @@ return {
 
     substitute.setup()
 
-    -- substitute keymaps
     keymap.set("n", "s", substitute.operator, { desc = "Substitute with motion" })
     keymap.set("n", "ss", substitute.line, { desc = "Substitute line" })
     keymap.set("x", "s", substitute.visual, { desc = "Substitute in visual mode" })
