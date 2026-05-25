@@ -9,6 +9,7 @@ neovim
 xclip
 python-pynvim
 ripgrep
+fd
 man-db
 man-pages
 texinfo
