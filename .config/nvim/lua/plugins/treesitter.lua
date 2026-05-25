@@ -3,33 +3,13 @@ return {
   lazy = false,
   build = ":TSUpdate",
 
-  opts = {
-    highlight = {
-      disable = { "latex" },
-      enable = true,
-    },
-
-    indent = { enable = true },
-    auto_install = true,
-    sync_install = false,
-    ignore_install = {},
-    modules = {},
-    additional_vim_regex_highlighting = false,
-  },
-
-  -- config = function(_, opts)
-  --   local treesitter = require("nvim-treesitter")
-  --   treesitter.setup(opts)
-  --
-  --   vim.api.nvim_create_autocmd("BufEnter", {
-  --     callback = function()
-  --       pcall(vim.treesitter.start)
-  --     end,
-  --   })
-  -- end,
-
   config = function()
     local treesitter = require("nvim-treesitter")
+
+    treesitter.setup({
+      install_dir = vim.fn.stdpath("data") .. "/site",
+    })
+
     treesitter.install({
       "bash",
       "bibtex",
@@ -37,12 +17,10 @@ return {
       "cmake",
       "comment",
       "cpp",
-      "core_schema",
       "css",
       "csv",
       "diff",
       "editorconfig",
-      "git_commit",
       "git_config",
       "git_rebase",
       "gitattributes",
@@ -52,59 +30,54 @@ return {
       "hjson",
       "hlsl",
       "html",
+      "html_tags",
       "htmldjango",
       "http",
       "ini",
       "java",
-      "javascript",
       "javadoc",
-      "jinga2",
+      "javascript",
+      "jinja",
+      "jinja_inline",
       "jsdoc",
       "json",
       "json5",
-      "json_schema",
-      "jsonc",
       "jsonnet",
       "latex",
       "lua",
       "luadoc",
-      "mail",
       "make",
-      "mandbconfig",
       "markdown",
       "markdown_inline",
-      "math",
       "matlab",
       "nginx",
       "perl",
+      "printf",
+      "pymanifest",
       "python",
       "r",
       "rasi",
       "readline",
       "regex",
       "requirements",
+      "robot",
+      "robots_txt",
       "rust",
       "scss",
-      "sqlite",
-      "ssh_client_config",
       "ssh_config",
       "superhtml",
+      "todotxt",
       "toml",
       "udev",
       "vim",
       "vimdoc",
       "wgsl",
+      "wgsl_bevy",
       "xml",
+      "xresources",
       "yaml",
       "zathurarc",
       "zsh",
     })
   end,
-
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "py" },
-    callback = function()
-      vim.treesitter.start()
-    end,
-  }),
 }

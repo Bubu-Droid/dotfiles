@@ -116,5 +116,22 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = [[%s/\t/  /ge]],
 })
 
+-- start treesitter for every ftype except some
+local exclude = { alpha = true, tex = true }
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "*" },
+  callback = function(args)
+    if exclude[args.match] then
+      return
+    end
+    pcall(vim.treesitter.start)
+
+    vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    vim.wo[0][0].foldmethod = "expr"
+
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
+})
+
 -- set recommended settings for auto-session
 opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
