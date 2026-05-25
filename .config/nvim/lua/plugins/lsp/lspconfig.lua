@@ -3,11 +3,12 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
-    "mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
     "b0o/schemastore.nvim",
   },
+
   config = function()
     -- import mason_lspconfig plugin
     local mason_lspconfig = require("mason-lspconfig")
@@ -71,129 +72,43 @@ return {
       },
     })
 
-    -- default handler for installed servers
-    vim.lsp.config("*", {
-      capabilities = capabilities,
+    -- LSPs for web-dev
+    vim.lsp.enable("html-lsp") -- html
+    vim.lsp.enable("css-lsp") -- cssls
+    vim.lsp.enable("typescript-language-server") -- ts_ls
+    vim.lsp.enable("emmet-language-server") -- emmet_language_server
+    vim.lsp.enable("django-template-lsp") -- djlsp
+
+    -- LSP for python
+    vim.lsp.enable("basedpyright") -- basedpyright
+
+    -- LSP for lua
+    vim.lsp.enable("lua-language-server") -- lua_ls
+
+    -- LSP for latex
+    vim.lsp.enable("texlab") -- texlab
+
+    -- LSP for bash
+    vim.lsp.enable("bash-language-server") -- bashls
+
+    -- LSP for markdown
+    vim.lsp.enable("marksman") -- marksman
+
+    -- LSP for c and cpp
+    vim.lsp.config("clangd", { -- clangd
+      cmd = { "clangd", "--clang-tidy" },
     })
 
-    vim.lsp.config("emmet_ls", {
-      capabilities = capabilities,
-      filetypes = {
-        "html",
-        "htmldjango",
-        "typescriptreact",
-        "javascriptreact",
-        "css",
-        "sass",
-        "scss",
-        "less",
-        "svelte",
-      },
-    })
+    -- LSP for json
+    vim.lsp.enable("json-lsp") -- jsonls
 
-    -- vim.lsp.config("django_template_ls", {
-    --   cmd = { vim.fn.stdpath("data") .. "/mason/bin/djlsp" },
-    --   capabilities = capabilities,
-    --   filetypes = { "htmldjango" },
-    -- })
-    -- vim.lsp.enable("django_template_ls")
+    -- LSP for r
+    vim.lsp.enable("r-languageserver") -- r_language_server
 
-    vim.lsp.config("lua_ls", {
-      cmd = { "lua-language-server" },
-      capabilities = capabilities,
-      filetypes = { "lua" },
-      root_markers = {
-        ".luarc.json",
-        ".luarc.jsonc",
-        ".luacheckrc",
-        ".stylua.toml",
-        "stylua.toml",
-        "selene.toml",
-        "selene.yml",
-        ".git",
-      },
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { "vim" },
-          },
-          completion = {
-            callSnippet = "Replace",
-          },
-        },
-      },
-    })
+    -- LSP for yaml
+    vim.lsp.enable("yaml-language-server") -- yamlls
 
-    vim.lsp.config("texlab", {
-      capabilities = capabilities,
-      filetypes = { "tex", "latex" },
-    })
-
-    vim.lsp.config("pyright", {
-      capabilities = capabilities,
-      filetypes = { "python" },
-    })
-
-    vim.lsp.config("html", {
-      capabilities = capabilities,
-      filetypes = {
-        "html",
-        -- "htmldjango",
-      },
-    })
-
-    vim.lsp.config("css", {
-      capabilities = capabilities,
-      filetypes = { "css" },
-    })
-
-    vim.lsp.config("tailwindcss", {
-      capabilities = capabilities,
-      filetypes = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-    })
-
-    vim.lsp.config("marksman", {
-      capabilities = capabilities,
-      filetypes = { "markdown" },
-    })
-
-    vim.lsp.config("taplo", {
-      capabilities = capabilities,
-      filetypes = { "toml" },
-    })
-
-    vim.lsp.config("yamlls", {
-      capabilities = capabilities,
-      filetypes = { "yaml" },
-      settings = {
-        yaml = {
-          schemas = {
-            kubernetes = "/*.yaml",
-          },
-          validate = true,
-          completion = true,
-          hover = true,
-        },
-      },
-    })
-
-    vim.lsp.config("bashls", {
-      capabilities = capabilities,
-      filetypes = { "sh" },
-    })
-
-    vim.lsp.config("clangd", {
-      capabilities = capabilities,
-      filetypes = { "c", "cpp" },
-    })
-
-    vim.lsp.config("jsonls", {
-      capabilities = capabilities,
-      filetypes = { "json" },
-      settings = {
-        schemas = require("schemastore").json.schemas(),
-        validate = true,
-      },
-    })
+    -- LSP for toml
+    vim.lsp.enable("taplo") -- taplo
   end,
 }
