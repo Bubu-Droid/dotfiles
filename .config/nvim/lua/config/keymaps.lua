@@ -36,6 +36,7 @@ local function check_scrolloff()
     print("SCRLK OFF")
   end
 end
+
 keymap.set("n", "<leader>sk", check_scrolloff, { desc = "Toggles scroll lock" })
 
 keymap.set("n", "<leader>cr", "<cmd>vertical terminal! gcc % && ./a.out<CR>a", { desc = "Compile and execute C code" })
