@@ -1,24 +1,27 @@
 return {
   "WhoIsSethDaniel/mason-tool-installer.nvim",
+  dependencies = { "mason-org/mason-lspconfig.nvim" },
+
   opts = {
     ensure_installed = {
-      -- lsp
+      -- LSPs
+      "html-lsp", -- html
+      "css-lsp", -- css
+      "typescript-language-server", -- typescript
+      "emmet-language-server", -- emmet
+      "django-template-lsp", -- django
+      "basedpyright", -- python
+      "lua-language-server", -- lua
       "texlab", -- latex
-      "ts_ls", -- typescript
-      "pyright", -- python
-      "lua_ls", -- lua
-      "html", -- html
-      "cssls", -- css
-      "tailwindcss", -- tailwindcss
-      "emmet_ls", -- emmet
-      "marksman", -- bash
-      "taplo", -- toml
-      "yamlls", -- yaml
-      "bashls", -- bash
-      -- "django-template-lsp", -- django
-      "clangd", -- c
+      "bash-language-server", -- bash
+      "marksman", -- markdown
+      "clangd", -- c and cpp
       "jsonls", -- json
-      -- formatter
+      "r-languageserver", -- r
+      "yaml-language-server", -- yaml
+      "taplo", -- toml
+
+      -- formatters
       "prettier", -- primary-ft
       "stylua", -- lua
       "isort", -- python-primary
@@ -26,19 +29,22 @@ return {
       "shfmt", -- bash
       "clang-format", -- c
       "jq", -- json
-      -- linter
-      "pylint", -- python
-      "eslint_d", -- web-dev
-      "shellcheck", -- bash
+
+      -- linters
       "htmlhint", -- html
+      "djlint", -- htmldjango
       "stylelint", -- css
+      "eslint_d", -- web-dev
+      "ruff", -- python
+      "selene", -- lua
+      -- "chktex", -- latex
+      "shellcheck", -- bash
       "markdownlint", -- markdown
-      -- "toml-lint", -- toml
+      -- c and cpp linting is handled by clangd itself
+      -- we don't really need a linter for json
+      "lintr", -- r
       "yamllint", -- yaml
-      "textlint", -- text
-      -- "djlint", -- htmldjango
-      "cpplint", -- c
-      "jsonlint", -- json
+      -- we don't really need a linter for toml
     },
   },
 }
