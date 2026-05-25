@@ -31,6 +31,7 @@ xf86-video-amdgpu
 vulkan-radeon
 fastfetch
 curl
+wget
 tree
 plocate
 zsh
@@ -41,6 +42,8 @@ zoxide
 firefox
 zip
 unzip
+tar
+gzip
 git
 openssh
 reflector
