@@ -22,7 +22,7 @@ return {
 
     npairs.add_rules({
       -- Rule for a pair with left-side ' ' and right side ' '
-      Rule(" ", " ")
+      Rule(" ", " ", "lua")
         -- Pair will only occur if the conditional function returns true
         :with_pair(function(args)
           -- We are checking if we are inserting a space in (), [], or {}
@@ -51,7 +51,7 @@ return {
     for _, bracket in pairs(brackets) do
       npairs.add_rules({
         -- Each of these rules is for a pair with left-side '( ' and right-side ' )' for each bracket type
-        Rule(bracket[1] .. " ", " " .. bracket[2])
+        Rule(bracket[1] .. " ", " " .. bracket[2], "lua")
           :with_pair(cond.none())
           :with_move(function(args)
             return args.char == bracket[2]
@@ -67,9 +67,15 @@ return {
 
     -- Add trailing commas to "'} inside Lua tables
     npairs.add_rules({
-      Rule("{", "},", "lua"):with_pair(ts_conds.is_ts_node({ "table_constructor" })),
-      Rule("'", "',", "lua"):with_pair(ts_conds.is_ts_node({ "table_constructor" })),
-      Rule('"', '",', "lua"):with_pair(ts_conds.is_ts_node({ "table_constructor" })),
+      Rule("{", "},", "lua")
+        :with_pair(cond.not_after_regex(","))
+        :with_pair(ts_conds.is_ts_node({ "table_constructor" })),
+      Rule("'", "',", "lua")
+        :with_pair(cond.not_after_regex(","))
+        :with_pair(ts_conds.is_ts_node({ "table_constructor" })),
+      Rule('"', '",', "lua")
+        :with_pair(cond.not_after_regex(","))
+        :with_pair(ts_conds.is_ts_node({ "table_constructor" })),
     })
   end,
 }
