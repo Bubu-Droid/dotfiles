@@ -133,9 +133,8 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- disable folding for certain filetypes
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "lua" },
+-- disable folding when opening a file
+vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
     vim.opt.foldenable = false
   end,
