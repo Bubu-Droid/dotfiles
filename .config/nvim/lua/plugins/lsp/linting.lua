@@ -1,26 +1,25 @@
 return {
   "mfussenegger/nvim-lint",
   event = { "BufReadPre", "BufNewFile" },
+
   config = function()
     local lint = require("lint")
 
     lint.linters_by_ft = {
-      -- javascript = { "eslint_d" },
-      -- typescript = { "eslint_d" },
-      -- javascriptreact = { "eslint_d" },
-      -- typescriptreact = { "eslint_d" },
-      python = { "pylint" },
-      sh = { "shellcheck" },
       html = { "htmlhint" },
-      -- htmldjango = { "djlint" },
+      htmldjango = { "djlint" },
       css = { "stylelint" },
+      javascript = { "eslint_d" },
+      python = { "ruff" },
+      lua = { "selene" },
+      -- latex = { "chktex" },
+      sh = { "shellcheck" },
       markdown = { "markdownlint" },
-      -- toml = { "toml-lint" },
+      -- c and cpp linting is handled by clangd itself
+      -- we don't really need a linter for json
+      r = { "lintr" },
       yaml = { "yamllint" },
-      -- text = { "textlint" },
-      c = { "cpplint" },
-      cpp = { "cpplint" },
-      json = { "jsonlint" },
+      -- we don't really need a linter for toml
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
