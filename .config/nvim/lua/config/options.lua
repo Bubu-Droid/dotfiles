@@ -133,5 +133,13 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- disable folding for certain filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "lua" },
+  callback = function()
+    vim.opt.foldenable = false
+  end,
+})
+
 -- set recommended settings for auto-session
 opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
