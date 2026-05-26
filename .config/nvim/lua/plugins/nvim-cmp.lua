@@ -30,7 +30,7 @@ return {
       completion = {
         completeopt = "menu,menuone,preview,noselect",
       },
-      snippet = { -- configure how nvim-cmp interacts with snippet engine
+      snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
         end,
@@ -51,9 +51,10 @@ return {
           end
         end, { "i", "s" }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.locally_jumpable(-1) then
+          -- if cmp.visible() then
+          --   cmp.select_prev_item()
+          -- elseif luasnip.locally_jumpable(-1) then
+          if luasnip.locally_jumpable(-1) then
             luasnip.jump(-1)
           else
             fallback()
@@ -67,6 +68,7 @@ return {
         ["<C-e>"] = cmp.mapping.abort(), -- close completion window
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
       }),
+
       -- sources for autocompletion
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
@@ -84,6 +86,27 @@ return {
         expandable_indicator = true,
         fields = { cmp.ItemField.Abbr, cmp.ItemField.Kind },
       },
+
+      -- `/` cmdline setup.
+      -- cmp.setup.cmdline("/", {
+      --   mapping = cmp.mapping.preset.cmdline(),
+      --   sources = {
+      --     { name = "buffer" },
+      --   },
+      -- }),
+
+      -- `:` cmdline setup.
+      -- cmp.setup.cmdline(":", {
+      --   mapping = cmp.mapping.preset.cmdline(),
+      --   sources = cmp.config.sources({
+      --     { name = "path" },
+      --   }, {
+      --     { name = "cmdline" },
+      --   }),
+      --   matching = {
+      --     disallow_symbol_nonprefix_matching = false,
+      --   },
+      -- }),
     })
 
     -- If you want insert `(` after select function or method item
