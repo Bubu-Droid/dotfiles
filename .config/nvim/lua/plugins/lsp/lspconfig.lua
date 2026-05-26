@@ -3,10 +3,9 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
-    "mason-org/mason-lspconfig.nvim",
-    { "antosha417/nvim-lsp-file-operations", config = true },
-    { "folke/neodev.nvim", opts = {} },
-    "b0o/schemastore.nvim",
+    { "mason-org/mason-lspconfig.nvim", opts = {} },
+    { "antosha417/nvim-lsp-file-operations", opts = {} },
+    { "folke/lazydev.nvim", opts = {} },
   },
 
   config = function()
@@ -53,6 +52,18 @@ return {
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
+    -- For anyone wondering which video I'm referring to, here is the link
+    -- https://youtu.be/6pAG3BHurdM
+    -- Unrelated remark: If you're trying to share a YouTube video
+    -- and notice a ?si=... parameter, remove that shit.
+    -- It's a fucking tracker. Thanks to Tanmay for sharing this with me.
+    --
+    -- I started out with the NVIM config of the guy above and have been changing
+    -- it heavily ever since. I've read plugin docs and changed most of the
+    -- setup. The only plugins that I couldn't make time up for reading docs
+    -- are: nvim-tree (I've somewhat read it partially), telescope, treesitter,
+    -- ultisnips (partially read), vimtex (partially read), and more about vim.lsp.
+
     local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 
     vim.diagnostic.config({
@@ -95,9 +106,7 @@ return {
     vim.lsp.enable("marksman") -- marksman
 
     -- LSP for c and cpp
-    vim.lsp.config("clangd", { -- clangd
-      cmd = { "clangd", "--clang-tidy" },
-    })
+    vim.lsp.enable("clangd") -- clangd
 
     -- LSP for json
     vim.lsp.enable("json-lsp") -- jsonls
