@@ -1,13 +1,13 @@
 return {
   "WhoIsSethDaniel/mason-tool-installer.nvim",
-  dependencies = { "mason-org/mason-lspconfig.nvim" },
+  dependencies = { "mason-org/mason-lspconfig.nvim", opts = {} },
 
   opts = {
     ensure_installed = {
       -- LSPs
       "html-lsp", -- html
       "css-lsp", -- css
-      "typescript-language-server", -- typescript
+      "typescript-language-server", -- js
       "emmet-language-server", -- emmet
       "django-template-lsp", -- django
       "basedpyright", -- python
@@ -22,13 +22,19 @@ return {
       "taplo", -- toml
 
       -- formatters
-      "prettier", -- primary-ft
+      "prettier", -- web-dev, markdown, json
+      "djlint", -- htmldjango
+      "ruff", -- python
+      -- "ruff_format", -- python
+      -- "ruff_fix", -- python
+      -- "ruff_organize_imports", -- python
       "stylua", -- lua
-      "isort", -- python-primary
-      "black", -- python-secondary
+      "tex-fmt", -- latex
       "shfmt", -- bash
-      "clang-format", -- c
-      "jq", -- json
+      "clang-format", -- c and cpp
+      -- "styler", -- r
+      "yamlfix", -- yaml
+      "taplo", -- toml
 
       -- linters
       "htmlhint", -- html
@@ -36,13 +42,13 @@ return {
       "stylelint", -- css
       "eslint_d", -- web-dev
       "ruff", -- python
-      "selene", -- lua
+      -- "selene", -- lua
       -- "chktex", -- latex
       "shellcheck", -- bash
       "markdownlint", -- markdown
-      -- c and cpp linting is handled by clangd itself
+      -- "clangtidy" -- c and cpp
       -- we don't really need a linter for json
-      "lintr", -- r
+      -- "lintr", -- r
       "yamllint", -- yaml
       -- we don't really need a linter for toml
     },
