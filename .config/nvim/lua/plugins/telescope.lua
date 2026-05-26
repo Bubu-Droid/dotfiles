@@ -1,13 +1,14 @@
 return {
   "nvim-telescope/telescope.nvim",
-  event = { "VimEnter" },
-  branch = "0.1.x",
+  version = "*",
   dependencies = {
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
     },
   },
+  event = { "VimEnter" },
+
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
