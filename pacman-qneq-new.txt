@@ -4,6 +4,9 @@ linux
 linux-firmware
 amd-ucode
 networkmanager
+gcc
+clang
+clangd
 vim
 neovim
 xclip
