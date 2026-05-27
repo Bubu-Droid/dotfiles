@@ -40,7 +40,7 @@ alias bon="python3 -m bon"
 alias cd="z"
 eval "$(zoxide init zsh)"
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/bubu-scripts:$HOME/bon/bon:$HOME/.config/polybar/poly-scripts
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/bubu-scripts:$HOME/bon/bon:$HOME/.config/polybar/poly-scripts:$HOME/.npm-packages/bin
 export PYTHONPATH="$PYTHONPATH:$HOME/bon"
 export EDITOR="nvim"
 export BROWSER="firefox"
