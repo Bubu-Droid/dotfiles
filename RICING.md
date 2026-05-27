@@ -67,8 +67,8 @@
   camera if you use OBS.
 
 - (Optional) I have a few node packages installed for my neovim plugins.
-  You may install them using `sudo npm install -g <package-name>`.
-  Here is a shortlist of a few packages I require.
+  You may install them using `npm install -g <package-name>`.
+  Here is a shortlist of a few packages my setup needs:
   - tree-sitter-cli
   - live-server
   - stylelint --save-dev
@@ -78,6 +78,11 @@
   installing the plugin/package
   globally be it a python code formatter like
   `isort` or `black` or a node based linter.
+
+  > [!NOTE]
+  > In case `npm` does not have enough permissions
+  > to download globally, set the directory
+  > for npm packages using `npm config set prefix ~/.npm-packages`.
 
 - In case you encounter a firefox bug which prints colored
   page despite the print mode being chosen black & white,
