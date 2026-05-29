@@ -10,6 +10,6 @@ if [ -d "$xinitdir"/xinitrc.d ]; then
 fi
 
 numlockx
-clipcatd
+clipcatd --replace
 flameshot &
 exec i3
