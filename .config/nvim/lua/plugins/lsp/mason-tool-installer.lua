@@ -9,7 +9,8 @@ return {
       "css-lsp", -- css
       "typescript-language-server", -- js
       "emmet-language-server", -- emmet
-      "django-template-lsp", -- django
+      "django-template-lsp", -- htmldjango
+      -- "django-language-server", -- django-python
       "basedpyright", -- python
       "lua-language-server", -- lua
       "texlab", -- latex
