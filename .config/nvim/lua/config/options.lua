@@ -140,5 +140,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
+-- change filetype to django when working under templates
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*/templates/*/*.html",
+  callback = function()
+    vim.bo.filetype = "htmldjango"
+  end,
+})
+
 -- set recommended settings for auto-session
 opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
