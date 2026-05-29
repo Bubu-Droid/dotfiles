@@ -84,40 +84,41 @@ return {
     })
 
     -- LSPs for web-dev
-    vim.lsp.enable("html-lsp") -- html
-    vim.lsp.enable("css-lsp") -- cssls
-    vim.lsp.enable("typescript-language-server") -- ts_ls
-    vim.lsp.enable("emmet-language-server") -- emmet_language_server
-    vim.lsp.enable("django-template-lsp") -- djlsp
+    vim.lsp.enable("html")
+    vim.lsp.enable("cssls")
+    vim.lsp.enable("ts_ls")
+    vim.lsp.enable("emmet_language_server")
+    vim.lsp.enable("djlsp")
 
     -- LSP for python
-    vim.lsp.enable("basedpyright") -- basedpyright
+    vim.lsp.enable("basedpyright")
+    -- vim.lsp.enable("djls")
 
     -- LSP for lua
-    vim.lsp.enable("lua-language-server") -- lua_ls
+    vim.lsp.enable("lua_ls")
 
     -- LSP for latex
-    vim.lsp.enable("texlab") -- texlab
+    vim.lsp.enable("texlab")
 
     -- LSP for bash
-    vim.lsp.enable("bash-language-server") -- bashls
+    vim.lsp.enable("bashls")
 
     -- LSP for markdown
-    vim.lsp.enable("marksman") -- marksman
+    vim.lsp.enable("marksman")
 
     -- LSP for c and cpp
-    vim.lsp.enable("clangd") -- clangd
+    vim.lsp.enable("clangd")
 
     -- LSP for json
-    vim.lsp.enable("json-lsp") -- jsonls
+    vim.lsp.enable("jsonls")
 
     -- LSP for r
-    vim.lsp.enable("r-languageserver") -- r_language_server
+    vim.lsp.enable("r_language_server")
 
     -- LSP for yaml
-    vim.lsp.enable("yaml-language-server") -- yamlls
+    vim.lsp.enable("yamlls")
 
     -- LSP for toml
-    vim.lsp.enable("taplo") -- taplo
+    vim.lsp.enable("taplo")
   end,
 }
