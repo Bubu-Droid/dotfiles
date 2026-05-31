@@ -6,7 +6,6 @@ amd-ucode
 networkmanager
 gcc
 clang
-clangd
 cmake
 vim
 neovim
