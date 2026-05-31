@@ -18,6 +18,7 @@ man-db
 man-pages
 texinfo
 grub
+os-prober
 efibootmgr
 xorg-server
 xorg-xinit
