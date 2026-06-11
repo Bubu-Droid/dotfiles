@@ -9,3 +9,4 @@ electron35-bin
 ferdium-bin
 colorpicker-git
 gtk-engine-murrine
+burpsuite
