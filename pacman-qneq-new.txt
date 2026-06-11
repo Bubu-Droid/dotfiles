@@ -7,8 +7,10 @@ networkmanager
 gcc
 clang
 cmake
+r
 vim
 neovim
+tree-sitter-cli
 xclip
 python-pynvim
 ripgrep
@@ -85,3 +87,4 @@ qbittorrent
 obs-studio
 texlive
 biber
+sleuthkit
