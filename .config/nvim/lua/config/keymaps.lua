@@ -39,4 +39,19 @@ end
 
 keymap.set("n", "<leader>sk", check_scrolloff, { desc = "Toggles scroll lock" })
 
-keymap.set("n", "<leader>cr", "<cmd>vertical terminal! gcc % && ./a.out<CR>a", { desc = "Compile and execute C code" })
+-- Compile and execute code
+keymap.set("n", "<leader>cr", function()
+  local ft = vim.bo.filetype
+  local file = vim.fn.expand("%:t")
+  local name = vim.fn.expand("%:t:r")
+
+  if ft == "c" then
+    vim.cmd("vsplit | terminal gcc " .. file .. " && ./a.out")
+    vim.cmd("startinsert")
+  elseif ft == "cpp" then
+    -- you should always open the nvim instance from the root of the project
+    local project = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+    vim.cmd("vsplit | terminal make && ./" .. project)
+    vim.cmd("startinsert")
+  end
+end)

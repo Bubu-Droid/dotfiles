@@ -13,3 +13,4 @@ gtk-engine-murrine
 steghide
 zsteg
 wireshark-qt
+burpsuite
