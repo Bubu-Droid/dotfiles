@@ -4,14 +4,10 @@ read -r current_device <"$HOME/.device"
 
 if [ "$(nmcli radio wifi | grep "enabled" | wc -c)" -eq 0 ]; then
   nmcli radio wifi on
-  if [ "$current_device" == "laptop" ]; then
-    sed -Ei "s|interface[[:space:]]*=[[:space:]]*[a-zA-Z0-9_]*|interface = wireless|g" "$HOME/.config/polybar/modules/network.ini"
-  fi
+  sed -Ei "s|interface-type[[:space:]]*=[[:space:]]*[a-zA-Z0-9_]*|interface-type = wireless|g" "$HOME/.config/polybar/modules/network.ini"
 else
   nmcli radio wifi off
-  if [ "$current_device" == "laptop" ]; then
-    sed -Ei "s|interface[[:space:]]*=[[:space:]]*[a-zA-Z0-9_]*|interface = ethernet|g" "$HOME/.config/polybar/modules/network.ini"
-  fi
+  sed -Ei "s|interface-type[[:space:]]*=[[:space:]]*[a-zA-Z0-9_]*|interface-type = wired|g" "$HOME/.config/polybar/modules/network.ini"
 fi
 
 i3-msg restart
