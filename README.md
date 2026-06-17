@@ -90,6 +90,6 @@ using a Rofi applet
 - [Archived packages for Arch][archarchive]
 
 [archinstallguide]: https://wiki.archlinux.org/title/Installation_guide
-[mentaloutarchinstall]: https://youtu.be/rUEnS1zj1DM?si=ftzJVo7DClwe8sOJ
+[mentaloutarchinstall]: https://youtu.be/rUEnS1zj1DM
 [archarchive]: https://archive.archlinux.org/packages/
-[archlinuxlukesmith]: https://youtu.be/nSHOb8YU9Gw?si=o0N_tjCUDyeJyQTW
+[archlinuxlukesmith]: https://youtu.be/nSHOb8YU9Gw
