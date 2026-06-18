@@ -43,7 +43,7 @@ keymap.set("n", "<leader>sk", check_scrolloff, { desc = "Toggles scroll lock" })
 keymap.set("n", "<leader>cr", function()
   local ft = vim.bo.filetype
   local file = vim.fn.expand("%:t")
-  local name = vim.fn.expand("%:t:r")
+  -- local name = vim.fn.expand("%:t:r")
 
   if ft == "c" then
     vim.cmd("vsplit | terminal gcc " .. file .. " && ./a.out")
