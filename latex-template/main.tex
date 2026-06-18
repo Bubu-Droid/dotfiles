@@ -28,26 +28,27 @@ you're good together?}{Me (inspired by “Good Together” --- Shy Martin)}
 
 This is the color of the default \textbf{bold text}.
 
-\begin{definition}{Name}{}
+\begin{definition}{Name}{firstdefn}
   This is a Definition.
 \end{definition}
 
-\begin{theorem}{Name}{}
+\begin{theorem}{Name}{firstthm}
   This is a Theorem.
 \end{theorem}
 
-\begin{lemma}{Name}{}
+\begin{lemma}{Name}{firstlemma}
   This is a Lemma.
 \end{lemma}
 
-\begin{corollary}{Name}{}
+\begin{corollary}{Name}{firstcor}
   This is a Corollary.
 \end{corollary}
 
-\begin{proposition}{Name}{}
+\begin{proposition}{Name}{firstprop}
   This is a Proposition.
 \end{proposition}
 
+% We don't have references for notation box.
 \begin{notation}{}{}
   \begin{itemize}
       \ii Notation 1.
@@ -56,11 +57,11 @@ This is the color of the default \textbf{bold text}.
   \end{itemize}
 \end{notation}
 
-\begin{question}{Name}{}
+\begin{question}{Name}{firstques}
   This is a Question.
 \end{question}
 
-\begin{exercise}{Name}{}
+\begin{exercise}{Name}{firstexc}
   This is an Exercise.
 \end{exercise}
 \begin{hints}{}{}
@@ -69,7 +70,7 @@ This is the color of the default \textbf{bold text}.
   \end{hint}
 \end{hints}
 
-\begin{problem}{Name}{}
+\begin{problem}{Name}{firstprob}
   This is a Problem.
 \end{problem}
 \begin{hints}
@@ -81,11 +82,11 @@ This is the color of the default \textbf{bold text}.
   \end{hint}
 \end{hints}
 
-\begin{algorithm}{Name}{}
+\begin{algorithm}{Name}{firstalgo}
   This is an Algorithm.
 \end{algorithm}
 
-\begin{claim}{Name}{}
+\begin{claim}{Name}{firstclaim}
   This is a Claim.
 \end{claim}
 
@@ -93,7 +94,7 @@ This is the color of the default \textbf{bold text}.
   This is a Proof.
 \end{proof}
 
-\begin{example}{Name}{}
+\begin{example}{Name}{firstexm}
   This is an Example.
 \end{example}
 
@@ -103,9 +104,32 @@ This is the color of the default \textbf{bold text}.
 
 \hrulebar
 
-\begin{remark}{Name}{}
+\begin{remark}{Name}{firstrem}
   This is a Remark.\footnote{This is footnote for this remark.}
 \end{remark}
+
+\section{Using references}
+
+Here is how you can use the references made above:
+\Cref{definition:firstdefn},
+\Cref{theorem:firstthm},
+\Cref{lemma:firstlemma},
+\Cref{corollary:firstcor},
+\Cref{proposition:firstprop},
+% \Cref{notation:firstnot},
+\Cref{question:firstques},
+\Cref{exercise:firstexc},
+\Cref{problem:firstprob},
+\Cref{algorithm:firstalgo},
+\Cref{claim:firstclaim},
+\Cref{example:firstexm},
+\Cref{remark:firstrem}.
+
+Please ignore the linter errors here (if you're using a linter).
+The linter does not recognize references like \texttt{theorem:firstthm}
+since there is no explicit reference as such. However, the code
+compiles completely fine since \texttt{tcolorbox} sets up
+references by adding the environment name before the reference label.
 
 \newpage
 
