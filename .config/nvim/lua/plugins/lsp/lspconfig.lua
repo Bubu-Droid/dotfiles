@@ -48,7 +48,7 @@ return {
     })
 
     -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    -- local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
@@ -107,6 +107,9 @@ return {
     vim.lsp.enable("marksman")
 
     -- LSP for c and cpp
+    vim.lsp.config("clangd", {
+      cmd = { "clangd", "--clang-tidy" },
+    })
     vim.lsp.enable("clangd")
 
     -- LSP for json
