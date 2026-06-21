@@ -1,5 +1,5 @@
 % ================================================== %
-% ============== PROVIDES THE PACKAGE ============== %
+% =============== PROVIDE THE PACKAGE ============== %
 % ================================================== %
 
 % This sty file is heavily inspired by vEnhance's
@@ -30,22 +30,26 @@
 
 % {{{ USER OPTIONS
 
+\newif\ifbubucover\bubucoverfalse
+\newif\ifbubumax\bubumaxtrue
+\newif\ifbububoxbw\bububoxbwfalse
 \newif\ifbubuhdr\bubuhdrtrue
 \newif\ifbubuauthor\bubuauthortrue
 \newif\ifbubudate\bubudatetrue
 \newif\ifbubutitle\bubutitletrue
 \newif\ifbubutitlemark\bubutitlemarktrue
 \newif\ifbubusecthm\bubusecthmtrue
+\newif\ifbubucountcont\bubucountconttrue
 \newif\ifbubucs\bubucsfalse
 \newif\ifbubuepi\bubuepifalse
 \newif\ifbububib\bububibfalse
 \newif\ifbubuhints\bubuhintsfalse
 \newif\ifbubuasy\bubuasytrue
-\newif\ifbubumax\bubumaxtrue
 \newif\ifbububon\bububonfalse
-\newif\ifbubucountcont\bubucountconttrue
-\newif\ifbubucover\bubucoverfalse
 
+\DeclareOption{fancycover}{\bubucovertrue}
+\DeclareOption{min}{\bubumaxfalse\bubuasytrue}
+\DeclareOption{boxbw}{\bububoxbwtrue}
 \DeclareOption{nohdr}{\bubuhdrfalse}
 \DeclareOption{noauthor}{\bubuauthorfalse}
 \DeclareOption{nodate}{\bubudatefalse}
@@ -58,16 +62,14 @@
 \DeclareOption{bib}{\bububibtrue}
 \DeclareOption{hints}{\bubuhintstrue}
 \DeclareOption{noasy}{\bubuasyfalse}
-\DeclareOption{min}{\bubumaxfalse\bubuasytrue}
 \DeclareOption{bon}{\bububontrue}
-\DeclareOption{fancycover}{\bubucovertrue}
 
 \ProcessOptions\relax
 
 % }}}
 
 % ================================================== %
-% =============== REQUIRED PACKAGES ================ %
+% ================ REQUIRED PACKAGES =============== %
 % ================================================== %
 
 % {{{ REQUIRED PACKAGES
@@ -106,7 +108,12 @@
 \RequirePackage[makeroom]{cancel}
 \RequirePackage{caption}
 \else
-\RequirePackage[colorlinks=true,pdfusetitle,hypertexnames=false,linkcolor=blue]{hyperref}
+\RequirePackage[
+  colorlinks=true,
+  pdfusetitle,
+  hypertexnames=false,
+  linkcolor=blue
+]{hyperref}
 \fi
 
 \RequirePackage[nameinlink]{cleveref}
@@ -114,7 +121,134 @@
 % }}}
 
 % ================================================== %
-% ================= PERSONAL STYLING =============== %
+% =================== COLOR SETUP ================== %
+% ================================================== %
+
+% {{{ COLOR SETUP
+
+\ifbubumax
+\definecolor{LightGray}{gray}{0.9}
+
+\definecolor{lightestblue}{HTML}{F2FBFC} % #F2FBFC
+\definecolor{lighterblue}{HTML}{F2F2F9} % #F2F2F9
+\definecolor{bubulightblue}{HTML}{E5E5FF} % #E5E5FF
+\definecolor{deepblue}{HTML}{3F3FA3} % #3F3FA3
+\definecolor{deepestblue}{HTML}{00007B} % #00007B
+
+\definecolor{lightestgreen}{HTML}{73A840} % #73A840
+\definecolor{bubulightgreen}{HTML}{388C46} % #388C46
+\definecolor{deepgreen}{HTML}{003700} % #003700
+
+\definecolor{bubupink}{HTML}{06608F} % #06608F
+\definecolor{bubucream}{HTML}{00AAA0} % #00AAA0
+\definecolor{bubured}{HTML}{D51645} % #D51645
+
+\ifbububoxbw
+\colorlet{defncoltitle}{black}
+\colorlet{defncolback}{white}
+\colorlet{defncolframe}{black}
+\colorlet{defncolbacktitle}{black}
+\colorlet{thmcoltitle}{black}
+\colorlet{thmcolback}{white}
+\colorlet{thmcolframe}{black}
+\colorlet{thmcolbacktitle}{black}
+\colorlet{lemmacoltitle}{black}
+\colorlet{lemmacolback}{white}
+\colorlet{lemmacolframe}{black}
+\colorlet{lemmacolbacktitle}{black}
+\colorlet{crlcoltitle}{black}
+\colorlet{crlcolback}{white}
+\colorlet{crlcolframe}{black}
+\colorlet{crlcolbacktitle}{black}
+\colorlet{propcoltitle}{black}
+\colorlet{propcolback}{white}
+\colorlet{propcolframe}{black}
+\colorlet{propcolbacktitle}{black}
+
+\colorlet{claimcoltitle}{black}
+\colorlet{claimcolback}{black!5}
+\colorlet{claimborderline}{black}
+\colorlet{claimsegstyle}{black}
+\colorlet{quescoltitle}{black}
+\colorlet{quessegstyle}{black}
+\colorlet{remcolback}{black!5}
+\colorlet{remborderline}{black}
+\colorlet{remcoltitle}{black}
+\colorlet{remsegstyle}{black}
+
+\colorlet{examplecoltitle}{black}
+\colorlet{examplecolback}{black!5}
+\colorlet{examplecolframe}{black}
+
+\colorlet{probcoltitle}{black}
+\colorlet{probcolback}{white}
+\colorlet{probcolframe}{white}
+\colorlet{probfont}{black}
+
+\colorlet{notecoltitle}{black}
+\colorlet{notecolback}{black!5}
+\colorlet{notecolframe}{black}
+\colorlet{noteshadow}{black!50!white}
+\colorlet{noteboxcolback}{white}
+\colorlet{noteboxfill}{white}
+\colorlet{noteboxscope}{black}
+
+\else
+\colorlet{defncoltitle}{RawSienna}
+\colorlet{defncolback}{Salmon!5}
+\colorlet{defncolframe}{RawSienna}
+\colorlet{defncolbacktitle}{RawSienna}
+\colorlet{thmcoltitle}{deepestblue}
+\colorlet{thmcolback}{lightestblue}
+\colorlet{thmcolframe}{deepestblue}
+\colorlet{thmcolbacktitle}{deepestblue}
+\colorlet{lemmacoltitle}{deepestblue}
+\colorlet{lemmacolback}{lightestblue}
+\colorlet{lemmacolframe}{deepestblue}
+\colorlet{lemmacolbacktitle}{deepestblue}
+\colorlet{crlcoltitle}{deepestblue}
+\colorlet{crlcolback}{lighterblue}
+\colorlet{crlcolframe}{deepestblue}
+\colorlet{crlcolbacktitle}{deepblue}
+\colorlet{propcoltitle}{deepestblue}
+\colorlet{propcolback}{lighterblue}
+\colorlet{propcolframe}{deepestblue}
+\colorlet{propcolbacktitle}{deepblue}
+
+\colorlet{claimcoltitle}{bubulightgreen!85!black}
+\colorlet{claimcolback}{bubulightgreen!10}
+\colorlet{claimborderline}{bubulightgreen}
+\colorlet{claimsegstyle}{bubulightgreen!85!black}
+\colorlet{quescoltitle}{deepgreen}
+\colorlet{quessegstyle}{deepgreen}
+\colorlet{remcolback}{RedViolet!5!gray!5}
+\colorlet{remborderline}{black}
+\colorlet{remcoltitle}{black}
+\colorlet{remsegstyle}{black}
+
+\colorlet{examplecoltitle}{deepgreen}
+\colorlet{examplecolback}{bubulightgreen!10}
+\colorlet{examplecolframe}{lightestgreen}
+
+\colorlet{probcoltitle}{blue!40!black}
+\colorlet{probcolback}{white}
+\colorlet{probcolframe}{white}
+\colorlet{probfont}{blue!40!black}
+
+\colorlet{notecoltitle}{black}
+\colorlet{notecolback}{gray!20!white}
+\colorlet{notecolframe}{gray!80!black}
+\colorlet{noteshadow}{black!50!white}
+\colorlet{noteboxcolback}{white}
+\colorlet{noteboxfill}{white}
+\colorlet{noteboxscope}{gray!80!black}
+\fi
+\fi
+
+% }}}
+
+% ================================================== %
+% ================ PERSONAL STYLING ================ %
 % ================================================== %
 
 % {{{ PERSONAL STYLING
@@ -131,23 +265,10 @@
 \let\emptyset\varnothing
 
 \ifbubumax
-\definecolor{LightGray}{gray}{0.9}
-\definecolor{deepbluebg}{HTML}{F2F2F9}
-\definecolor{newbluebg}{HTML}{F2FBFC}
-\definecolor{deepbluefg}{HTML}{00007B}
-\definecolor{lightbluebg}{HTML}{E5E5FF}
-\definecolor{lightbluefg}{HTML}{3F3FA3}
-\definecolor{lightgreen}{HTML}{388C46}
-\definecolor{darkgreenbg}{HTML}{73A840}
-\definecolor{darkgreenfg}{HTML}{003700}
-\definecolor{bubupink}{HTML}{06608F}
-\definecolor{bubucream}{HTML}{00AAA0}
-\definecolor{bubured}{HTML}{D51645}
-
-\newcommand{\bubuS}{{\fontfamily{lmr}\selectfont\S}} %`put' font
-% family is another good option
-% \newcommand{\bubuS}{{\fontfamily{lmr}\selectfont\maltese}} %`put'
-% font family is another good option
+%`put' font family is another good option
+\newcommand{\bubuS}{{\fontfamily{lmr}\selectfont\S}}
+%`put' font family is another good option
+% \newcommand{\bubuS}{{\fontfamily{lmr}\selectfont\maltese}}
 
 \renewcommand*{\thefootnote}{\fnsymbol{footnote}}
 \MakePerPage{footnote}
@@ -159,7 +280,7 @@
 % \renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
 \renewcommand{\textbf}[1]{%
-  \textcolor{deepbluefg}{\bfseries{#1}}%
+  \textcolor{deepestblue}{\bfseries{#1}}%
 }
 
 \captionsetup{%
@@ -318,7 +439,6 @@
 \renewcommand{\mkbibnamesuffix}[1]{\textsc{#1}}
 % Drop trailing punctuation in bibliography names
 \renewcommand{\finentrypunct}{}
-
 \fi
 
 % hints setup
@@ -350,7 +470,7 @@
 \RequirePackage{tikz-cd}
 \RequirePackage{pgfplots}
 
-\def\maincolor{deepbluefg}
+\def\maincolor{deepestblue}
 \def\secondcolor{bubupink}
 
 \newcommand{\changemaincolor}[1]{\def\maincolor{#1}}
@@ -491,10 +611,10 @@
     enhanced,
     before skip=12pt,
     after skip=12pt,
-    coltitle=RawSienna,
-    colback=Salmon!5,
-    colframe=RawSienna,
-    colbacktitle=RawSienna,
+    coltitle=defncoltitle,
+    colback=defncolback,
+    colframe=defncolframe,
+    colbacktitle=defncolbacktitle,
     boxrule=0.8pt,
     attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
     varwidth boxed title*=-3cm,
@@ -524,7 +644,6 @@
     fonttitle=\bfseries,
     description delimiters parenthesis,
     separator sign none,
-    segmentation style={solid, RawSienna},
   }
 }
 
@@ -534,19 +653,19 @@
     enhanced,
     before skip=8pt,
     after skip=8pt,
-    colback = lightgreen!10,
+    coltitle=claimcoltitle,
+    colback=claimcolback,
     frame hidden,
-    boxrule = 0sp,
-    borderline west = {2pt}{0pt}{lightgreen},
+    boxrule=0sp,
+    borderline west={2pt}{0pt}{claimborderline},
     sharp corners,
     detach title,
-    before upper = \tcbtitle\par\medskip,
-    coltitle = lightgreen!85!black,
-    fonttitle = \bfseries\sffamily,
-    description font = \mdseries,
+    before upper=\tcbtitle\par\medskip,
+    fonttitle=\bfseries\sffamily,
+    description font=\mdseries,
     description delimiters parenthesis,
     separator sign none,
-    segmentation style={solid, lightgreen!85!black},
+    segmentation style={solid, claimsegstyle},
   }
 }
 
@@ -556,15 +675,15 @@
     enhanced,
     before skip=12pt,
     after skip=12pt,
-    colback = lightgreen!10,
-    colframe = darkgreenbg,
-    coltitle = darkgreenfg,
-    boxrule = 0.5pt,
+    coltitle=examplecoltitle,
+    colback=examplecolback,
+    colframe=examplecolframe,
+    boxrule=0.5pt,
     sharp corners,
     detach title,
     before upper=\tcbtitle\par\medskip,
-    fonttitle = \bfseries,
-    description font = \mdseries,
+    fonttitle=\bfseries,
+    description font=\mdseries,
     separator sign none,
     description delimiters parenthesis,
   }
@@ -577,15 +696,15 @@
     frame hidden,
     boxrule=0pt,
     boxsep=0pt,
-    colback=white,
-    colframe=white,
+    coltitle=probcoltitle,
+    colback=probcolback,
+    colframe=probcolframe,
     sharp corners,
     before upper={\noindent\ignorespaces},
     before skip=12pt,
     after skip=12pt,
     top=0pt, bottom=0pt, left=0pt, right=0pt,
-    fonttitle=\bfseries\color{blue!40!black},
-    coltitle=blue!40!black,
+    fonttitle=\bfseries\color{probfont},
     attach title to upper,
     after title={.\space},
     description delimiters parenthesis,
@@ -600,8 +719,9 @@
     enhanced jigsaw,
     before skip=12pt,
     after skip=12pt,
-    colback=gray!20!white,
-    colframe=gray!80!black,
+    coltitle=notecoltitle,
+    colback=notecolback,
+    colframe=notecolframe,
     size=small,
     top=2mm,
     bottom=3mm,
@@ -610,13 +730,12 @@
     boxrule=1pt,
     title=\bfseries{Notation:},
     halign title=flush center,
-    coltitle=black,
-    drop shadow=black!50!white,
+    drop shadow=noteshadow,
     attach boxed title to top
     left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
     minipage boxed title=2.25cm,
     boxed title style={%
-      colback=white,
+      colback=noteboxcolback,
       size=fbox,
       boxrule=1pt,
       boxsep=2pt,
@@ -625,11 +744,11 @@
         \coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
         \begin{scope}%
           \clip (interior.north west) rectangle ([xshift=3ex]interior.east);
-          \filldraw [white, blur shadow={shadow opacity=60, shadow
+          \filldraw [noteboxfill, blur shadow={shadow opacity=60, shadow
           yshift=-.75ex}, rounded corners=2pt] (interior.north west)
           rectangle (interior.south east);
         \end{scope}
-        \begin{scope}[gray!80!black]%
+        \begin{scope}[noteboxscope]%
           \fill (dotA) circle (2pt);
           \fill (dotB) circle (2pt);
         \end{scope}
@@ -896,35 +1015,39 @@
   #1,%
 }
 
-\thmbox{theorem}{Theorem}[%
-  colback=newbluebg,%
-  colframe=deepbluefg,%
-  colbacktitle=deepbluefg,%
-coltitle=deepbluefg]{%
+\thmbox{theorem}{Theorem}[
+  coltitle=thmcoltitle,
+  colback=thmcolback,
+  colframe=thmcolframe,
+  colbacktitle=thmcolbacktitle
+]{%
   crefname={theorem}{theorems},%
   Crefname={Theorem}{Theorems}%
 }
-\thmbox{lemma}{Lemma}[%
-  colback=newbluebg,%
-  colframe=deepbluefg,%
-  colbacktitle=deepbluefg,%
-coltitle=deepbluefg]{%
+\thmbox{lemma}{Lemma}[
+  coltitle=lemmacoltitle,
+  colback=lemmacolback,
+  colframe=lemmacolframe,
+  colbacktitle=lemmacolbacktitle
+]{%
   crefname={lemma}{lemmas},%
   Crefname={Lemma}{Lemmas}%
 }
-\thmbox{corollary}{Corollary}[%
-  colback=deepbluebg,%
-  colframe=deepbluefg,%
-  colbacktitle=lightbluefg,%
-coltitle=deepbluefg]{%
+\thmbox{corollary}{Corollary}[
+  coltitle=crlcoltitle,
+  colback=crlcolback,
+  colframe=crlcolframe,
+  colbacktitle=crlcolbacktitle
+]{%
   crefname={corollary}{corollaries},%
   Crefname={Corollary}{Corollaries}%
 }
-\thmbox{proposition}{Proposition}[%
-  colback=deepbluebg,%
-  colframe=deepbluefg,%
-  colbacktitle=lightbluefg,%
-coltitle=deepbluefg]{%
+\thmbox{proposition}{Proposition}[
+  coltitle=propcoltitle,
+  colback=propcolback,
+  colframe=propcolframe,
+  colbacktitle=propcolbacktitle
+]{%
   crefname={proposition}{propositions},%
   Crefname={Proposition}{Propositions}%
 }
@@ -933,27 +1056,29 @@ coltitle=deepbluefg]{%
   crefname={algorithm}{algorithms},%
   Crefname={Algorithm}{Algorithms}%
 }
-\claimbox{claim}{Claim}[%
-  before
-  upper={\tcbtitle\ {\bfseries\sffamily\color{lightgreen!85!black}---\ }},%
+\claimbox{claim}{Claim}[
+  before upper={%
+    \tcbtitle\ {\bfseries\sffamily\color{claimcoltitle}---\ }%
+  },
 ]{%
   crefname={claim}{claims},%
   Crefname={Claim}{Claims}%
 }
-\claimbox{question}{Question}[%
-  before upper={\tcbtitle{\bfseries\sffamily\color{darkgreenfg}.}\ },%
-  coltitle = darkgreenfg,%
-  segmentation style={darkgreenfg}%
+\claimbox{question}{Question}[
+  before upper={\tcbtitle{\bfseries\sffamily\color{quescoltitle}.}\ },%
+  coltitle=quescoltitle,
+  segmentation style={quessegstyle}
 ]{%
   crefname={question}{questions},%
   Crefname={Question}{Questions}%
 }
-\claimbox{remark}{Remark}[%
-  colback=RedViolet!5!gray!5,%
-  borderline west = {2.5pt}{0pt}{black},%
-  before upper={\tcbtitle{\bfseries\sffamily\color{black}.}\ },%
-  coltitle = black,%
-  segmentation style={solid, black}%
+
+\claimbox{remark}{Remark}[
+  colback=remcolback,
+  borderline west={2.5pt}{0pt}{remborderline},
+  before upper={\tcbtitle{\bfseries\sffamily\color{remcoltitle}.}\ },
+  coltitle=remcoltitle,
+  segmentation style={solid, remsegstyle}
 ]{%
   crefname={remark}{remarks},%
   Crefname={Remark}{Remarks}%
@@ -1099,7 +1224,7 @@ coltitle=deepbluefg]{%
 % }}}
 
 % ================================================== %
-% ================= USEFUL MACROS ================== %
+% ================== USEFUL MACROS ================= %
 % ================================================== %
 
 % {{{ USEFUL MACROS
