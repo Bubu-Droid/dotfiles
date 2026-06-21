@@ -5,7 +5,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{\textcolor{bubured}{LaTeX Template}}
+\title{\textcolor{bubured}{\textrm{\LaTeX}\ Template}}
 \author{\textcolor{bubured}{Avigyan Chakraborty}}
 \date{\textcolor{bubured}{Last Updated: \today}}
 
@@ -116,7 +116,6 @@ Here is how you can use the references made above:
 \Cref{lemma:firstlemma},
 \Cref{corollary:firstcor},
 \Cref{proposition:firstprop},
-% \Cref{notation:firstnot},
 \Cref{question:firstques},
 \Cref{exercise:firstexc},
 \Cref{problem:firstprob},
@@ -125,11 +124,11 @@ Here is how you can use the references made above:
 \Cref{example:firstexm},
 \Cref{remark:firstrem}.
 
-Please ignore the linter errors here (if you're using a linter).
-The linter does not recognize references like \texttt{theorem:firstthm}
-since there is no explicit reference as such. However, the code
-compiles completely fine since \texttt{tcolorbox} sets up
-references by adding the environment name before the reference label.
+Please ignore the LSP errors here (if you're using one).
+The LSP does not recognize references like \texttt{firstthm}
+since there is no explicit label as such. However, the code
+compiles completely fine since \texttt{tcolorbox} sets up the
+references behind the scenes.
 
 \newpage
 
