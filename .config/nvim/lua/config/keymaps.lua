@@ -43,7 +43,7 @@ keymap.set("n", "<leader>sk", check_scrolloff, { desc = "Toggles scroll lock" })
 keymap.set("n", "<leader>cr", function()
   local ft = vim.bo.filetype
   local file = vim.fn.expand("%:t")
-  local name = vim.fn.expand("%:t:r")
+  -- local name = vim.fn.expand("%:t:r")
 
   if ft == "c" then
     vim.cmd("vsplit | terminal gcc " .. file .. " && ./a.out")
@@ -51,7 +51,7 @@ keymap.set("n", "<leader>cr", function()
   elseif ft == "cpp" then
     -- you should always open the nvim instance from the root of the project
     local project = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-    vim.cmd("vsplit | terminal make -s -C build/ && ./build/" .. project)
+    vim.cmd("vsplit | terminal cd build/ && cmake .. && cmake --build . && ./" .. project)
     vim.cmd("startinsert")
   end
 end)

@@ -5,7 +5,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{\textcolor{bubured}{LaTeX Template}}
+\title{\textcolor{bubured}{\textrm{\LaTeX}\ Template}}
 \author{\textcolor{bubured}{Avigyan Chakraborty}}
 \date{\textcolor{bubured}{Last Updated: \today}}
 
@@ -17,55 +17,52 @@
 \author{Avigyan Chakraborty}
 \date{Last Updated: \today}
 
-\epigraph{Is it that you're being good to-get-her,
-or that you think you're good
-together?}{Me (inspired
-by “Good Together” --- Shy Martin)}
+\epigraph{Is it that you're being good to-get-her, or that you think
+you're good together?}{Me (inspired by “Good Together” --- Shy Martin)}
 
 \tableofcontents
 
 \newpage
 
-
 \section{\texttt{tcolorbox} Environments}
-
 
 This is the color of the default \textbf{bold text}.
 
-\begin{definition}{Name}{}
-This is a Definition.
+\begin{definition}{Name}{firstdefn}
+  This is a Definition.
 \end{definition}
 
-\begin{theorem}{Name}{}
-This is a Theorem.
+\begin{theorem}{Name}{firstthm}
+  This is a Theorem.
 \end{theorem}
 
-\begin{lemma}{Name}{}
-This is a Lemma.
+\begin{lemma}{Name}{firstlemma}
+  This is a Lemma.
 \end{lemma}
 
-\begin{corollary}{Name}{}
-This is a Corollary.
+\begin{corollary}{Name}{firstcor}
+  This is a Corollary.
 \end{corollary}
 
-\begin{proposition}{Name}{}
-This is a Proposition.
+\begin{proposition}{Name}{firstprop}
+  This is a Proposition.
 \end{proposition}
 
+% We don't have references for notation box.
 \begin{notation}{}{}
   \begin{itemize}
-    \ii Notation 1.
-    \ii Notation 2.
-    \ii Notation 3.
+      \ii Notation 1.
+      \ii Notation 2.
+      \ii Notation 3.
   \end{itemize}
 \end{notation}
 
-\begin{question}{Name}{}
-This is a Question.
+\begin{question}{Name}{firstques}
+  This is a Question.
 \end{question}
 
-\begin{exercise}{Name}{}
-This is an Exercise.
+\begin{exercise}{Name}{firstexc}
+  This is an Exercise.
 \end{exercise}
 \begin{hints}{}{}
   \begin{hint}
@@ -73,8 +70,8 @@ This is an Exercise.
   \end{hint}
 \end{hints}
 
-\begin{problem}{Name}{}
-This is a Problem.
+\begin{problem}{Name}{firstprob}
+  This is a Problem.
 \end{problem}
 \begin{hints}
   \begin{hint}
@@ -85,91 +82,115 @@ This is a Problem.
   \end{hint}
 \end{hints}
 
-\begin{algorithm}{Name}{}
-This is an Algorithm.
+\begin{algorithm}{Name}{firstalgo}
+  This is an Algorithm.
 \end{algorithm}
 
-\begin{claim}{Name}{}
-This is a Claim.
+\begin{claim}{Name}{firstclaim}
+  This is a Claim.
 \end{claim}
 
 \begin{proof}
-This is a Proof.
+  This is a Proof.
 \end{proof}
 
-\begin{example}{Name}{}
-This is an Example.
+\begin{example}{Name}{firstexm}
+  This is an Example.
 \end{example}
 
 \begin{soln}
-This is a Solution.
+  This is a Solution.
 \end{soln}
 
 \hrulebar
 
-\begin{remark}{Name}{}
+\begin{remark}{Name}{firstrem}
   This is a Remark.\footnote{This is footnote for this remark.}
 \end{remark}
+
+\section{Using references}
+
+Here is how you can use the references made above:
+\Cref{definition:firstdefn},
+\Cref{theorem:firstthm},
+\Cref{lemma:firstlemma},
+\Cref{corollary:firstcor},
+\Cref{proposition:firstprop},
+\Cref{question:firstques},
+\Cref{exercise:firstexc},
+\Cref{problem:firstprob},
+\Cref{algorithm:firstalgo},
+\Cref{claim:firstclaim},
+\Cref{example:firstexm},
+\Cref{remark:firstrem}.
+
+Please ignore the LSP errors here (if you're using one).
+The LSP does not recognize references like \texttt{firstthm}
+since there is no explicit label as such. However, the code
+compiles completely fine since \texttt{tcolorbox} sets up the
+references behind the scenes.
 
 \newpage
 
 \section{Other Environments}
 
-
 \begin{table}[htbp]
-\label{tab:1}
-\centering
-\begin{tabular}{||c c c||}
+  \label{tab:1}
+  \centering
+  \begin{tabular}{||c c c||}
 
-\hline
-Col1 & Col2 & Col3 \\ [0.5ex]
-\hline\hline
+    \hline
+    Col1 & Col2 & Col3 \\ [0.5ex]
+    \hline\hline
 
-1 & 2 & 3 \\
-\hline
+    1 & 2 & 3 \\
+    \hline
 
-\end{tabular}
-\caption{This is a table}
+  \end{tabular}
+  \caption{This is a table}
 \end{table}
 
 \begin{enumerate}[(a)]
-  \ii First.
-  \ii Second.
+    \ii First.
+    \ii Second.
 \end{enumerate}
 
 \begin{itemize}
-  \ii First.
-  \ii Second.
+    \ii First.
+    \ii Second.
 \end{itemize}
 
 \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.5\textwidth,keepaspectratio]{images/gojo_pfp.png}
-    % height=\textheight does what it's expected to do similarly as well
-    \caption{Cool Gojo 4K Wallpaper}
-    \label{fig:gojo1}
+  \centering
+  \includegraphics[width=0.5\textwidth,keepaspectratio]{images/gojo_pfp.png}
+  % height=\textheight does what it's expected to do similarly as well
+  \caption{Cool Gojo 4K Wallpaper}
+  \label{fig:gojo1}
 \end{figure}
 
 \newpage
 
 \section{Math Environments}
 
-
 \begin{align*}
   x^2
   &= \frac{2x^2}{2}\\
   &= \frac{(x+1)^2+(x-1)^2 - 2}{2}
-.\end{align*}
+  .
+\end{align*}
 
 \[
-  f(x)=\begin{cases}
+  f(x)=
+  \begin{cases}
     0, & \text{if } x \text{ is rational} \\
     1, & \text{otherwise}
-  .\end{cases}
+    .
+  \end{cases}
 \]
 
 \[
-  g(x)=\begin{cases}
+  g(x)=
+  \begin{cases}
     0, & \text{if } x \text{ is irrational}\\
     \frac{1}{q}, & \text{if } x=\frac{p}{q}
     \text{ where $p$, $q$ are integers with $\gcd(p,q)=1$}.
@@ -177,12 +198,12 @@ Col1 & Col2 & Col3 \\ [0.5ex]
 .\]
 
 \[
-\sin \cos \tan \csc \sec \cot \arcsin \arccos \arctan \arccsc \arcsec \arccot
+  \sin \cos \tan \csc \sec \cot \arcsin \arccos \arctan \arccsc \arcsec \arccot
 .\]
 
 \[
-\nu_p(p^2) = 2 \text{ and } \pow{\odot(ABC)}{(A)} = 0
-\text{ and } \ord_p((p-1)!) = 2
+  \nu_p(p^2) = 2 \text{ and } \pow{\odot(ABC)}{(A)} = 0
+  \text{ and } \ord_p((p-1)!) = 2
 .\]
 
 \[
@@ -194,14 +215,12 @@ Col1 & Col2 & Col3 \\ [0.5ex]
 .\]
 
 \[
-\dd[n]{f}{x} \pd[n]{f}{x}
+  \dd[n]{f}{x} \pd[n]{f}{x}
 .\]
-
 
 \newpage
 
 \section{CS and ASY Environments}
-
 
 \begin{figure}[htbp]
   \centering
@@ -292,17 +311,14 @@ Col1 & Col2 & Col3 \\ [0.5ex]
 
 \section{Hints}
 
-
 \printhint
 
 \newpage
 
 \section{Bibliography}
 
-
 Random text for citing some document in my \LaTeX\ file \cite{knuth1997}.
 
 \printbibliography
-
 
 \end{document}

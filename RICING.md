@@ -96,7 +96,7 @@
 [notosansjp]: https://fonts.google.com/noto/specimen/Noto+Sans+JP
 [inter]: https://fonts.google.com/specimen/Inter
 [archwikifonts]: https://wiki.archlinux.org/title/Fonts
-[hpprint]: https://youtu.be/dSRblSh48DM?si=ef0uAXNTo7KrJAzD
+[hpprint]: https://youtu.be/dSRblSh48DM
 [bluetooth]: https://wiki.archlinux.org/title/Bluetooth
 [mpris]: https://wiki.archlinux.org/title/MPRIS
 [amdgpu]: https://wiki.archlinux.org/title/AMDGPU
