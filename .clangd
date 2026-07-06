@@ -1,3 +1,5 @@
 ---
 CompileFlags:
   Remove: [-mno-direct-extern-access]
+Index:
+  Background: Skip
