@@ -1,3 +1,9 @@
+> [!NOTE]
+> If you're looking for my LaTeX template, it's not here anymore ---
+> it has been moved to a dedicated repository. Check out my
+> [latex-template][latextemp] repository for an overview and
+> usage instructions for [bubu.sty](texmf/tex/latex/sty/bubu.sty).
+
 # Arch i3 Dotfiles
 
 This repository contains my Arch i3 Dotfiles. It also contains:
@@ -93,3 +99,4 @@ using a Rofi applet
 [mentaloutarchinstall]: https://youtu.be/rUEnS1zj1DM
 [archarchive]: https://archive.archlinux.org/packages/
 [archlinuxlukesmith]: https://youtu.be/nSHOb8YU9Gw
+[latextemp]: https://github.com/Bubu-Droid/latex-template/
