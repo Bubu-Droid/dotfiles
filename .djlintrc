@@ -1,4 +1,5 @@
 {
   "indent": 2,
-  "max_line_length": 85
+  "max_line_length": 85,
+  "max_blank_lines": 1
 }
