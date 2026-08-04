@@ -1,6 +1,6 @@
 $pdf_previewer = 'zathura';
 $pdf_update_method = 2;
-$aux_dir = 'buildtmp'; 
+$aux_dir = 'buildtmp';
 
 # sub asy {return system("asy -o \$(dirname '$_[0]') '$_[0]'");}
 sub asy { return system("asy -o '$_[0]' '$_[0]'"); }
