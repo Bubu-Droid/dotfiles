@@ -76,7 +76,7 @@ return {
       "xml",
       "xresources",
       "yaml",
-      "zathurarc",
+      -- "zathurarc",
       "zsh",
     })
   end,
