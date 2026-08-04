@@ -1,5 +1,5 @@
 > [!NOTE]
-> If you're looking for my LaTeX template, it's not here anymore ---
+> If you're looking for my LaTeX template, it's not here anymore --
 > it has been moved to a dedicated repository. Check out my
 > [latex-template][latextemp] repository for an overview and
 > usage instructions for [bubu.sty](texmf/tex/latex/sty/bubu.sty).
