@@ -53,5 +53,8 @@ keymap.set("n", "<leader>cr", function()
     local project = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
     vim.cmd("vsplit | terminal cd build/ && cmake .. && cmake --build . && ./src/" .. project)
     vim.cmd("startinsert")
+  elseif ft == "python" then
+    vim.cmd("vsplit | terminal python3 " .. file)
+    vim.cmd("startinsert")
   end
 end)
