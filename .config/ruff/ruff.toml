@@ -2,3 +2,4 @@ line-length = 80
 
 [lint]
 unfixable = ["F401"]
+select = ["ANN"]
